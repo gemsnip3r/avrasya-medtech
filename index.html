@@ -518,6 +518,26 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #0
   body.menu-open .mobile-panel { display: block; }
   .mobile-panel a { display: block; padding: 10px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.02); }
   .flow-row, .results-grid, .trust-grid, .f-grid { grid-template-columns: 1fr; }
+  .nav { padding: 14px 20px; }
+  .nav .btn-ghost { padding: 6px 12px; font-size: 11px; }
+}
+@media (max-width: 600px) {
+  .nav .btn-ghost { display: none !important; }
+}
+@media (max-width: 480px) {
+  .lang-btn {
+    padding: 2px 4px !important;
+  }
+  .lang-text {
+    display: none !important;
+  }
+  .lang-switch-wrap {
+    padding: 4px 8px !important;
+    gap: 2px !important;
+  }
+  .nav { padding: 10px 14px; }
+  .logo { font-size: 13px !important; }
+  .logo img { height: 26px !important; }
 }
 
 /* ============ FLOATING WHATSAPP WIDGET ============ */
@@ -722,23 +742,23 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #0
   <div class="nav-cta">
     <div class="lang-switch-wrap" style="display:flex; gap:4px; align-items:center;">
       <button class="lang-btn active" id="langTR" type="button" aria-label="Türkçe" style="display:inline-flex; align-items:center; gap:4px;">
-        <img src="https://flagcdn.com/16x12/tr.png" alt="" style="width:16px; height:12px; border-radius:1px;"> TR
+        <img src="https://flagcdn.com/16x12/tr.png" alt="" style="width:16px; height:12px; border-radius:1px;"> <span class="lang-text">TR</span>
       </button>
       <span style="color:var(--line-2); font-size:10px;">|</span>
       <button class="lang-btn" id="langEN" type="button" aria-label="English" style="display:inline-flex; align-items:center; gap:4px;">
-        <img src="https://flagcdn.com/16x12/gb.png" alt="" style="width:16px; height:12px; border-radius:1px;"> EN
+        <img src="https://flagcdn.com/16x12/gb.png" alt="" style="width:16px; height:12px; border-radius:1px;"> <span class="lang-text">EN</span>
       </button>
       <span style="color:var(--line-2); font-size:10px;">|</span>
       <button class="lang-btn" id="langRU" type="button" aria-label="Russian" style="display:inline-flex; align-items:center; gap:4px;">
-        <img src="https://flagcdn.com/16x12/ru.png" alt="" style="width:16px; height:12px; border-radius:1px;"> RU
+        <img src="https://flagcdn.com/16x12/ru.png" alt="" style="width:16px; height:12px; border-radius:1px;"> <span class="lang-text">RU</span>
       </button>
       <span style="color:var(--line-2); font-size:10px;">|</span>
       <button class="lang-btn" id="langAR" type="button" aria-label="Arabic" style="display:inline-flex; align-items:center; gap:4px;">
-        <img src="https://flagcdn.com/16x12/sa.png" alt="" style="width:16px; height:12px; border-radius:1px;"> AR
+        <img src="https://flagcdn.com/16x12/sa.png" alt="" style="width:16px; height:12px; border-radius:1px;"> <span class="lang-text">AR</span>
       </button>
       <span style="color:var(--line-2); font-size:10px;">|</span>
       <button class="lang-btn" id="langFA" type="button" aria-label="Persian" style="display:inline-flex; align-items:center; gap:4px;">
-        <img src="https://flagcdn.com/16x12/ir.png" alt="" style="width:16px; height:12px; border-radius:1px;"> FA
+        <img src="https://flagcdn.com/16x12/ir.png" alt="" style="width:16px; height:12px; border-radius:1px;"> <span class="lang-text">FA</span>
       </button>
     </div>
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span></button>
