@@ -2685,6 +2685,10 @@ const langRU = document.getElementById('langRU');
 const langAR = document.getElementById('langAR');
 const langFA = document.getElementById('langFA');
 
+const plannerCbs = document.querySelectorAll('.planner-cb');
+const plannerPower = document.getElementById('plannerPower');
+const plannerTime = document.getElementById('plannerTime');
+
 function updateLangUI(lang) {
   saved = lang;
   
@@ -3386,15 +3390,15 @@ if (sliderGumLine) {
   });
 }
 
-// Initial synchronizations
-updateTeethVisuals();
-updateVeneerTransforms();
-
 // Grid & Veneer Outline calibration toggles
 const toggleGridBtn = document.getElementById('toggleGridBtn');
 const toggleVeneerBtn = document.getElementById('toggleVeneerBtn');
 const simGrid = document.getElementById('simGrid');
 const simVeneer = document.getElementById('simVeneer');
+
+// Initial synchronizations
+updateTeethVisuals();
+updateVeneerTransforms();
 
 if (toggleGridBtn && simGrid) {
   toggleGridBtn.addEventListener('click', () => {
@@ -3630,9 +3634,7 @@ function animatePlanner() {
   }
 }
 
-const plannerCbs = document.querySelectorAll('.planner-cb');
-const plannerPower = document.getElementById('plannerPower');
-const plannerTime = document.getElementById('plannerTime');
+
 
 function calculatePlannerStats() {
   let power = 0;
