@@ -2725,14 +2725,19 @@ updateLangUI(saved);
 
 // Mobile Nav Menu Controls
 const menuToggle = document.getElementById('menuToggle');
-menuToggle.addEventListener('click', () => {
-  const isOpen = document.body.classList.toggle('menu-open');
-  menuToggle.setAttribute('aria-expanded', isOpen);
-});
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = document.body.classList.toggle('menu-open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+}
 
 // Scroll Event
 window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  const navEl = document.getElementById('nav');
+  if (navEl) {
+    navEl.classList.toggle('scrolled', window.scrollY > 30);
+  }
   
   // Journey tracker tracking active section
   const sections = ['top', 'reception', 'smilebot', 'scanner', 'whitening', 'explode', 'printers', 'catalog', 'workflow', 'results', 'about', 'contact'];
@@ -2797,6 +2802,7 @@ if (slider) {
 // Exploded 3D Implant Three.js scene
 let scene, camera, renderer, parts = [];
 function initImplantScene() {
+  if (typeof THREE === 'undefined') return;
   const container = document.getElementById('implant3d');
   if (!container) return;
   
@@ -2849,9 +2855,11 @@ function initImplantScene() {
   animate();
   
   window.addEventListener('resize', () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    if (typeof THREE !== 'undefined' && camera && renderer && container) {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
   });
   
   // Scroll disassembly control
@@ -2875,6 +2883,7 @@ window.addEventListener('load', initImplantScene);
 // Showroom dental implant dome Three.js model representation (Hero Section)
 let heroScene, heroCamera, heroRenderer, heroToothCrown, heroImplantScrew, particleSystem;
 function initHeroScene() {
+  if (typeof THREE === 'undefined') return;
   const container = document.getElementById('hero3dCanvas');
   if (!container) return;
   
@@ -3015,9 +3024,11 @@ function initHeroScene() {
   animate();
   
   window.addEventListener('resize', () => {
-    heroCamera.aspect = container.clientWidth / container.clientHeight;
-    heroCamera.updateProjectionMatrix();
-    heroRenderer.setSize(container.clientWidth, container.clientHeight);
+    if (typeof THREE !== 'undefined' && heroCamera && heroRenderer && container) {
+      heroCamera.aspect = container.clientWidth / container.clientHeight;
+      heroCamera.updateProjectionMatrix();
+      heroRenderer.setSize(container.clientWidth, container.clientHeight);
+    }
   });
 }
 window.addEventListener('load', initHeroScene);
@@ -3447,6 +3458,7 @@ if (planTechBtn && recStatic && recPlanner && closePlannerBtn) {
 }
 
 function initPlanner3D() {
+  if (typeof THREE === 'undefined') return;
   const container = document.getElementById('planner3dCanvas');
   if (!container) return;
   const w = container.clientWidth || 300;
@@ -3694,6 +3706,7 @@ if (playSurgeryBtn && surgeryOverlay && closeSurgeryBtn) {
 }
 
 function initSurgerySimulator() {
+  if (typeof THREE === 'undefined') return;
   const container = surgeryCanvasContainer;
   if (!container) return;
 
@@ -3923,6 +3936,7 @@ if (playScannerBtn && scannerOverlay && closeScannerSim) {
 }
 
 function initScannerSimulator() {
+  if (typeof THREE === 'undefined') return;
   const container = scannerCanvasContainer;
   if (!container) return;
   const w = container.clientWidth || 300;
@@ -4205,7 +4219,14 @@ const SoundFX = {
   ctx: null,
   init() {
     if (!this.ctx) {
-      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          this.ctx = new AudioCtx();
+        }
+      } catch (e) {
+        console.warn("AudioContext init bypassed: ", e);
+      }
     }
   },
   playHover() {
