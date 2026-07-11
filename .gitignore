@@ -1,0 +1,15 @@
+.chrome-tmp-*
+.chrome-tmp-desktop/
+.chrome-tmp-desktop2/
+.chrome-tmp-final-desktop/
+.chrome-tmp-final-mobile/
+.chrome-tmp-final3-desktop/
+.chrome-tmp-final3-mobile/
+.chrome-tmp-mobile/
+.chrome-tmp-mobile2/
+.chrome-tmp-smilebot/
+.chrome-tmp-smilebot-http/
+.vscode/
+.idea/
+*.log
+node_modules/

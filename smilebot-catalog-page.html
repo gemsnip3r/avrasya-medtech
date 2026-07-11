@@ -1,0 +1,1011 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SMILEBOTÂ® ONLINE CATALOG</title>
+<meta name="description" content="Meet SMILEBOTÂ®. Future of dentistry." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SMILEBOTÂ® ONLINE CATALOG" />
+<meta property="og:description" content="Meet SMILEBOTÂ®. Future of dentistry." />
+<meta property="og:image" content="https://smile.tr/smilebot/katalog/1200x630.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SMILEBOTÂ® ONLINE CATALOG" />
+<meta name="twitter:description" content="Meet SMILEBOTÂ®. Future of dentistry." />
+<meta name="twitter:image" content="https://smile.tr/smilebot/katalog/1200x630.png" />
+<meta name="theme-color" content="#08203B" />
+<link rel="icon" href="https://smile.tr/smilebot/katalog/ICONRounded.png" />
+<link rel="apple-touch-icon" href="https://smile.tr/smilebot/katalog/ICONRounded.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#08203B;--ink2:#0C2D52;--blue:#1D6BE1;--blue2:#3D8BFF;--sky:#BFD9FF;--paper:#F2F7FF;
+  --line:rgba(255,255,255,.16);--header-h:64px;
+  --font-display:'Sora','Noto Sans Arabic',system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans","Microsoft YaHei","Malgun Gothic",sans-serif;
+  --font-body:'Inter','Noto Sans Arabic',system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans","Microsoft YaHei","Malgun Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--font-body);background:var(--ink);color:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow:hidden}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--blue),var(--blue2));transition:width .12s linear}
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--header-h);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,40px);background:linear-gradient(180deg,rgba(6,18,38,.55),rgba(6,18,38,0));transition:background .3s ease,backdrop-filter .3s ease,border-color .3s ease;border-bottom:1px solid transparent}
+.topbar.scrolled{background:rgba(7,22,44,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.08)}
+.brand{display:flex;align-items:center;gap:10px;height:100%}
+.brand img{height:26px;width:auto;display:block}
+.brand .logo-blue{display:none}
+.topbar.on-light{background:rgba(255,255,255,.82);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(8,32,59,.08)}
+.topbar.on-light .logo-white{display:none}
+.topbar.on-light .logo-blue{display:block}
+.controls{display:flex;align-items:center;gap:10px}
+.lang{position:relative}
+.lang-btn,.pdf-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:11px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s,transform .1s}
+.lang-btn:hover,.pdf-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.36)}
+.lang-btn:active,.pdf-btn:active{transform:translateY(1px)}
+.pdf-btn{background:var(--blue);border-color:transparent}
+.pdf-btn:hover{background:var(--blue2)}
+.on-light .lang-btn{background:rgba(8,32,59,.06);border-color:rgba(8,32,59,.18);color:var(--ink)}
+.on-light .lang-btn:hover{background:rgba(8,32,59,.12)}
+.lang-btn .glyph{font-size:15px;line-height:1}
+.lang-btn .chev{width:14px;height:14px;opacity:.7}
+.pdf-btn svg{width:16px;height:16px}
+.lang-menu{position:absolute;top:48px;inset-inline-end:0;min-width:212px;max-height:60vh;overflow:auto;background:rgba(10,26,50,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:6px;box-shadow:0 24px 60px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.18s ease;z-index:70}
+.lang-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
+.lang-item{display:flex;align-items:center;gap:11px;width:100%;padding:9px 11px;border-radius:9px;background:none;border:0;color:#eaf2ff;font-family:var(--font-body);font-size:14px;font-weight:500;cursor:pointer;text-align:start}
+.lang-item:hover{background:rgba(255,255,255,.09)}
+.lang-item.active{background:var(--blue);color:#fff}
+.lang-item .flag{font-size:18px;line-height:1;width:24px;text-align:center}
+.lang-item .pin{margin-inline-start:auto;font-size:10px;letter-spacing:.08em;font-weight:700;text-transform:uppercase;opacity:.55}
+#catalog{height:100svh;height:100vh;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y proximity;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.page{position:relative;min-height:100svh;min-height:100vh;width:100%;display:flex;align-items:center;scroll-snap-align:start;overflow:hidden}
+.page.image{background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#0a1f3a}
+.page.image::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,16,33,.55),rgba(5,16,33,.20) 26%,rgba(5,16,33,.30) 60%,rgba(5,16,33,.78));z-index:1}
+.page .wrap{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:calc(var(--header-h) + 28px) clamp(20px,5vw,56px) 64px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sky)}
+.eyebrow .num{font-family:var(--font-display);font-weight:700;color:#fff;opacity:.9}
+.eyebrow .bar{width:26px;height:1px;background:rgba(191,217,255,.6)}
+.reveal{opacity:0;transform:translateY(16px);filter:blur(2px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .7s}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;filter:none!important;transition:none}#catalog{scroll-behavior:auto}}
+.cover .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;min-height:100svh;padding-top:var(--header-h)}
+.cover .mark{height:clamp(48px,8vw,84px);width:auto;margin-bottom:26px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.5))}
+.cover h1{font-family:var(--font-display);font-weight:800;letter-spacing:.02em;font-size:clamp(30px,5.4vw,62px);line-height:1.04;text-shadow:0 6px 30px rgba(0,0,0,.45);max-width:18ch}
+.cover .pillars{margin-top:18px;font-size:clamp(13px,1.8vw,17px);font-weight:600;letter-spacing:.03em;color:var(--sky);text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.cover .stats{margin-top:38px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.cover .stat{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:clamp(12px,1.5vw,14.5px);font-weight:600;color:#fff}
+.cover .stat .dot{width:7px;height:7px;border-radius:50%;background:var(--blue2);flex:none;box-shadow:0 0 0 4px rgba(61,139,255,.22)}
+.manifesto .wrap{max-width:1040px}
+.manifesto h2{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,5.4vw,62px);line-height:1.04;margin:16px 0 30px;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.shift{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch;max-width:760px}
+.shift .col{background:rgba(8,24,48,.4);border:1px solid var(--line);border-radius:16px;padding:20px 22px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.shift .col.now{background:rgba(29,107,225,.22);border-color:rgba(61,139,255,.4)}
+.shift .lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:12px}
+.shift ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.shift li{font-size:clamp(14px,1.7vw,17px);font-weight:500;color:#f1f6ff;display:flex;gap:9px;align-items:center}
+.shift li svg{width:15px;height:15px;flex:none;color:var(--blue2)}
+.shift li .mut{width:13px;height:2px;background:rgba(191,217,255,.55);border-radius:2px;flex:none}
+.shift .arrow{display:flex;align-items:center;justify-content:center;color:var(--sky);opacity:.85}
+.shift .arrow svg{width:26px;height:26px}
+.meet{margin-top:30px;display:flex;flex-direction:column;gap:14px;max-width:680px}
+.meet h3{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,3.4vw,34px);color:#fff;display:flex;align-items:center;gap:12px}
+.meet h3 .spark{width:28px;height:28px;flex:none;color:var(--blue2)}
+.meet p{font-size:clamp(14px,1.9vw,18px);line-height:1.6;color:#e7f0ff;background:rgba(8,24,48,.34);padding:16px 18px;border-radius:14px;border:1px solid var(--line)}
+.traction .wrap{max-width:1100px}
+.traction h2{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,4.6vw,52px);margin:14px 0 34px;line-height:1.06;max-width:14ch;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tcard{background:rgba(8,24,48,.42);border:1px solid var(--line);border-radius:18px;padding:24px 22px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);position:relative;overflow:hidden}
+.tcard::after{content:"";position:absolute;inset-inline-start:22px;bottom:18px;width:46px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--blue2))}
+.tcard .n{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,5vw,52px);line-height:1;letter-spacing:-.01em;color:#fff}
+.tcard .l{margin-top:12px;margin-bottom:14px;font-size:clamp(12.5px,1.5vw,15px);font-weight:600;color:var(--sky)}
+.product .wrap{display:flex;justify-content:flex-start}
+.panel{width:min(460px,100%);background:rgba(7,22,46,.62);border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:clamp(22px,3vw,32px);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.panel .eyebrow{margin-bottom:14px}
+.panel h2{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,3.6vw,40px);line-height:1.04;letter-spacing:.01em}
+.panel .badge{display:inline-block;margin-inline-start:8px;vertical-align:middle;font-family:var(--font-display);font-weight:800;font-size:.5em;color:#fff;background:linear-gradient(135deg,var(--blue),var(--blue2));padding:4px 9px;border-radius:8px;letter-spacing:.04em;transform:translateY(-4px)}
+.panel .ptag{margin-top:10px;font-size:clamp(14px,1.8vw,16.5px);color:#dfeaff;line-height:1.45}
+.panel .model{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--sky);background:rgba(61,139,255,.14);border:1px solid rgba(61,139,255,.3);padding:7px 12px;border-radius:9px}
+.panel .model svg{width:14px;height:14px;flex:none}
+.feat{list-style:none;margin:18px 0 0;display:flex;flex-direction:column;gap:11px}
+.feat li{display:flex;gap:11px;align-items:flex-start;font-size:clamp(13.5px,1.7vw,15.5px);font-weight:500;color:#eef4ff;line-height:1.4}
+.feat li .ic{width:20px;height:20px;flex:none;border-radius:7px;display:grid;place-items:center;background:rgba(61,139,255,.18);border:1px solid rgba(61,139,255,.36);margin-top:1px}
+.feat li .ic svg{width:12px;height:12px;color:var(--blue2)}
+.price-row{margin-top:22px;display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.price{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,4.4vw,44px);line-height:1;color:#fff}
+.vat{font-size:13px;font-weight:600;color:var(--sky);padding-bottom:4px}
+.dual{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
+.dual .pp{display:flex;flex-direction:column;gap:4px}
+.dual .pp .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.dual .pp .price{font-size:clamp(24px,3.2vw,34px)}
+.actions{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:48px;padding:0 20px;border-radius:13px;font-family:var(--font-body);font-weight:700;font-size:14.5px;cursor:pointer;text-decoration:none;border:1px solid transparent;transition:transform .1s,background .2s,border-color .2s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:#25D366;color:#06351b}
+.btn-primary:hover{background:#34e07a}
+.btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.26);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
+.btn svg{width:18px;height:18px}
+</style>
+</head>
+<body>
+<style>
+.page.light{color:var(--ink);background:radial-gradient(1100px 560px at 78% -8%,rgba(61,139,255,.26),transparent 60%),radial-gradient(820px 520px at -8% 112%,rgba(29,107,225,.22),transparent 60%),linear-gradient(160deg,#eef4fd,#dde9f8 58%,#cddef3)}
+.page.light::after{content:"";position:absolute;inset:0;z-index:0;opacity:.5;background-image:linear-gradient(rgba(8,32,59,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(8,32,59,.05) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 40%,#000,transparent 78%)}
+.light .wrap{position:relative;z-index:2}
+.light .eyebrow{color:var(--blue)}
+.light .eyebrow .num{color:var(--ink)}
+.light .eyebrow .bar{background:rgba(29,107,225,.5)}
+.overview h2{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,4.6vw,52px);margin:14px 0 8px;color:var(--ink)}
+.overview .sub{font-size:clamp(15px,2vw,19px);color:#3a557a;max-width:60ch;margin-bottom:26px;line-height:1.5}
+.table{width:100%;border-collapse:separate;border-spacing:0;background:rgba(255,255,255,.7);border:1px solid rgba(8,32,59,.1);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(8,32,59,.12);backdrop-filter:blur(6px)}
+.table thead th{background:rgba(8,32,59,.04);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5a7290;text-align:start;padding:14px 18px}
+.table td{padding:15px 18px;border-top:1px solid rgba(8,32,59,.07);font-size:15px;vertical-align:middle}
+.table tbody tr:hover{background:rgba(29,107,225,.05)}
+.table .mname{font-family:var(--font-display);font-weight:700;color:var(--ink);font-size:15.5px}
+.table .mbest{color:#46618a}
+.table .mprice{font-family:var(--font-display);font-weight:700;color:var(--blue);white-space:nowrap;text-align:end}
+.table th.colprice{text-align:end}
+.cta .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;min-height:100svh}
+.cta h2{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,5.6vw,62px);line-height:1.05;color:var(--ink);max-width:18ch;margin:16px 0 16px}
+.cta .sub{font-size:clamp(15px,2.2vw,20px);color:#3a557a;max-width:52ch;line-height:1.55;margin-bottom:30px}
+.cta .btn-primary{height:56px;font-size:16px;padding:0 30px}
+.foot{margin-top:54px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#5a7290}
+.foot img{height:24px;margin-bottom:8px;opacity:.95}
+.foot .ft{font-weight:600;color:#36527a}
+.foot .meta{font-size:12.5px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.foot .meta span{opacity:.8}
+.dots{position:fixed;top:50%;inset-inline-end:18px;transform:translateY(-50%);z-index:45;display:flex;flex-direction:column;gap:11px}
+.dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:transparent;cursor:pointer;padding:0;transition:.2s}
+.dots button.active{background:var(--blue2);border-color:var(--blue2);transform:scale(1.35)}
+.dots.on-light button{border-color:rgba(8,32,59,.4)}
+.dots.on-light button.active{background:var(--blue);border-color:var(--blue)}
+@media (max-width:820px){.dots{display:none}}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:80;background:rgba(8,26,50,.96);border:1px solid rgba(255,255,255,.14);color:#fff;padding:13px 20px;border-radius:13px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:11px;box-shadow:0 20px 50px rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:.25s}
+.toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+[dir="rtl"] .eyebrow,[dir="rtl"] .shift .lbl,[dir="rtl"] .panel .eyebrow,[dir="rtl"] .table thead th,[dir="rtl"] .tcard .l{letter-spacing:0}
+[dir="rtl"] .shift .arrow svg{transform:scaleX(-1)}
+:focus-visible{outline:3px solid var(--blue2);outline-offset:2px;border-radius:6px}
+@media (max-width:820px){.shift{grid-template-columns:1fr;max-width:460px}.shift .arrow{transform:rotate(90deg)}[dir="rtl"] .shift .arrow{transform:rotate(90deg)}.tgrid{grid-template-columns:repeat(2,1fr)}.brand img{height:23px}.lang-btn .lbl-text{display:none}}
+@media (max-width:520px){.tgrid{grid-template-columns:1fr 1fr}.pdf-btn .lbl-text{display:none}.pdf-btn{padding:0 12px}.lang-btn{padding:0 11px}}
+#pdfStage{position:fixed;left:-99999px;top:0;z-index:-1}
+.pdfpage{position:relative;overflow:hidden;color:#fff;font-family:var(--font-body);background-size:cover;background-position:center;background-color:#0a1f3a}
+.pdfpage .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,16,33,.5),rgba(5,16,33,.2) 30%,rgba(5,16,33,.86))}
+.pdfpage .pin{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:64px 72px}
+.pdfpage .ph{display:flex;align-items:center;justify-content:space-between}
+.pdfpage .ph img{height:34px}
+.pdfpage .ph .pno{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:.1em;color:#cfe1ff}
+.pdfpage .pbody{margin-top:auto}
+.pdfpage h1,.pdfpage h2{font-family:var(--font-display);font-weight:800}
+.pdfpage .lt{display:inline-block;font-size:18px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#bfd9ff;margin-bottom:18px}
+.pdfpage .pl{display:flex;flex-direction:column;gap:13px;margin-top:22px}
+.pdfpage .pl div{font-size:24px;font-weight:500;color:#eef4ff;display:flex;gap:13px;align-items:center}
+.pdfpage .pl div::before{content:"";width:11px;height:11px;border-radius:3px;background:#3D8BFF;flex:none}
+.pdfpage .pprice{font-family:var(--font-display);font-weight:800;color:#fff}
+.pdfpage[dir="rtl"]{direction:rtl}
+.pdfpage[dir="rtl"] .lt,.pdfpage[dir="rtl"] .pl div{letter-spacing:0}
+</style>
+
+<style>
+/* product split: showcase (image clear, name+price only) + detail (readable) */
+.page.image.showcase::before{background:linear-gradient(180deg,rgba(5,16,33,.30) 0%,rgba(5,16,33,.04) 36%,rgba(5,16,33,.45) 72%,rgba(5,16,33,.85) 100%)}
+.showcase .wrap{display:flex;align-items:flex-end;min-height:100svh;min-height:100vh;padding-bottom:clamp(48px,8vh,80px)}
+.sc-inner{width:100%;max-width:820px}
+.sc-inner .eyebrow{margin-bottom:6px}
+.sc-name{font-family:var(--font-display);font-weight:800;font-size:clamp(40px,8.6vw,92px);line-height:1;letter-spacing:.01em;margin:12px 0 18px;text-shadow:0 8px 36px rgba(0,0,0,.6)}
+.sc-name .badge{font-size:.42em;transform:translateY(-.45em);margin-inline-start:10px;background:linear-gradient(135deg,var(--blue),var(--blue2));padding:6px 12px;border-radius:10px;display:inline-block;letter-spacing:.04em}
+.sc-price{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.sc-price .p{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,5.2vw,54px);line-height:1;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.5)}
+.sc-price .vat{font-size:14px;font-weight:600;color:var(--sky);padding-bottom:6px}
+.sc-dual{display:flex;gap:clamp(20px,5vw,48px);flex-wrap:wrap}
+.sc-dual .col2{display:flex;flex-direction:column;gap:5px}
+.sc-dual .k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.sc-dual .p{font-family:var(--font-display);font-weight:800;font-size:clamp(24px,4.4vw,42px);line-height:1;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.5)}
+.sc-hint{margin-top:clamp(22px,4vh,38px);display:inline-flex;align-items:center;gap:9px;color:var(--sky);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.sc-hint svg{width:22px;height:22px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.sc-hint svg{animation:none}}
+.page.image.detail::before{background:linear-gradient(180deg,rgba(5,16,33,.9) 0%,rgba(5,16,33,.82) 42%,rgba(6,20,42,.92) 100%)}
+.detail .wrap{display:flex;justify-content:flex-start}
+.detail .panel{background:rgba(7,22,46,.46);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.feat li.gold .ic{background:linear-gradient(135deg,#FFD56B,#F5A623);border-color:rgba(255,193,80,.65)}
+.feat li.gold .ic svg{color:#5a3b00}
+.feat li.gold b{background:linear-gradient(90deg,#F5A623,#FFE9A8,#F5A623);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.05em;animation:shine 3s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+@media (prefers-reduced-motion:reduce){.feat li.gold b{animation:none}}
+.subs h2{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,4.2vw,46px);margin:14px 0 8px;color:var(--ink)}
+.subs .sub{font-size:clamp(14px,1.9vw,18px);color:#3a557a;max-width:62ch;margin-bottom:24px;line-height:1.5}
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;background:rgba(255,255,255,.82);border:1px solid rgba(8,32,59,.1);border-radius:18px;padding:22px 20px;box-shadow:0 16px 44px rgba(8,32,59,.1);backdrop-filter:blur(6px)}
+.plan .pl-name{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink2);min-height:42px;display:flex;align-items:center}
+.plan .pl-price{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,2.5vw,34px);color:var(--blue);line-height:1;display:flex;align-items:baseline;gap:7px;margin-top:6px}
+.plan .pl-vat{font-size:12px;font-weight:600;color:#5a7290}
+.plan .pl-per{font-size:12.5px;font-weight:600;color:#5a7290;margin-top:4px}
+.plan .pl-feats{list-style:none;margin:16px 0 0;display:flex;flex-direction:column;gap:10px}
+.plan .pl-feats li{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.4;color:#33506f}
+.plan .pl-feats .ck{width:18px;height:18px;flex:none;border-radius:6px;display:grid;place-items:center;background:rgba(29,107,225,.12);border:1px solid rgba(29,107,225,.3);margin-top:1px}
+.plan .pl-feats .ck svg{width:11px;height:11px;color:var(--blue)}
+.plan.gold{background:linear-gradient(155deg,#fff7e3,#ffe6b0);border-color:rgba(245,166,35,.55);box-shadow:0 20px 54px rgba(245,166,35,.28)}
+.plan.gold .pl-price{color:#B26A00}
+.plan.gold .pl-name{color:#6b4500}
+.plan.gold .pl-feats li{color:#5a4520}
+.plan.gold .pl-feats .ck{background:rgba(245,166,35,.2);border-color:rgba(245,166,35,.5)}
+.plan.gold .pl-feats .ck svg{color:#9a6400}
+.badge-gold{align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:.14em;color:#5a3b00;background:linear-gradient(90deg,#FFE39A,#F5A623);padding:4px 10px;border-radius:999px;text-transform:uppercase;margin-bottom:10px}
+@media (max-width:1024px){.plan-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.plan-grid{grid-template-columns:1fr}.plan .pl-name{min-height:0}}
+</style>
+<div class="progress" id="progress"></div>
+<header class="topbar" id="topbar">
+  <div class="brand">
+    <img class="logo-white" src="https://smile.tr/smilebot/katalog/SmilebotHeaderLogowhite.png" alt="Smilebot" />
+    <img class="logo-blue" src="https://smile.tr/smilebot/katalog/SmilebotHeaderLogoBlue.png" alt="Smilebot" />
+  </div>
+  <div class="controls">
+    <div class="lang">
+      <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+        <span class="glyph" id="langFlag">ð¬ð§</span>
+        <span class="lbl-text" id="langCode">EN</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-menu" id="langMenu" role="menu"></div>
+    </div>
+    <button class="pdf-btn" id="pdfBtn" aria-label="Download PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
+      <span class="lbl-text">PDF</span>
+    </button>
+  </div>
+</header>
+<nav class="dots" id="dots" aria-label="Pages"></nav>
+<main id="catalog"></main>
+<div class="toast" id="toast"><span class="spin"></span><span id="toastText">Preparingâ¦</span></div>
+<div id="pdfStage" aria-hidden="true"></div>
+
+<script>
+const IMG="https://smile.tr/smilebot/katalog/";
+const LOGO_W=IMG+"SmilebotHeaderLogowhite.png";
+const LOGO_B=IMG+"SmilebotHeaderLogoBlue.png";
+const ORDER_URL="https://wa.me/905369499090";
+const ORDER_TEL="+90 536 949 90 90";
+const PATENT_URL=IMG+"Smilebot.pdf";
+const LANGS=[
+ {code:"en",name:"English",flag:"ð¬ð§",rtl:false},
+ {code:"tr",name:"TÃ¼rkÃ§e",flag:"ð¹ð·",rtl:false},
+ {code:"ar",name:"Ø§ÙØ¹Ø±Ø¨ÙØ©",flag:"ð¸ð¦",rtl:true},
+ {code:"ru",name:"Ð ÑÑÑÐºÐ¸Ð¹",flag:"ð·ðº",rtl:false},
+ {code:"bg",name:"ÐÑÐ»Ð³Ð°ÑÑÐºÐ¸",flag:"ð§ð¬",rtl:false},
+ {code:"es",name:"EspaÃ±ol",flag:"ðªð¸",rtl:false},
+ {code:"fr",name:"FranÃ§ais",flag:"ð«ð·",rtl:false},
+ {code:"de",name:"Deutsch",flag:"ð©ðª",rtl:false},
+ {code:"it",name:"Italiano",flag:"ð®ð¹",rtl:false},
+ {code:"pt",name:"PortuguÃªs",flag:"ðµð¹",rtl:false},
+ {code:"zh",name:"ä¸­æ",flag:"ð¨ð³",rtl:false},
+ {code:"ja",name:"æ¥æ¬èª",flag:"ð¯ðµ",rtl:false},
+ {code:"ko",name:"íêµ­ì´",flag:"ð°ð·",rtl:false},
+ {code:"hi",name:"à¤¹à¤¿à¤¨à¥à¤¦à¥",flag:"ð®ð³",rtl:false},
+ {code:"fa",name:"ÙØ§Ø±Ø³Û",flag:"ð®ð·",rtl:true},
+ {code:"nl",name:"Nederlands",flag:"ð³ð±",rtl:false}
+];
+const PINNED={en:1,tr:1};
+const LOCALE={en:"en",tr:"tr",ar:"ar",ru:"ru",bg:"bg",es:"es",fr:"fr",de:"de",it:"it",pt:"pt",zh:"zh",ja:"ja",ko:"ko",hi:"hi",fa:"fa",nl:"nl"};
+const PAGES=[
+ {id:"cover",type:"cover",bg:"cover.jpg"},
+ {id:"manifesto",type:"manifesto",bg:"app.jpg"},
+ {id:"traction",type:"traction",bg:"beforeafter.jpg"},
+ {id:"plus",type:"product",bg:"robotplus.jpg",name:"SMILEBOT",badge:"+",tag:"tagPlus",model:"model13",price:12999,autopilot:true,features:["f_words","f_3d","f_game","f_xray"],lic:5,patent:true},
+ {id:"robot",type:"product",bg:"robot.jpg",name:"SMILEBOT",tag:"tagRobot",model:"model11",price:8999,autopilot:true,features:["f_voice","f_3d","f_xray"],lic:5},
+ {id:"move",type:"product",bg:"move.jpg",name:"SMILEBOT MOVE",tag:"tagMove",model:"model11",price:19999,autopilot:true,features:["f_screen32","f_auto","f_fetch","f_accompany","f_serve"],lic:10},
+ {id:"humanoid",type:"product",bg:"humanoid.jpg",name:"SMILEBOT HUMANOID",tag:"tagHuman",model:"modelCam",dual:[18999,28999],autopilot:true,features:["f_screen32","f_auto","f_fetch","f_accompany","f_serve"],lic:10},
+ {id:"deck",type:"product",bg:"deck.jpg",name:"SMILEBOT DECK",tag:"tagDeck",price:4999,features:["f_portable","f_smallclinic","f_fairs"],lic:2},
+ {id:"kiosk",type:"product",bg:"kiosk.jpg",name:"SMILEBOT KIOSK",tag:"tagKiosk",price:5999,features:["f_largearea","f_light","f_adprint","f_fairs"],lic:3},
+ {id:"pedi",type:"product",bg:"pedi.jpg",name:"SMILEBOT PEDI",tag:"tagPedi",price:4999,features:["f_auto","f_pedclinic","f_kidsgames","f_kidssim"]},
+ {id:"range",type:"overview"},
+ {id:"subs",type:"subs"},
+ {id:"cta",type:"cta"}
+];
+const SUBS=[
+ {name:"subOne",price:99,per:"subPerCase",feats:["so1","so2","so3"]},
+ {name:"subYear",price:999,per:"subPerYear",feats:["sy1","sy2","sy3","sy4"]},
+ {name:"subAI",price:1599,per:"subPerYear",feats:["sa1","sa2","sa3","sa4"]},
+ {name:"subAuto",price:1999,per:"subPerYear",gold:true,feats:["sx1","sx2","sx3","sx4","sx5","sx6","sx7","sx8"]}
+];
+const OV=[
+ {name:"SMILEBOT +",best:"bestPlus",price:12999},
+ {name:"SMILEBOT",best:"bestRobot",price:8999},
+ {name:"SMILEBOT MOVE",best:"bestMove",price:19999},
+ {name:"SMILEBOT HUMANOID",best:"bestHuman",price:18999},
+ {name:"SMILEBOT DECK",best:"bestDeck",price:4999},
+ {name:"SMILEBOT KIOSK",best:"bestKiosk",price:5999},
+ {name:"SMILEBOT PEDI",best:"bestPedi",price:4999}
+];
+const TRAC=[
+ {n:17895,l:"trMembers"},{n:420,l:"trSystems"},{n:10000,l:"trCases"},
+ {n:289,l:"trClinics"},{n:15,l:"trLangs"},{n:3,l:"trCont"}
+];
+</script>
+<script>
+const T={
+en:{download:"Download PDF",preparing:"Preparing your PDFâ¦",order:"Order & Info",vat:"+ VAT",viewPatent:"View patent",model:"Model",stationary:"Stationary",mobile:"Mobile",
+coverTag:"The Future of Digital Dentistry",coverPillars:"AI Â· Robotics Â· Smile Design Â· Patient Experience",coverStat1:"420+ devices installed worldwide",coverStat2:"10,000+ AI smile-design cases generated",
+manTitle:"Dentistry is changing.",manBefore:"Yesterday",manB1:"Photographs",manB2:"Mock-ups",manB3:"Long explanations",manToday:"Today",manT1:"AI analysis",manT2:"Robotic consultation",manT3:"Digital patient experience",manMeet:"Meet Smilebot.",manBody:"Patients design their smile just by describing it out loud. They find Smilebot clinics through the patient app, and clinics send ready-to-produce 3D models straight to the lab. Simple, fast, and clear.",
+tracKicker:"Traction",tracTitle:"The numbers speak for themselves",trMembers:"Members",trSystems:"Installed systems",trCases:"AI-analysed cases",trClinics:"Active clinics",trLangs:"Languages supported",trCont:"Continents",
+tagPlus:"The world's first patented device for live patient interaction",tagRobot:"The smile-design assistant for every clinic",tagMove:"An autonomous assistant that moves with your clinic",tagHuman:"A humanoid presence for your practice",tagDeck:"Compact power you can take anywhere",tagKiosk:"A standout presence for large spaces",tagPedi:"Made for little smiles",
+model13:"13-inch display Â· high-resolution camera",model11:"11-inch display Â· high-resolution camera",modelCam:"High-resolution camera",
+f_words:"Shows instant before & after smiles from the patient's own words",f_3d:"Designed teeth are measurable and producible as 3D models",f_game:"A genuine game-changer in aesthetic dentistry",f_xray:"Reads X-rays and supports oral diagnosis through Q&A",f_voice:"Voice-guided before & after smile design",f_screen32:"32-inch giant advertising screen",f_auto:"Moves on its own",f_fetch:"Brings supplies from across the clinic",f_accompany:"Accompanies patients",f_serve:"Takes orders and serves",f_portable:"Easy to carry",f_smallclinic:"Ideal for small clinics",f_fairs:"Perfect for fairs and events",f_largearea:"Suited to large areas",f_light:"Extra lighting zones",f_adprint:"Custom clinic advertising print",f_pedclinic:"Ideal for children's clinics",f_kidsgames:"Kids' games can be added",f_kidssim:"Simulates treatments for children",
+licTpl:"{n}-year software licence",
+ovKicker:"The range",ovTitle:"One platform, many forms",ovSub:"From a compact deck to an autonomous humanoid â there's a Smilebot for every clinic.",ovColModel:"Model",ovColBest:"Best for",ovColPrice:"From",bestPlus:"Patient interaction & 3D design",bestRobot:"Everyday smile design",bestMove:"Service & mobility",bestHuman:"A humanoid front desk",bestDeck:"Small clinics & events",bestKiosk:"Large spaces & fairs",bestPedi:"Children's clinics",
+ctaKicker:"Get started",ctaTitle:"Bring the future into your clinic",ctaSub:"Talk to our team and find the Smilebot that fits you best.",ctaButton:"Chat on WhatsApp",footerTagline:"The future of digital dentistry.",footerRights:"All rights reserved.",footerPatent:"Patented technology.",footerContact:"Order & info"},
+tr:{download:"PDF indir",preparing:"PDF hazÄ±rlanÄ±yorâ¦",order:"SipariÅ & Bilgi",vat:"+ KDV",viewPatent:"Patenti gÃ¶rÃ¼ntÃ¼le",model:"Model",stationary:"Sabit",mobile:"Hareketli",
+coverTag:"Dijital DiÅ HekimliÄinin GeleceÄi",coverPillars:"Yapay ZekÃ¢ Â· Robotik Â· GÃ¼lÃ¼Å TasarÄ±mÄ± Â· Hasta Deneyimi",coverStat1:"DÃ¼nya genelinde 420+ kurulu cihaz",coverStat2:"10.000+ yapay zekÃ¢ gÃ¼lÃ¼Å tasarÄ±mÄ± vakasÄ±",
+manTitle:"DiÅ hekimliÄi deÄiÅiyor.",manBefore:"DÃ¼n",manB1:"FotoÄraf",manB2:"Mock-up",manB3:"Uzun anlatÄ±mlar",manToday:"BugÃ¼n",manT1:"Yapay zekÃ¢ analizi",manT2:"Robotik danÄ±ÅmanlÄ±k",manT3:"Dijital hasta deneyimi",manMeet:"Smilebot ile tanÄ±ÅÄ±n.",manBody:"Hastalar gÃ¼lÃ¼Ålerini yalnÄ±zca sesli olarak tarif ederek tasarlÄ±yor. Hasta uygulamasÄ±yla Smilebot kliniklerini buluyor, klinikler ise Ã¼retime hazÄ±r 3B modelleri doÄrudan teknisyene gÃ¶nderiyor. Basit, hÄ±zlÄ± ve anlaÅÄ±lÄ±r.",
+tracKicker:"Ä°vme",tracTitle:"Rakamlar kendini anlatÄ±yor",trMembers:"Ãye",trSystems:"Kurulu sistem",trCases:"Yapay zekÃ¢ ile analiz edilen vaka",trClinics:"Aktif klinik",trLangs:"Dil desteÄi",trCont:"KÄ±ta",
+tagPlus:"Hastayla karÅÄ±lÄ±klÄ± etkileÅim kuran, dÃ¼nyanÄ±n ilk patentli cihazÄ±",tagRobot:"Her klinik iÃ§in gÃ¼lÃ¼Å tasarÄ±mÄ± asistanÄ±",tagMove:"KliniÄinizle birlikte hareket eden otonom asistan",tagHuman:"KliniÄiniz iÃ§in insansÄ± bir varlÄ±k",tagDeck:"Her yere taÅÄ±yabileceÄiniz kompakt gÃ¼Ã§",tagKiosk:"GeniÅ alanlar iÃ§in dikkat Ã§eken bir varlÄ±k",tagPedi:"KÃ¼Ã§Ã¼k gÃ¼lÃ¼Åler iÃ§in tasarlandÄ±",
+model13:"13 inÃ§ ekran Â· yÃ¼ksek Ã§Ã¶zÃ¼nÃ¼rlÃ¼klÃ¼ kamera",model11:"11 inÃ§ ekran Â· yÃ¼ksek Ã§Ã¶zÃ¼nÃ¼rlÃ¼klÃ¼ kamera",modelCam:"YÃ¼ksek Ã§Ã¶zÃ¼nÃ¼rlÃ¼klÃ¼ kamera",
+f_words:"HastanÄ±n kendi tarifiyle anÄ±nda before & after gÃ¼lÃ¼Å gÃ¶sterir",f_3d:"Tasarlanan diÅler Ã¶lÃ§Ã¼lebilir ve 3B model olarak Ã¼retilebilir",f_game:"Estetik diÅ hekimliÄinde gerÃ§ek bir oyun deÄiÅtirici",f_xray:"RÃ¶ntgen okur, soru-cevap ile oral tanÄ±ya destek olur",f_voice:"Sesle yÃ¶nlendirilen before & after gÃ¼lÃ¼Å tasarÄ±mÄ±",f_screen32:"32 inÃ§ dev reklam ekranÄ±",f_auto:"Kendi kendine hareket eder",f_fetch:"Klinikten malzeme getirir",f_accompany:"Hastaya refakat eder",f_serve:"SipariÅ alÄ±r ve servis yapar",f_portable:"Kolay taÅÄ±nÄ±r",f_smallclinic:"KÃ¼Ã§Ã¼k klinikler iÃ§in ideal",f_fairs:"Fuar ve etkinlikler iÃ§in ideal",f_largearea:"GeniÅ alanlara uygun",f_light:"Ekstra Ä±ÅÄ±k alanlarÄ±",f_adprint:"KliniÄe Ã¶zel reklam baskÄ±sÄ±",f_pedclinic:"Ãocuk klinikleri iÃ§in ideal",f_kidsgames:"Ãocuk oyunlarÄ± eklenebilir",f_kidssim:"Ãocuk tedavileri iÃ§in simÃ¼lasyon yapar",
+licTpl:"{n} yÄ±llÄ±k yazÄ±lÄ±m lisansÄ±",
+ovKicker:"ÃrÃ¼n ailesi",ovTitle:"Tek platform, birÃ§ok biÃ§im",ovSub:"Kompakt Deck'ten otonom Humanoid'e kadar â her klinik iÃ§in bir Smilebot var.",ovColModel:"Model",ovColBest:"En uygun",ovColPrice:"BaÅlangÄ±Ã§",bestPlus:"Hasta etkileÅimi & 3B tasarÄ±m",bestRobot:"GÃ¼nlÃ¼k gÃ¼lÃ¼Å tasarÄ±mÄ±",bestMove:"Servis & hareket",bestHuman:"Ä°nsansÄ± karÅÄ±lama",bestDeck:"KÃ¼Ã§Ã¼k klinik & etkinlik",bestKiosk:"GeniÅ alan & fuar",bestPedi:"Ãocuk klinikleri",
+ctaKicker:"BaÅlayÄ±n",ctaTitle:"GeleceÄi kliniÄinize taÅÄ±yÄ±n",ctaSub:"Ekibimizle konuÅun, size en uygun Smilebot'u birlikte bulalÄ±m.",ctaButton:"WhatsApp'tan yazÄ±n",footerTagline:"Dijital diÅ hekimliÄinin geleceÄi.",footerRights:"TÃ¼m haklarÄ± saklÄ±dÄ±r.",footerPatent:"Patentli teknoloji.",footerContact:"SipariÅ & bilgi"},
+ar:{download:"ØªØ­ÙÙÙ PDF",preparing:"Ø¬Ø§Ø±Ù ØªØ¬ÙÙØ² ÙÙÙ PDFâ¦",order:"Ø§ÙØ·ÙØ¨ ÙØ§ÙÙØ¹ÙÙÙØ§Øª",vat:"+ Ø¶Ø±ÙØ¨Ø© Ø§ÙÙÙÙØ© Ø§ÙÙØ¶Ø§ÙØ©",viewPatent:"Ø¹Ø±Ø¶ Ø¨Ø±Ø§Ø¡Ø© Ø§ÙØ§Ø®ØªØ±Ø§Ø¹",model:"Ø§ÙØ·Ø±Ø§Ø²",stationary:"Ø«Ø§Ø¨Øª",mobile:"ÙØªØ­Ø±ÙÙ",
+coverTag:"ÙØ³ØªÙØ¨Ù Ø·Ø¨ Ø§ÙØ£Ø³ÙØ§Ù Ø§ÙØ±ÙÙÙ",coverPillars:"Ø°ÙØ§Ø¡ Ø§ØµØ·ÙØ§Ø¹Ù Â· Ø±ÙØ¨ÙØªØ§Øª Â· ØªØµÙÙÙ Ø§ÙØ§Ø¨ØªØ³Ø§ÙØ© Â· ØªØ¬Ø±Ø¨Ø© Ø§ÙÙØ±ÙØ¶",coverStat1:"Ø£ÙØ«Ø± ÙÙ 420 Ø¬ÙØ§Ø²ÙØ§ ÙÙØ±ÙÙØ¨ÙØ§ Ø­ÙÙ Ø§ÙØ¹Ø§ÙÙ",coverStat2:"Ø£ÙØ«Ø± ÙÙ 10Ù¬000 Ø­Ø§ÙØ© ØªØµÙÙÙ Ø§Ø¨ØªØ³Ø§ÙØ© Ø¨Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù",
+manTitle:"Ø·Ø¨ Ø§ÙØ£Ø³ÙØ§Ù ÙØªØºÙÙØ±.",manBefore:"Ø¨Ø§ÙØ£ÙØ³",manB1:"Ø§ÙØµÙØ±",manB2:"Ø§ÙÙÙØ§Ø°Ø¬ Ø§ÙØªØ¬Ø±ÙØ¨ÙØ©",manB3:"Ø´Ø±ÙØ­Ø§Øª Ø·ÙÙÙØ©",manToday:"Ø§ÙÙÙÙ",manT1:"ØªØ­ÙÙÙ Ø¨Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù",manT2:"Ø§Ø³ØªØ´Ø§Ø±Ø© Ø±ÙØ¨ÙØªÙØ©",manT3:"ØªØ¬Ø±Ø¨Ø© ÙØ±ÙØ¶ Ø±ÙÙÙØ©",manMeet:"ØªØ¹Ø±ÙÙ Ø¹ÙÙ Smilebot.",manBody:"ÙØµÙÙÙ Ø§ÙÙØ±Ø¶Ù Ø§Ø¨ØªØ³Ø§ÙØªÙÙ Ø¨ÙØ¬Ø±Ø¯ ÙØµÙÙØ§ Ø¨Ø£ØµÙØ§ØªÙÙ. ÙØ¬Ø¯ÙÙ Ø¹ÙØ§Ø¯Ø§Øª Smilebot Ø¹Ø¨Ø± ØªØ·Ø¨ÙÙ Ø§ÙÙØ±ÙØ¶Ø ÙØªØ±Ø³Ù Ø§ÙØ¹ÙØ§Ø¯Ø§Øª ÙÙØ§Ø°Ø¬ Ø«ÙØ§Ø«ÙØ© Ø§ÙØ£Ø¨Ø¹Ø§Ø¯ Ø¬Ø§ÙØ²Ø© ÙÙØ¥ÙØªØ§Ø¬ ÙØ¨Ø§Ø´Ø±Ø©Ù Ø¥ÙÙ Ø§ÙÙÙÙ. Ø¨Ø³ÙØ· ÙØ³Ø±ÙØ¹ ÙÙØ§Ø¶Ø­.",
+tracKicker:"Ø§ÙØ²Ø®Ù",tracTitle:"Ø§ÙØ£Ø±ÙØ§Ù ØªØªØ­Ø¯ÙØ« Ø¹Ù ÙÙØ³ÙØ§",trMembers:"Ø¹Ø¶Ù",trSystems:"ÙØ¸Ø§Ù ÙÙØ±ÙÙØ¨",trCases:"Ø­Ø§ÙØ© Ø­ÙÙÙÙØª Ø¨Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù",trClinics:"Ø¹ÙØ§Ø¯Ø© ÙØ´Ø·Ø©",trLangs:"ÙØºØ© ÙØ¯Ø¹ÙÙØ©",trCont:"ÙØ§Ø±Ø§Øª",
+tagPlus:"Ø£ÙÙ Ø¬ÙØ§Ø² ÙÙØ³Ø¬ÙÙ Ø¨Ø¨Ø±Ø§Ø¡Ø© Ø§Ø®ØªØ±Ø§Ø¹ ÙÙ Ø§ÙØ¹Ø§ÙÙ ÙØªÙØ§Ø¹Ù ÙØ¨Ø§Ø´Ø±Ø©Ù ÙØ¹ Ø§ÙÙØ±ÙØ¶",tagRobot:"ÙØ³Ø§Ø¹Ø¯ ØªØµÙÙÙ Ø§ÙØ§Ø¨ØªØ³Ø§ÙØ© ÙÙÙ Ø¹ÙØ§Ø¯Ø©",tagMove:"ÙØ³Ø§Ø¹Ø¯ Ø°Ø§ØªÙ Ø§ÙØ­Ø±ÙØ© ÙØªÙÙÙÙ ÙØ¹ Ø¹ÙØ§Ø¯ØªÙ",tagHuman:"Ø­Ø¶ÙØ± Ø¨Ø´Ø±Ù Ø§ÙØ´ÙÙ ÙØ¹ÙØ§Ø¯ØªÙ",tagDeck:"ÙÙØ© ÙØ¯ÙØ¬Ø© ÙÙÙÙÙ Ø­ÙÙÙØ§ Ø£ÙÙÙØ§ Ø´Ø¦Øª",tagKiosk:"Ø­Ø¶ÙØ± ÙØ§ÙØª ÙÙÙØ³Ø§Ø­Ø§Øª Ø§ÙÙØ¨ÙØ±Ø©",tagPedi:"ØµÙÙÙÙ ÙÙØ§Ø¨ØªØ³Ø§ÙØ§Øª Ø§ÙØµØºÙØ±Ø©",
+model13:"Ø´Ø§Ø´Ø© 13 Ø¨ÙØµØ© Â· ÙØ§ÙÙØ±Ø§ Ø¹Ø§ÙÙØ© Ø§ÙØ¯ÙØ©",model11:"Ø´Ø§Ø´Ø© 11 Ø¨ÙØµØ© Â· ÙØ§ÙÙØ±Ø§ Ø¹Ø§ÙÙØ© Ø§ÙØ¯ÙØ©",modelCam:"ÙØ§ÙÙØ±Ø§ Ø¹Ø§ÙÙØ© Ø§ÙØ¯ÙØ©",
+f_words:"ÙØ¹Ø±Ø¶ Ø§Ø¨ØªØ³Ø§ÙØ© ÙØ¨Ù ÙØ¨Ø¹Ø¯ ÙÙØ±ÙØ§ ÙÙ ÙØµÙ Ø§ÙÙØ±ÙØ¶ ÙÙØ³Ù",f_3d:"Ø§ÙØ£Ø³ÙØ§Ù Ø§ÙÙØµÙÙÙØ© ÙØ§Ø¨ÙØ© ÙÙÙÙØ§Ø³ ÙØ§ÙØ¥ÙØªØ§Ø¬ ÙÙÙØ§Ø°Ø¬ Ø«ÙØ§Ø«ÙØ© Ø§ÙØ£Ø¨Ø¹Ø§Ø¯",f_game:"ÙÙÙØ© Ø­ÙÙÙÙØ© ÙÙ Ø·Ø¨ Ø§ÙØ£Ø³ÙØ§Ù Ø§ÙØªØ¬ÙÙÙÙ",f_xray:"ÙÙØ±Ø£ Ø§ÙØ£Ø´Ø¹Ø© ÙÙØ¯Ø¹Ù Ø§ÙØªØ´Ø®ÙØµ Ø§ÙÙÙÙÙ Ø¹Ø¨Ø± Ø§ÙØ£Ø³Ø¦ÙØ© ÙØ§ÙØ£Ø¬ÙØ¨Ø©",f_voice:"ØªØµÙÙÙ Ø§Ø¨ØªØ³Ø§ÙØ© ÙØ¨Ù ÙØ¨Ø¹Ø¯ ÙÙØ¬ÙÙ Ø¨Ø§ÙØµÙØª",f_screen32:"Ø´Ø§Ø´Ø© Ø¥Ø¹ÙØ§ÙÙØ© Ø¹ÙÙØ§ÙØ© 32 Ø¨ÙØµØ©",f_auto:"ÙØªØ­Ø±ÙÙ ÙÙ ØªÙÙØ§Ø¡ ÙÙØ³Ù",f_fetch:"ÙÙØ­Ø¶Ø± Ø§ÙÙØ³ØªÙØ²ÙØ§Øª ÙÙ Ø§ÙØ¹ÙØ§Ø¯Ø©",f_accompany:"ÙØ±Ø§ÙÙ Ø§ÙÙØ±Ø¶Ù",f_serve:"ÙØ³ØªÙØ¨Ù Ø§ÙØ·ÙØ¨Ø§Øª ÙÙÙØ¯ÙÙ Ø§ÙØ®Ø¯ÙØ©",f_portable:"Ø³ÙÙ Ø§ÙØ­ÙÙ",f_smallclinic:"ÙØ«Ø§ÙÙ ÙÙØ¹ÙØ§Ø¯Ø§Øª Ø§ÙØµØºÙØ±Ø©",f_fairs:"ÙØ«Ø§ÙÙ ÙÙÙØ¹Ø§Ø±Ø¶ ÙØ§ÙÙØ¹Ø§ÙÙØ§Øª",f_largearea:"ÙÙØ§Ø³Ø¨ ÙÙÙØ³Ø§Ø­Ø§Øª Ø§ÙÙØ¨ÙØ±Ø©",f_light:"ÙÙØ§Ø·Ù Ø¥Ø¶Ø§Ø¡Ø© Ø¥Ø¶Ø§ÙÙØ©",f_adprint:"Ø·Ø¨Ø§Ø¹Ø© Ø¥Ø¹ÙØ§ÙÙØ© Ø®Ø§ØµØ© Ø¨Ø§ÙØ¹ÙØ§Ø¯Ø©",f_pedclinic:"ÙØ«Ø§ÙÙ ÙØ¹ÙØ§Ø¯Ø§Øª Ø§ÙØ£Ø·ÙØ§Ù",f_kidsgames:"ÙÙÙÙ Ø¥Ø¶Ø§ÙØ© Ø£ÙØ¹Ø§Ø¨ ÙÙØ£Ø·ÙØ§Ù",f_kidssim:"ÙØ­Ø§ÙÙ Ø¹ÙØ§Ø¬Ø§Øª Ø§ÙØ£Ø·ÙØ§Ù",
+licTpl:"ØªØ±Ø®ÙØµ Ø¨Ø±ÙØ¬Ù ÙÙØ¯Ø© {n} Ø³ÙÙØ§Øª",
+ovKicker:"ØªØ´ÙÙÙØ© Ø§ÙÙÙØªØ¬Ø§Øª",ovTitle:"ÙÙØµØ© ÙØ§Ø­Ø¯Ø© Ø¨Ø£Ø´ÙØ§Ù ÙØªØ¹Ø¯Ø¯Ø©",ovSub:"ÙÙ Deck Ø§ÙÙØ¯ÙØ¬ Ø¥ÙÙ Humanoid Ø°Ø§ØªÙ Ø§ÙØ­Ø±ÙØ© â ÙÙØ§Ù Smilebot ÙÙÙ Ø¹ÙØ§Ø¯Ø©.",ovColModel:"Ø§ÙØ·Ø±Ø§Ø²",ovColBest:"Ø§ÙØ£ÙØ³Ø¨ ÙÙ",ovColPrice:"ÙØ¨Ø¯Ø£ ÙÙ",bestPlus:"ØªÙØ§Ø¹Ù Ø§ÙÙØ±ÙØ¶ ÙØ§ÙØªØµÙÙÙ Ø«ÙØ§Ø«Ù Ø§ÙØ£Ø¨Ø¹Ø§Ø¯",bestRobot:"ØªØµÙÙÙ Ø§ÙØ§Ø¨ØªØ³Ø§ÙØ© Ø§ÙÙÙÙÙ",bestMove:"Ø§ÙØ®Ø¯ÙØ© ÙØ§ÙØªÙÙÙÙ",bestHuman:"Ø§Ø³ØªÙØ¨Ø§Ù Ø¨Ø´Ø±Ù Ø§ÙØ´ÙÙ",bestDeck:"Ø§ÙØ¹ÙØ§Ø¯Ø§Øª Ø§ÙØµØºÙØ±Ø© ÙØ§ÙÙØ¹Ø§ÙÙØ§Øª",bestKiosk:"Ø§ÙÙØ³Ø§Ø­Ø§Øª Ø§ÙÙØ¨ÙØ±Ø© ÙØ§ÙÙØ¹Ø§Ø±Ø¶",bestPedi:"Ø¹ÙØ§Ø¯Ø§Øª Ø§ÙØ£Ø·ÙØ§Ù",
+ctaKicker:"Ø§Ø¨Ø¯Ø£ Ø§ÙØ¢Ù",ctaTitle:"Ø£Ø¯Ø®ÙÙ Ø§ÙÙØ³ØªÙØ¨Ù Ø¥ÙÙ Ø¹ÙØ§Ø¯ØªÙ",ctaSub:"ØªØ­Ø¯ÙØ« ÙØ¹ ÙØ±ÙÙÙØ§ ÙÙØ¬Ø¯ ÙØ¹ÙØ§ Smilebot Ø§ÙØ£ÙØ³Ø¨ ÙÙ.",ctaButton:"ØªÙØ§ØµÙ Ø¹Ø¨Ø± ÙØ§ØªØ³Ø§Ø¨",footerTagline:"ÙØ³ØªÙØ¨Ù Ø·Ø¨ Ø§ÙØ£Ø³ÙØ§Ù Ø§ÙØ±ÙÙÙ.",footerRights:"Ø¬ÙÙØ¹ Ø§ÙØ­ÙÙÙ ÙØ­ÙÙØ¸Ø©.",footerPatent:"ØªÙÙÙØ© ÙØ³Ø¬ÙÙØ© Ø¨Ø¨Ø±Ø§Ø¡Ø© Ø§Ø®ØªØ±Ø§Ø¹.",footerContact:"Ø§ÙØ·ÙØ¨ ÙØ§ÙÙØ¹ÙÙÙØ§Øª"},
+ru:{download:"Ð¡ÐºÐ°ÑÐ°ÑÑ PDF",preparing:"ÐÐ¾ÑÐ¾Ð²Ð¸Ð¼ PDFâ¦",order:"ÐÐ°ÐºÐ°Ð· Ð¸ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ",vat:"+ ÐÐÐ¡",viewPatent:"ÐÐ¾ÑÐ¼Ð¾ÑÑÐµÑÑ Ð¿Ð°ÑÐµÐ½Ñ",model:"ÐÐ¾Ð´ÐµÐ»Ñ",stationary:"Ð¡ÑÐ°ÑÐ¸Ð¾Ð½Ð°ÑÐ½ÑÐ¹",mobile:"ÐÐ¾Ð±Ð¸Ð»ÑÐ½ÑÐ¹",
+coverTag:"ÐÑÐ´ÑÑÐµÐµ ÑÐ¸ÑÑÐ¾Ð²Ð¾Ð¹ ÑÑÐ¾Ð¼Ð°ÑÐ¾Ð»Ð¾Ð³Ð¸Ð¸",coverPillars:"ÐÐ Â· Ð Ð¾Ð±Ð¾ÑÐ¾ÑÐµÑÐ½Ð¸ÐºÐ° Â· ÐÐ¸Ð·Ð°Ð¹Ð½ ÑÐ»ÑÐ±ÐºÐ¸ Â· ÐÐ¿ÑÑ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ°",coverStat1:"ÐÐ¾Ð»ÐµÐµ 420 ÑÑÑÑÐ¾Ð¹ÑÑÐ² ÑÑÑÐ°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾ Ð¿Ð¾ Ð²ÑÐµÐ¼Ñ Ð¼Ð¸ÑÑ",coverStat2:"ÐÐ¾Ð»ÐµÐµ 10 000 ÑÐ»ÑÑÐ°ÐµÐ² ÐÐ-Ð´Ð¸Ð·Ð°Ð¹Ð½Ð° ÑÐ»ÑÐ±ÐºÐ¸",
+manTitle:"Ð¡ÑÐ¾Ð¼Ð°ÑÐ¾Ð»Ð¾Ð³Ð¸Ñ Ð¼ÐµÐ½ÑÐµÑÑÑ.",manBefore:"ÐÑÐµÑÐ°",manB1:"Ð¤Ð¾ÑÐ¾Ð³ÑÐ°ÑÐ¸Ð¸",manB2:"ÐÐ¾ÐºÐ°Ð¿Ñ",manB3:"ÐÐ¾Ð»Ð³Ð¸Ðµ Ð¾Ð±ÑÑÑÐ½ÐµÐ½Ð¸Ñ",manToday:"Ð¡ÐµÐ³Ð¾Ð´Ð½Ñ",manT1:"ÐÐ-Ð°Ð½Ð°Ð»Ð¸Ð·",manT2:"Ð Ð¾Ð±Ð¾ÑÐ¸Ð·Ð¸ÑÐ¾Ð²Ð°Ð½Ð½Ð°Ñ ÐºÐ¾Ð½ÑÑÐ»ÑÑÐ°ÑÐ¸Ñ",manT3:"Ð¦Ð¸ÑÑÐ¾Ð²Ð¾Ð¹ Ð¾Ð¿ÑÑ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ°",manMeet:"ÐÐ½Ð°ÐºÐ¾Ð¼ÑÑÐµÑÑ â Smilebot.",manBody:"ÐÐ°ÑÐ¸ÐµÐ½ÑÑ ÑÐ¾Ð·Ð´Ð°ÑÑ ÑÐ²Ð¾Ñ ÑÐ»ÑÐ±ÐºÑ, Ð¿ÑÐ¾ÑÑÐ¾ Ð¾Ð¿Ð¸ÑÑÐ²Ð°Ñ ÐµÑ Ð³Ð¾Ð»Ð¾ÑÐ¾Ð¼. Ð§ÐµÑÐµÐ· Ð¿ÑÐ¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð¾Ð½Ð¸ Ð½Ð°ÑÐ¾Ð´ÑÑ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸ Smilebot, Ð° ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸ Ð¾ÑÐ¿ÑÐ°Ð²Ð»ÑÑÑ Ð³Ð¾ÑÐ¾Ð²ÑÐµ Ðº Ð¿ÑÐ¾Ð¸Ð·Ð²Ð¾Ð´ÑÑÐ²Ñ 3D-Ð¼Ð¾Ð´ÐµÐ»Ð¸ Ð¿ÑÑÐ¼Ð¾ ÑÐµÑÐ½Ð¸ÐºÑ. ÐÑÐ¾ÑÑÐ¾, Ð±ÑÑÑÑÐ¾ Ð¸ Ð¿Ð¾Ð½ÑÑÐ½Ð¾.",
+tracKicker:"ÐÐ¸Ð½Ð°Ð¼Ð¸ÐºÐ°",tracTitle:"Ð¦Ð¸ÑÑÑ Ð³Ð¾Ð²Ð¾ÑÑÑ ÑÐ°Ð¼Ð¸ Ð·Ð° ÑÐµÐ±Ñ",trMembers:"Ð£ÑÐ°ÑÑÐ½Ð¸ÐºÐ¾Ð²",trSystems:"Ð£ÑÑÐ°Ð½Ð¾Ð²Ð»ÐµÐ½Ð½ÑÑ ÑÐ¸ÑÑÐµÐ¼",trCases:"Ð¡Ð»ÑÑÐ°ÐµÐ² Ñ ÐÐ-Ð°Ð½Ð°Ð»Ð¸Ð·Ð¾Ð¼",trClinics:"ÐÐºÑÐ¸Ð²Ð½ÑÑ ÐºÐ»Ð¸Ð½Ð¸Ðº",trLangs:"ÐÐ¾Ð´Ð´ÐµÑÐ¶Ð¸Ð²Ð°ÐµÐ¼ÑÑ ÑÐ·ÑÐºÐ¾Ð²",trCont:"ÐÐ¾Ð½ÑÐ¸Ð½ÐµÐ½ÑÐ¾Ð²",
+tagPlus:"ÐÐµÑÐ²Ð¾Ðµ Ð² Ð¼Ð¸ÑÐµ Ð·Ð°Ð¿Ð°ÑÐµÐ½ÑÐ¾Ð²Ð°Ð½Ð½Ð¾Ðµ ÑÑÑÑÐ¾Ð¹ÑÑÐ²Ð¾ Ð´Ð»Ñ Ð¶Ð¸Ð²Ð¾Ð³Ð¾ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑÐ²Ð¸Ñ Ñ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ¾Ð¼",tagRobot:"ÐÑÑÐ¸ÑÑÐµÐ½Ñ Ð´Ð¸Ð·Ð°Ð¹Ð½Ð° ÑÐ»ÑÐ±ÐºÐ¸ Ð´Ð»Ñ Ð»ÑÐ±Ð¾Ð¹ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸",tagMove:"ÐÐ²ÑÐ¾Ð½Ð¾Ð¼Ð½ÑÐ¹ Ð°ÑÑÐ¸ÑÑÐµÐ½Ñ, ÐºÐ¾ÑÐ¾ÑÑÐ¹ Ð´Ð²Ð¸Ð¶ÐµÑÑÑ Ð²Ð¼ÐµÑÑÐµ Ñ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¾Ð¹",tagHuman:"Ð§ÐµÐ»Ð¾Ð²ÐµÐºÐ¾Ð¿Ð¾Ð´Ð¾Ð±Ð½Ð¾Ðµ Ð¿ÑÐ¸ÑÑÑÑÑÐ²Ð¸Ðµ Ð² Ð²Ð°ÑÐµÐ¹ ÐºÐ»Ð¸Ð½Ð¸ÐºÐµ",tagDeck:"ÐÐ¾Ð¼Ð¿Ð°ÐºÑÐ½Ð°Ñ Ð¼Ð¾ÑÑ, ÐºÐ¾ÑÐ¾ÑÑÑ Ð¼Ð¾Ð¶Ð½Ð¾ Ð²Ð·ÑÑÑ Ñ ÑÐ¾Ð±Ð¾Ð¹",tagKiosk:"ÐÐ°Ð¼ÐµÑÐ½Ð¾Ðµ Ð¿ÑÐ¸ÑÑÑÑÑÐ²Ð¸Ðµ Ð´Ð»Ñ Ð±Ð¾Ð»ÑÑÐ¸Ñ Ð¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÐ²",tagPedi:"Ð¡Ð¾Ð·Ð´Ð°Ð½ Ð´Ð»Ñ Ð¼Ð°Ð»ÐµÐ½ÑÐºÐ¸Ñ ÑÐ»ÑÐ±Ð¾Ðº",
+model13:"13-Ð´ÑÐ¹Ð¼Ð¾Ð²ÑÐ¹ ÑÐºÑÐ°Ð½ Â· ÐºÐ°Ð¼ÐµÑÐ° Ð²ÑÑÐ¾ÐºÐ¾Ð³Ð¾ ÑÐ°Ð·ÑÐµÑÐµÐ½Ð¸Ñ",model11:"11-Ð´ÑÐ¹Ð¼Ð¾Ð²ÑÐ¹ ÑÐºÑÐ°Ð½ Â· ÐºÐ°Ð¼ÐµÑÐ° Ð²ÑÑÐ¾ÐºÐ¾Ð³Ð¾ ÑÐ°Ð·ÑÐµÑÐµÐ½Ð¸Ñ",modelCam:"ÐÐ°Ð¼ÐµÑÐ° Ð²ÑÑÐ¾ÐºÐ¾Ð³Ð¾ ÑÐ°Ð·ÑÐµÑÐµÐ½Ð¸Ñ",
+f_words:"ÐÐ³Ð½Ð¾Ð²ÐµÐ½Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·ÑÐ²Ð°ÐµÑ ÑÐ»ÑÐ±ÐºÑ Â«Ð´Ð¾ Ð¸ Ð¿Ð¾ÑÐ»ÐµÂ» Ð¿Ð¾ ÑÐ»Ð¾Ð²Ð°Ð¼ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ°",f_3d:"Ð¡Ð¿ÑÐ¾ÐµÐºÑÐ¸ÑÐ¾Ð²Ð°Ð½Ð½ÑÐµ Ð·ÑÐ±Ñ Ð¸Ð·Ð¼ÐµÑÐ¸Ð¼Ñ Ð¸ Ð¿ÑÐ¾Ð¸Ð·Ð²Ð¾Ð´ÑÑÑÑ ÐºÐ°Ðº 3D-Ð¼Ð¾Ð´ÐµÐ»Ð¸",f_game:"ÐÐ°ÑÑÐ¾ÑÑÐ¸Ð¹ Ð¿ÑÐ¾ÑÑÐ² Ð² ÑÑÑÐµÑÐ¸ÑÐµÑÐºÐ¾Ð¹ ÑÑÐ¾Ð¼Ð°ÑÐ¾Ð»Ð¾Ð³Ð¸Ð¸",f_xray:"Ð§Ð¸ÑÐ°ÐµÑ ÑÐµÐ½ÑÐ³ÐµÐ½ Ð¸ Ð¿Ð¾Ð¼Ð¾Ð³Ð°ÐµÑ Ð² Ð¾ÑÐ°Ð»ÑÐ½Ð¾Ð¹ Ð´Ð¸Ð°Ð³Ð½Ð¾ÑÑÐ¸ÐºÐµ ÑÐµÑÐµÐ· Ð²Ð¾Ð¿ÑÐ¾ÑÑ-Ð¾ÑÐ²ÐµÑÑ",f_voice:"ÐÐ¾Ð»Ð¾ÑÐ¾Ð²Ð¾Ð¹ Ð´Ð¸Ð·Ð°Ð¹Ð½ ÑÐ»ÑÐ±ÐºÐ¸ Â«Ð´Ð¾ Ð¸ Ð¿Ð¾ÑÐ»ÐµÂ»",f_screen32:"32-Ð´ÑÐ¹Ð¼Ð¾Ð²ÑÐ¹ Ð³Ð¸Ð³Ð°Ð½ÑÑÐºÐ¸Ð¹ ÑÐµÐºÐ»Ð°Ð¼Ð½ÑÐ¹ ÑÐºÑÐ°Ð½",f_auto:"ÐÐµÑÐµÐ¼ÐµÑÐ°ÐµÑÑÑ ÑÐ°Ð¼Ð¾ÑÑÐ¾ÑÑÐµÐ»ÑÐ½Ð¾",f_fetch:"ÐÐ¾ÑÑÐ°Ð²Ð»ÑÐµÑ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ Ð¿Ð¾ ÐºÐ»Ð¸Ð½Ð¸ÐºÐµ",f_accompany:"Ð¡Ð¾Ð¿ÑÐ¾Ð²Ð¾Ð¶Ð´Ð°ÐµÑ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ¾Ð²",f_serve:"ÐÑÐ¸Ð½Ð¸Ð¼Ð°ÐµÑ Ð·Ð°ÐºÐ°Ð·Ñ Ð¸ Ð¾Ð±ÑÐ»ÑÐ¶Ð¸Ð²Ð°ÐµÑ",f_portable:"ÐÐµÐ³ÐºÐ¾ Ð¿ÐµÑÐµÐ½Ð¾ÑÐ¸ÑÑÑ",f_smallclinic:"ÐÐ´ÐµÐ°Ð»ÑÐ½Ð¾ Ð´Ð»Ñ Ð½ÐµÐ±Ð¾Ð»ÑÑÐ¸Ñ ÐºÐ»Ð¸Ð½Ð¸Ðº",f_fairs:"ÐÑÐ»Ð¸ÑÐ½Ð¾ Ð´Ð»Ñ Ð²ÑÑÑÐ°Ð²Ð¾Ðº Ð¸ Ð¼ÐµÑÐ¾Ð¿ÑÐ¸ÑÑÐ¸Ð¹",f_largearea:"ÐÐ¾Ð´ÑÐ¾Ð´Ð¸Ñ Ð´Ð»Ñ Ð±Ð¾Ð»ÑÑÐ¸Ñ Ð¿Ð»Ð¾ÑÐ°Ð´ÐµÐ¹",f_light:"ÐÐ¾Ð¿Ð¾Ð»Ð½Ð¸ÑÐµÐ»ÑÐ½ÑÐµ Ð·Ð¾Ð½Ñ Ð¿Ð¾Ð´ÑÐ²ÐµÑÐºÐ¸",f_adprint:"ÐÐ½Ð´Ð¸Ð²Ð¸Ð´ÑÐ°Ð»ÑÐ½Ð°Ñ ÑÐµÐºÐ»Ð°Ð¼Ð½Ð°Ñ Ð¿ÐµÑÐ°ÑÑ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸",f_pedclinic:"ÐÐ´ÐµÐ°Ð»ÑÐ½Ð¾ Ð´Ð»Ñ Ð´ÐµÑÑÐºÐ¸Ñ ÐºÐ»Ð¸Ð½Ð¸Ðº",f_kidsgames:"ÐÐ¾Ð¶Ð½Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð¸ÑÑ Ð´ÐµÑÑÐºÐ¸Ðµ Ð¸Ð³ÑÑ",f_kidssim:"ÐÐ¾Ð´ÐµÐ»Ð¸ÑÑÐµÑ Ð»ÐµÑÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð´ÐµÑÐµÐ¹",
+licTpl:"ÐÐ¸ÑÐµÐ½Ð·Ð¸Ñ Ð½Ð° ÐÐ Ð½Ð° {n} Ð»ÐµÑ",
+ovKicker:"ÐÐ¸Ð½ÐµÐ¹ÐºÐ°",ovTitle:"ÐÐ´Ð½Ð° Ð¿Ð»Ð°ÑÑÐ¾ÑÐ¼Ð°, Ð¼Ð½Ð¾Ð¶ÐµÑÑÐ²Ð¾ ÑÐ¾ÑÐ¼",ovSub:"ÐÑ ÐºÐ¾Ð¼Ð¿Ð°ÐºÑÐ½Ð¾Ð³Ð¾ Deck Ð´Ð¾ Ð°Ð²ÑÐ¾Ð½Ð¾Ð¼Ð½Ð¾Ð³Ð¾ Humanoid â Smilebot Ð´Ð»Ñ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸.",ovColModel:"ÐÐ¾Ð´ÐµÐ»Ñ",ovColBest:"ÐÑÑÑÐµ Ð²ÑÐµÐ³Ð¾ Ð´Ð»Ñ",ovColPrice:"ÐÑ",bestPlus:"ÐÐ·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑÐ²Ð¸Ðµ Ñ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ¾Ð¼ Ð¸ 3D-Ð´Ð¸Ð·Ð°Ð¹Ð½",bestRobot:"ÐÐ¶ÐµÐ´Ð½ÐµÐ²Ð½ÑÐ¹ Ð´Ð¸Ð·Ð°Ð¹Ð½ ÑÐ»ÑÐ±ÐºÐ¸",bestMove:"Ð¡ÐµÑÐ²Ð¸Ñ Ð¸ Ð¼Ð¾Ð±Ð¸Ð»ÑÐ½Ð¾ÑÑÑ",bestHuman:"Ð§ÐµÐ»Ð¾Ð²ÐµÐºÐ¾Ð¿Ð¾Ð´Ð¾Ð±Ð½Ð°Ñ ÑÑÐ¾Ð¹ÐºÐ°",bestDeck:"ÐÐ°Ð»ÑÐµ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸ Ð¸ Ð¼ÐµÑÐ¾Ð¿ÑÐ¸ÑÑÐ¸Ñ",bestKiosk:"ÐÐ¾Ð»ÑÑÐ¸Ðµ Ð¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÐ²Ð° Ð¸ Ð²ÑÑÑÐ°Ð²ÐºÐ¸",bestPedi:"ÐÐµÑÑÐºÐ¸Ðµ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸",
+ctaKicker:"ÐÐ°ÑÐ½Ð¸ÑÐµ",ctaTitle:"ÐÑÐ¸Ð½ÐµÑÐ¸ÑÐµ Ð±ÑÐ´ÑÑÐµÐµ Ð² ÑÐ²Ð¾Ñ ÐºÐ»Ð¸Ð½Ð¸ÐºÑ",ctaSub:"ÐÐ¾Ð³Ð¾Ð²Ð¾ÑÐ¸ÑÐµ Ñ Ð½Ð°ÑÐµÐ¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¾Ð¹ Ð¸ Ð¿Ð¾Ð´Ð±ÐµÑÐ¸ÑÐµ Ð¿Ð¾Ð´ÑÐ¾Ð´ÑÑÐ¸Ð¹ Smilebot.",ctaButton:"ÐÐ°Ð¿Ð¸ÑÐ°ÑÑ Ð² WhatsApp",footerTagline:"ÐÑÐ´ÑÑÐµÐµ ÑÐ¸ÑÑÐ¾Ð²Ð¾Ð¹ ÑÑÐ¾Ð¼Ð°ÑÐ¾Ð»Ð¾Ð³Ð¸Ð¸.",footerRights:"ÐÑÐµ Ð¿ÑÐ°Ð²Ð° Ð·Ð°ÑÐ¸ÑÐµÐ½Ñ.",footerPatent:"ÐÐ°Ð¿Ð°ÑÐµÐ½ÑÐ¾Ð²Ð°Ð½Ð½Ð°Ñ ÑÐµÑÐ½Ð¾Ð»Ð¾Ð³Ð¸Ñ.",footerContact:"ÐÐ°ÐºÐ°Ð· Ð¸ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ"},
+es:{download:"Descargar PDF",preparing:"Preparando tu PDFâ¦",order:"Pedido e informaciÃ³n",vat:"+ IVA",viewPatent:"Ver patente",model:"Modelo",stationary:"Fijo",mobile:"MÃ³vil",
+coverTag:"El futuro de la odontologÃ­a digital",coverPillars:"IA Â· RobÃ³tica Â· DiseÃ±o de sonrisa Â· Experiencia del paciente",coverStat1:"MÃ¡s de 420 dispositivos instalados en todo el mundo",coverStat2:"MÃ¡s de 10.000 casos de diseÃ±o de sonrisa con IA",
+manTitle:"La odontologÃ­a estÃ¡ cambiando.",manBefore:"Ayer",manB1:"FotografÃ­as",manB2:"Maquetas",manB3:"Largas explicaciones",manToday:"Hoy",manT1:"AnÃ¡lisis con IA",manT2:"Consulta robÃ³tica",manT3:"Experiencia digital del paciente",manMeet:"Te presentamos Smilebot.",manBody:"Los pacientes diseÃ±an su sonrisa solo con describirla en voz alta. Encuentran clÃ­nicas Smilebot desde la app y las clÃ­nicas envÃ­an modelos 3D listos para producir directamente al tÃ©cnico. Simple, rÃ¡pido y claro.",
+tracKicker:"TracciÃ³n",tracTitle:"Las cifras hablan por sÃ­ solas",trMembers:"Miembros",trSystems:"Sistemas instalados",trCases:"Casos analizados con IA",trClinics:"ClÃ­nicas activas",trLangs:"Idiomas disponibles",trCont:"Continentes",
+tagPlus:"El primer dispositivo patentado del mundo que interactÃºa con el paciente en directo",tagRobot:"El asistente de diseÃ±o de sonrisa para cada clÃ­nica",tagMove:"Un asistente autÃ³nomo que se mueve por tu clÃ­nica",tagHuman:"Una presencia humanoide para tu consulta",tagDeck:"Potencia compacta para llevar a cualquier parte",tagKiosk:"Una presencia destacada para grandes espacios",tagPedi:"Hecho para las sonrisas mÃ¡s pequeÃ±as",
+model13:"Pantalla de 13 pulgadas Â· cÃ¡mara de alta resoluciÃ³n",model11:"Pantalla de 11 pulgadas Â· cÃ¡mara de alta resoluciÃ³n",modelCam:"CÃ¡mara de alta resoluciÃ³n",
+f_words:"Muestra al instante la sonrisa antes y despuÃ©s con las palabras del paciente",f_3d:"Los dientes diseÃ±ados son medibles y producibles como modelos 3D",f_game:"Un verdadero punto de inflexiÃ³n en la odontologÃ­a estÃ©tica",f_xray:"Lee radiografÃ­as y apoya el diagnÃ³stico oral mediante preguntas y respuestas",f_voice:"DiseÃ±o de sonrisa antes y despuÃ©s guiado por voz",f_screen32:"Pantalla publicitaria gigante de 32 pulgadas",f_auto:"Se desplaza por sÃ­ solo",f_fetch:"Trae material desde la clÃ­nica",f_accompany:"AcompaÃ±a a los pacientes",f_serve:"Toma pedidos y sirve",f_portable:"FÃ¡cil de transportar",f_smallclinic:"Ideal para clÃ­nicas pequeÃ±as",f_fairs:"Perfecto para ferias y eventos",f_largearea:"Apto para grandes espacios",f_light:"Zonas de luz adicionales",f_adprint:"ImpresiÃ³n publicitaria personalizada de la clÃ­nica",f_pedclinic:"Ideal para clÃ­nicas infantiles",f_kidsgames:"Se pueden aÃ±adir juegos infantiles",f_kidssim:"Simula tratamientos para niÃ±os",
+licTpl:"Licencia de software de {n} aÃ±os",
+ovKicker:"La gama",ovTitle:"Una plataforma, muchas formas",ovSub:"Del compacto Deck al autÃ³nomo Humanoid: hay un Smilebot para cada clÃ­nica.",ovColModel:"Modelo",ovColBest:"Ideal para",ovColPrice:"Desde",bestPlus:"InteracciÃ³n con el paciente y diseÃ±o 3D",bestRobot:"DiseÃ±o de sonrisa diario",bestMove:"Servicio y movilidad",bestHuman:"RecepciÃ³n humanoide",bestDeck:"ClÃ­nicas pequeÃ±as y eventos",bestKiosk:"Grandes espacios y ferias",bestPedi:"ClÃ­nicas infantiles",
+ctaKicker:"Empieza ya",ctaTitle:"Trae el futuro a tu clÃ­nica",ctaSub:"Habla con nuestro equipo y encuentra el Smilebot que mejor se adapta a ti.",ctaButton:"EscrÃ­benos por WhatsApp",footerTagline:"El futuro de la odontologÃ­a digital.",footerRights:"Todos los derechos reservados.",footerPatent:"TecnologÃ­a patentada.",footerContact:"Pedido e informaciÃ³n"},
+fr:{download:"TÃ©lÃ©charger le PDF",preparing:"PrÃ©paration du PDFâ¦",order:"Commande et infos",vat:"+ TVA",viewPatent:"Voir le brevet",model:"ModÃ¨le",stationary:"Fixe",mobile:"Mobile",
+coverTag:"L'avenir de la dentisterie numÃ©rique",coverPillars:"IA Â· Robotique Â· Design du sourire Â· ExpÃ©rience patient",coverStat1:"Plus de 420 appareils installÃ©s dans le monde",coverStat2:"Plus de 10 000 cas de design du sourire par IA",
+manTitle:"La dentisterie Ã©volue.",manBefore:"Hier",manB1:"Photographies",manB2:"Maquettes",manB3:"Longues explications",manToday:"Aujourd'hui",manT1:"Analyse par IA",manT2:"Consultation robotisÃ©e",manT3:"ExpÃ©rience patient numÃ©rique",manMeet:"DÃ©couvrez Smilebot.",manBody:"Les patients conÃ§oivent leur sourire simplement en le dÃ©crivant Ã  voix haute. Ils trouvent les cliniques Smilebot via l'application, et les cliniques envoient des modÃ¨les 3D prÃªts Ã  produire directement au prothÃ©siste. Simple, rapide et clair.",
+tracKicker:"Traction",tracTitle:"Les chiffres parlent d'eux-mÃªmes",trMembers:"Membres",trSystems:"SystÃ¨mes installÃ©s",trCases:"Cas analysÃ©s par IA",trClinics:"Cliniques actives",trLangs:"Langues prises en charge",trCont:"Continents",
+tagPlus:"Le premier appareil brevetÃ© au monde Ã  interagir en direct avec le patient",tagRobot:"L'assistant de design du sourire pour chaque cabinet",tagMove:"Un assistant autonome qui se dÃ©place dans votre cabinet",tagHuman:"Une prÃ©sence humanoÃ¯de pour votre cabinet",tagDeck:"Une puissance compacte Ã  emporter partout",tagKiosk:"Une prÃ©sence remarquable pour les grands espaces",tagPedi:"ConÃ§u pour les petits sourires",
+model13:"Ãcran 13 pouces Â· camÃ©ra haute rÃ©solution",model11:"Ãcran 11 pouces Â· camÃ©ra haute rÃ©solution",modelCam:"CamÃ©ra haute rÃ©solution",
+f_words:"Montre instantanÃ©ment le sourire avant/aprÃ¨s d'aprÃ¨s les mots du patient",f_3d:"Les dents conÃ§ues sont mesurables et productibles en modÃ¨les 3D",f_game:"Une vÃ©ritable rÃ©volution en dentisterie esthÃ©tique",f_xray:"Lit les radios et assiste le diagnostic oral par questions-rÃ©ponses",f_voice:"Design du sourire avant/aprÃ¨s guidÃ© par la voix",f_screen32:"Ãcran publicitaire gÃ©ant de 32 pouces",f_auto:"Se dÃ©place de faÃ§on autonome",f_fetch:"Apporte le matÃ©riel depuis le cabinet",f_accompany:"Accompagne les patients",f_serve:"Prend les commandes et sert",f_portable:"Facile Ã  transporter",f_smallclinic:"IdÃ©al pour les petits cabinets",f_fairs:"Parfait pour salons et Ã©vÃ©nements",f_largearea:"AdaptÃ© aux grands espaces",f_light:"Zones d'Ã©clairage supplÃ©mentaires",f_adprint:"Impression publicitaire personnalisÃ©e du cabinet",f_pedclinic:"IdÃ©al pour les cabinets pÃ©diatriques",f_kidsgames:"Des jeux pour enfants peuvent Ãªtre ajoutÃ©s",f_kidssim:"Simule les traitements pour enfants",
+licTpl:"Licence logicielle de {n} ans",
+ovKicker:"La gamme",ovTitle:"Une plateforme, plusieurs formes",ovSub:"Du Deck compact au Humanoid autonome â il y a un Smilebot pour chaque cabinet.",ovColModel:"ModÃ¨le",ovColBest:"IdÃ©al pour",ovColPrice:"Ã partir de",bestPlus:"Interaction patient et design 3D",bestRobot:"Design du sourire au quotidien",bestMove:"Service et mobilitÃ©",bestHuman:"Un accueil humanoÃ¯de",bestDeck:"Petits cabinets et Ã©vÃ©nements",bestKiosk:"Grands espaces et salons",bestPedi:"Cabinets pÃ©diatriques",
+ctaKicker:"Commencez",ctaTitle:"Faites entrer l'avenir dans votre cabinet",ctaSub:"Parlez Ã  notre Ã©quipe et trouvez le Smilebot qui vous convient.",ctaButton:"Discuter sur WhatsApp",footerTagline:"L'avenir de la dentisterie numÃ©rique.",footerRights:"Tous droits rÃ©servÃ©s.",footerPatent:"Technologie brevetÃ©e.",footerContact:"Commande et infos"},
+de:{download:"PDF herunterladen",preparing:"PDF wird vorbereitetâ¦",order:"Bestellung & Info",vat:"+ MwSt.",viewPatent:"Patent ansehen",model:"Modell",stationary:"StationÃ¤r",mobile:"Mobil",
+coverTag:"Die Zukunft der digitalen Zahnmedizin",coverPillars:"KI Â· Robotik Â· Smile-Design Â· Patientenerlebnis",coverStat1:"Ãber 420 GerÃ¤te weltweit installiert",coverStat2:"Ãber 10.000 KI-Smile-Design-FÃ¤lle erstellt",
+manTitle:"Die Zahnmedizin verÃ¤ndert sich.",manBefore:"Gestern",manB1:"Fotos",manB2:"Mock-ups",manB3:"Lange ErklÃ¤rungen",manToday:"Heute",manT1:"KI-Analyse",manT2:"Robotische Beratung",manT3:"Digitales Patientenerlebnis",manMeet:"Lernen Sie Smilebot kennen.",manBody:"Patienten gestalten ihr LÃ¤cheln, indem sie es einfach laut beschreiben. Ãber die Patienten-App finden sie Smilebot-Kliniken, und Kliniken senden produktionsfertige 3D-Modelle direkt an den Techniker. Einfach, schnell und klar.",
+tracKicker:"Wachstum",tracTitle:"Die Zahlen sprechen fÃ¼r sich",trMembers:"Mitglieder",trSystems:"Installierte Systeme",trCases:"KI-analysierte FÃ¤lle",trClinics:"Aktive Kliniken",trLangs:"UnterstÃ¼tzte Sprachen",trCont:"Kontinente",
+tagPlus:"Das weltweit erste patentierte GerÃ¤t fÃ¼r die direkte Patienteninteraktion",tagRobot:"Der Smile-Design-Assistent fÃ¼r jede Praxis",tagMove:"Ein autonomer Assistent, der sich durch Ihre Praxis bewegt",tagHuman:"Eine humanoide PrÃ¤senz fÃ¼r Ihre Praxis",tagDeck:"Kompakte Leistung fÃ¼r unterwegs",tagKiosk:"Ein Blickfang fÃ¼r groÃe FlÃ¤chen",tagPedi:"FÃ¼r die kleinsten LÃ¤cheln gemacht",
+model13:"13-Zoll-Display Â· hochauflÃ¶sende Kamera",model11:"11-Zoll-Display Â· hochauflÃ¶sende Kamera",modelCam:"HochauflÃ¶sende Kamera",
+f_words:"Zeigt sofort das Vorher-Nachher-LÃ¤cheln aus den Worten des Patienten",f_3d:"Gestaltete ZÃ¤hne sind messbar und als 3D-Modelle produzierbar",f_game:"Ein echter Wendepunkt in der Ã¤sthetischen Zahnmedizin",f_xray:"Liest RÃ¶ntgenbilder und unterstÃ¼tzt die orale Diagnose per Frage-Antwort",f_voice:"SprachgefÃ¼hrtes Vorher-Nachher-Smile-Design",f_screen32:"32-Zoll-Werberiesenbildschirm",f_auto:"Bewegt sich selbststÃ¤ndig",f_fetch:"Bringt Material aus der Praxis",f_accompany:"Begleitet Patienten",f_serve:"Nimmt Bestellungen auf und serviert",f_portable:"Leicht zu transportieren",f_smallclinic:"Ideal fÃ¼r kleine Praxen",f_fairs:"Perfekt fÃ¼r Messen und Events",f_largearea:"FÃ¼r groÃe FlÃ¤chen geeignet",f_light:"ZusÃ¤tzliche Lichtzonen",f_adprint:"Individueller Praxis-Werbedruck",f_pedclinic:"Ideal fÃ¼r Kinderzahnarztpraxen",f_kidsgames:"Kinderspiele kÃ¶nnen hinzugefÃ¼gt werden",f_kidssim:"Simuliert Behandlungen fÃ¼r Kinder",
+licTpl:"{n} Jahre Software-Lizenz",
+ovKicker:"Die Produktreihe",ovTitle:"Eine Plattform, viele Formen",ovSub:"Vom kompakten Deck bis zum autonomen Humanoid â fÃ¼r jede Praxis das richtige Smilebot.",ovColModel:"Modell",ovColBest:"Ideal fÃ¼r",ovColPrice:"Ab",bestPlus:"Patienteninteraktion & 3D-Design",bestRobot:"TÃ¤gliches Smile-Design",bestMove:"Service & MobilitÃ¤t",bestHuman:"Humanoider Empfang",bestDeck:"Kleine Praxen & Events",bestKiosk:"GroÃe FlÃ¤chen & Messen",bestPedi:"Kinderzahnarztpraxen",
+ctaKicker:"Loslegen",ctaTitle:"Holen Sie die Zukunft in Ihre Praxis",ctaSub:"Sprechen Sie mit unserem Team und finden Sie das passende Smilebot.",ctaButton:"Per WhatsApp schreiben",footerTagline:"Die Zukunft der digitalen Zahnmedizin.",footerRights:"Alle Rechte vorbehalten.",footerPatent:"Patentierte Technologie.",footerContact:"Bestellung & Info"},
+it:{download:"Scarica il PDF",preparing:"Preparazione del PDFâ¦",order:"Ordine e info",vat:"+ IVA",viewPatent:"Vedi il brevetto",model:"Modello",stationary:"Fisso",mobile:"Mobile",
+coverTag:"Il futuro dell'odontoiatria digitale",coverPillars:"IA Â· Robotica Â· Design del sorriso Â· Esperienza del paziente",coverStat1:"Oltre 420 dispositivi installati nel mondo",coverStat2:"Oltre 10.000 casi di design del sorriso con IA",
+manTitle:"L'odontoiatria sta cambiando.",manBefore:"Ieri",manB1:"Fotografie",manB2:"Mock-up",manB3:"Lunghe spiegazioni",manToday:"Oggi",manT1:"Analisi con IA",manT2:"Consulenza robotica",manT3:"Esperienza digitale del paziente",manMeet:"Ti presentiamo Smilebot.",manBody:"I pazienti progettano il loro sorriso semplicemente descrivendolo a voce. Trovano le cliniche Smilebot tramite l'app e le cliniche inviano modelli 3D pronti per la produzione direttamente al tecnico. Semplice, veloce e chiaro.",
+tracKicker:"Crescita",tracTitle:"I numeri parlano da soli",trMembers:"Membri",trSystems:"Sistemi installati",trCases:"Casi analizzati con IA",trClinics:"Cliniche attive",trLangs:"Lingue supportate",trCont:"Continenti",
+tagPlus:"Il primo dispositivo brevettato al mondo che interagisce dal vivo con il paziente",tagRobot:"L'assistente per il design del sorriso per ogni clinica",tagMove:"Un assistente autonomo che si muove nella tua clinica",tagHuman:"Una presenza umanoide per il tuo studio",tagDeck:"Potenza compatta da portare ovunque",tagKiosk:"Una presenza d'impatto per i grandi spazi",tagPedi:"Pensato per i sorrisi piÃ¹ piccoli",
+model13:"Display da 13 pollici Â· fotocamera ad alta risoluzione",model11:"Display da 11 pollici Â· fotocamera ad alta risoluzione",modelCam:"Fotocamera ad alta risoluzione",
+f_words:"Mostra all'istante il sorriso prima e dopo dalle parole del paziente",f_3d:"I denti progettati sono misurabili e producibili come modelli 3D",f_game:"Una vera svolta nell'odontoiatria estetica",f_xray:"Legge le radiografie e supporta la diagnosi orale con domande e risposte",f_voice:"Design del sorriso prima e dopo guidato dalla voce",f_screen32:"Schermo pubblicitario gigante da 32 pollici",f_auto:"Si muove da solo",f_fetch:"Porta i materiali dalla clinica",f_accompany:"Accompagna i pazienti",f_serve:"Prende ordini e serve",f_portable:"Facile da trasportare",f_smallclinic:"Ideale per piccole cliniche",f_fairs:"Perfetto per fiere ed eventi",f_largearea:"Adatto ai grandi spazi",f_light:"Zone di illuminazione extra",f_adprint:"Stampa pubblicitaria personalizzata della clinica",f_pedclinic:"Ideale per cliniche pediatriche",f_kidsgames:"Si possono aggiungere giochi per bambini",f_kidssim:"Simula i trattamenti per i bambini",
+licTpl:"Licenza software di {n} anni",
+ovKicker:"La gamma",ovTitle:"Una piattaforma, tante forme",ovSub:"Dal compatto Deck all'autonomo Humanoid: c'Ã¨ un Smilebot per ogni clinica.",ovColModel:"Modello",ovColBest:"Ideale per",ovColPrice:"Da",bestPlus:"Interazione col paziente e design 3D",bestRobot:"Design del sorriso quotidiano",bestMove:"Servizio e mobilitÃ ",bestHuman:"Reception umanoide",bestDeck:"Piccole cliniche ed eventi",bestKiosk:"Grandi spazi e fiere",bestPedi:"Cliniche pediatriche",
+ctaKicker:"Inizia",ctaTitle:"Porta il futuro nella tua clinica",ctaSub:"Parla con il nostro team e trova il Smilebot piÃ¹ adatto a te.",ctaButton:"Scrivici su WhatsApp",footerTagline:"Il futuro dell'odontoiatria digitale.",footerRights:"Tutti i diritti riservati.",footerPatent:"Tecnologia brevettata.",footerContact:"Ordine e info"},
+pt:{download:"Baixar PDF",preparing:"Preparando o PDFâ¦",order:"Pedido e informaÃ§Ãµes",vat:"+ IVA",viewPatent:"Ver patente",model:"Modelo",stationary:"Fixo",mobile:"MÃ³vel",
+coverTag:"O futuro da odontologia digital",coverPillars:"IA Â· RobÃ³tica Â· Design do sorriso Â· ExperiÃªncia do paciente",coverStat1:"Mais de 420 dispositivos instalados no mundo",coverStat2:"Mais de 10.000 casos de design de sorriso com IA",
+manTitle:"A odontologia estÃ¡ mudando.",manBefore:"Ontem",manB1:"Fotografias",manB2:"Mock-ups",manB3:"Longas explicaÃ§Ãµes",manToday:"Hoje",manT1:"AnÃ¡lise com IA",manT2:"Consulta robÃ³tica",manT3:"ExperiÃªncia digital do paciente",manMeet:"ConheÃ§a o Smilebot.",manBody:"Os pacientes projetam seu sorriso apenas descrevendo-o em voz alta. Encontram clÃ­nicas Smilebot pelo aplicativo, e as clÃ­nicas enviam modelos 3D prontos para produÃ§Ã£o direto ao tÃ©cnico. Simples, rÃ¡pido e claro.",
+tracKicker:"TraÃ§Ã£o",tracTitle:"Os nÃºmeros falam por si",trMembers:"Membros",trSystems:"Sistemas instalados",trCases:"Casos analisados com IA",trClinics:"ClÃ­nicas ativas",trLangs:"Idiomas suportados",trCont:"Continentes",
+tagPlus:"O primeiro dispositivo patenteado do mundo que interage ao vivo com o paciente",tagRobot:"O assistente de design de sorriso para cada clÃ­nica",tagMove:"Um assistente autÃ´nomo que se move pela sua clÃ­nica",tagHuman:"Uma presenÃ§a humanoide para o seu consultÃ³rio",tagDeck:"PotÃªncia compacta para levar a qualquer lugar",tagKiosk:"Uma presenÃ§a marcante para grandes espaÃ§os",tagPedi:"Feito para os sorrisos pequenos",
+model13:"Tela de 13 polegadas Â· cÃ¢mera de alta resoluÃ§Ã£o",model11:"Tela de 11 polegadas Â· cÃ¢mera de alta resoluÃ§Ã£o",modelCam:"CÃ¢mera de alta resoluÃ§Ã£o",
+f_words:"Mostra na hora o sorriso antes e depois a partir das palavras do paciente",f_3d:"Os dentes projetados sÃ£o mensurÃ¡veis e produzÃ­veis como modelos 3D",f_game:"Uma verdadeira virada na odontologia estÃ©tica",f_xray:"LÃª radiografias e apoia o diagnÃ³stico oral por perguntas e respostas",f_voice:"Design de sorriso antes e depois guiado por voz",f_screen32:"Tela publicitÃ¡ria gigante de 32 polegadas",f_auto:"Move-se sozinho",f_fetch:"Traz materiais da clÃ­nica",f_accompany:"Acompanha os pacientes",f_serve:"Recebe pedidos e serve",f_portable:"FÃ¡cil de transportar",f_smallclinic:"Ideal para clÃ­nicas pequenas",f_fairs:"Perfeito para feiras e eventos",f_largearea:"Adequado para grandes espaÃ§os",f_light:"Zonas de luz extras",f_adprint:"ImpressÃ£o publicitÃ¡ria personalizada da clÃ­nica",f_pedclinic:"Ideal para clÃ­nicas infantis",f_kidsgames:"Jogos infantis podem ser adicionados",f_kidssim:"Simula tratamentos para crianÃ§as",
+licTpl:"LicenÃ§a de software de {n} anos",
+ovKicker:"A linha",ovTitle:"Uma plataforma, muitas formas",ovSub:"Do compacto Deck ao autÃ´nomo Humanoid â hÃ¡ um Smilebot para cada clÃ­nica.",ovColModel:"Modelo",ovColBest:"Ideal para",ovColPrice:"A partir de",bestPlus:"InteraÃ§Ã£o com o paciente e design 3D",bestRobot:"Design de sorriso no dia a dia",bestMove:"ServiÃ§o e mobilidade",bestHuman:"RecepÃ§Ã£o humanoide",bestDeck:"ClÃ­nicas pequenas e eventos",bestKiosk:"Grandes espaÃ§os e feiras",bestPedi:"ClÃ­nicas infantis",
+ctaKicker:"Comece",ctaTitle:"Traga o futuro para a sua clÃ­nica",ctaSub:"Fale com a nossa equipe e encontre o Smilebot ideal para vocÃª.",ctaButton:"Falar no WhatsApp",footerTagline:"O futuro da odontologia digital.",footerRights:"Todos os direitos reservados.",footerPatent:"Tecnologia patenteada.",footerContact:"Pedido e informaÃ§Ãµes"},
+zh:{download:"ä¸è½½ PDF",preparing:"æ­£å¨çæ PDFâ¦",order:"è®¢è´­ä¸å¨è¯¢",vat:"+ å¢å¼ç¨",viewPatent:"æ¥çä¸å©",model:"åå·",stationary:"åºå®å¼",mobile:"ç§»å¨å¼",
+coverTag:"æ°å­å£èå»å­¦çæªæ¥",coverPillars:"äººå·¥æºè½ Â· æºå¨äºº Â· å¾®ç¬è®¾è®¡ Â· æ£èä½éª",coverStat1:"å¨çå·²å®è£ 420+ å°è®¾å¤",coverStat2:"å·²çæ 10,000+ ä¾ AI å¾®ç¬è®¾è®¡",
+manTitle:"å£èå»å­¦æ­£å¨æ¹åã",manBefore:"ä»å",manB1:"ç§ç",manB2:"è¡åæ¨¡æ",manB3:"åé¿è®²è§£",manToday:"å¦ä»",manT1:"AI åæ",manT2:"æºå¨äººå¨è¯¢",manT3:"æ°å­åæ£èä½éª",manMeet:"è®¤è¯ Smilebotã",manBody:"æ£èåªéç¨è¯­è¨æè¿°ï¼å³å¯è®¾è®¡èªå·±çå¾®ç¬ãä»ä»¬éè¿æ£èç«¯ App æ¾å° Smilebot è¯æï¼è¯æåå°å¯ç´æ¥çäº§ç 3D æ¨¡ååéç»æå¸ãç®åãå¿«éãæ¸æ°ã",
+tracKicker:"å¢é¿",tracTitle:"æ°å­ä¸è¨èªæ",trMembers:"ä¼å",trSystems:"å·²å®è£ç³»ç»",trCases:"AI åæçä¾",trClinics:"æ´»è·è¯æ",trLangs:"æ¯æè¯­è¨",trCont:"å¤§æ´²",
+tagPlus:"å¨çé¦æ¬¾å¯ä¸æ£èå®æ¶äºå¨çä¸å©è®¾å¤",tagRobot:"éåæ¯å®¶è¯æçå¾®ç¬è®¾è®¡å©æ",tagMove:"å¯å¨è¯æåèªä¸»ç§»å¨çå©æ",tagHuman:"ä¸ºæ¨çè¯ææé çäººå½¢å½¢è±¡",tagDeck:"éèº«æºå¸¦çç´§åä¹å",tagKiosk:"å¤§åç©ºé´çäº®ç¼å­å¨",tagPedi:"ä¸ºå°å°å¾®ç¬èç",
+model13:"13 è±å¯¸å±å¹ Â· é«åè¾¨çæåå¤´",model11:"11 è±å¯¸å±å¹ Â· é«åè¾¨çæåå¤´",modelCam:"é«åè¾¨çæåå¤´",
+f_words:"æ ¹æ®æ£èèªå·±çæè¿°å³æ¶åç°ååå¾®ç¬ææ",f_3d:"è®¾è®¡ççé½¿å¯æµéï¼å¹¶å¯ä½ä¸º 3D æ¨¡åçäº§",f_game:"ç¾å­¦å£èå»å­¦ççæ­£åé©è",f_xray:"è¯»å X åçï¼å¹¶éè¿é®ç­è¾å©å£èè¯æ­",f_voice:"è¯­é³å¼å¯¼çååå¾®ç¬è®¾è®¡",f_screen32:"32 è±å¯¸è¶å¤§å¹¿åå±",f_auto:"èªä¸»ç§»å¨",f_fetch:"ä»è¯æåéç©æ",f_accompany:"éªä¼´æ£è",f_serve:"æ¥åå¹¶æä¾æå¡",f_portable:"ä¾¿äºæºå¸¦",f_smallclinic:"éåå°åè¯æ",f_fairs:"éåå±ä¼ä¸æ´»å¨",f_largearea:"éåå¤§åç©ºé´",f_light:"é¢å¤ç§æåºå",f_adprint:"å¯å®å¶è¯æå¹¿åå°å·",f_pedclinic:"éåå¿ç«¥è¯æ",f_kidsgames:"å¯æ·»å å¿ç«¥æ¸¸æ",f_kidssim:"å¯æ¨¡æå¿ç«¥æ²»ç",
+licTpl:"{n} å¹´è½¯ä»¶ææ",
+ovKicker:"äº§åç³»å",ovTitle:"åä¸å¹³å°ï¼å¤ç§å½¢æ",ovSub:"ä»ç´§åç Deck å°èªä¸»ç Humanoidââæ¯å®¶è¯æé½æåéç Smilebotã",ovColModel:"åå·",ovColBest:"éç¨äº",ovColPrice:"èµ·ä»·",bestPlus:"æ£èäºå¨ä¸ 3D è®¾è®¡",bestRobot:"æ¥å¸¸å¾®ç¬è®¾è®¡",bestMove:"æå¡ä¸ç§»å¨",bestHuman:"äººå½¢åå°",bestDeck:"å°åè¯æä¸æ´»å¨",bestKiosk:"å¤§åç©ºé´ä¸å±ä¼",bestPedi:"å¿ç«¥è¯æ",
+ctaKicker:"å¼å§",ctaTitle:"ææªæ¥å¸¦è¿æ¨çè¯æ",ctaSub:"ä¸æä»¬çå¢éèç³»ï¼æ¾å°æéåæ¨ç Smilebotã",ctaButton:"éè¿ WhatsApp èç³»",footerTagline:"æ°å­å£èå»å­¦çæªæ¥ã",footerRights:"ä¿çæææå©ã",footerPatent:"ä¸å©ææ¯ã",footerContact:"è®¢è´­ä¸å¨è¯¢"},
+ja:{download:"PDFããã¦ã³ã­ã¼ã",preparing:"PDFãæºåãã¦ãã¾ãâ¦",order:"ãæ³¨æã»ãåãåãã",vat:"+ ç¨",viewPatent:"ç¹è¨±ãè¦ã",model:"ã¢ãã«",stationary:"æ®ç½®å",mobile:"å¯åå",
+coverTag:"ãã¸ã¿ã«æ­¯ç§ã®æªæ¥",coverPillars:"AI Â· ã­ããã£ã¯ã¹ Â· ã¹ãã¤ã«ãã¶ã¤ã³ Â· æ£èä½é¨",coverStat1:"ä¸çã§420å°ä»¥ä¸ãå°å¥",coverStat2:"10,000ä»¶ä»¥ä¸ã®AIã¹ãã¤ã«ãã¶ã¤ã³ãçæ",
+manTitle:"æ­¯ç§å»çã¯å¤ããã¤ã¤ããã¾ãã",manBefore:"ãã¤ã¦",manB1:"åç",manB2:"ã¢ãã¯ã¢ãã",manB3:"é·ãèª¬æ",manToday:"ãã¾",manT1:"AIè§£æ",manT2:"ã­ãããã«ããã«ã¦ã³ã»ãªã³ã°",manT3:"ãã¸ã¿ã«æ£èä½é¨",manMeet:"Smilebotã®ãç´¹ä»ã",manBody:"æ£èãã¾ã¯å£°ã§ä¼ããã ãã§èªåã®ç¬é¡ããã¶ã¤ã³ã§ãã¾ããã¢ããªã§Smilebotã¯ãªããã¯ãè¦ã¤ããã¯ãªããã¯ã¯è£½ä½å¯è½ãª3Dã¢ãã«ãæå·¥å£«ã¸ç´æ¥éãã¾ããã·ã³ãã«ã§ãéããããããããã",
+tracKicker:"å®ç¸¾",tracTitle:"æ°å­ãç©èªãã¾ã",trMembers:"ä¼å¡æ°",trSystems:"å°å¥ã·ã¹ãã ",trCases:"AIè§£æããçä¾",trClinics:"ç¨¼åã¯ãªããã¯",trLangs:"å¯¾å¿è¨èª",trCont:"å¤§é¸",
+tagPlus:"æ£èã¨ãªã¢ã«ã¿ã¤ã ã§å¯¾è©±ããä¸çåã®ç¹è¨±åå¾ããã¤ã¹",tagRobot:"ããããã¯ãªããã¯ã®ããã®ã¹ãã¤ã«ãã¶ã¤ã³ã»ã¢ã·ã¹ã¿ã³ã",tagMove:"ã¯ãªããã¯åãèªå¾èµ°è¡ããã¢ã·ã¹ã¿ã³ã",tagHuman:"ã¯ãªããã¯ã®ããã®ãã¥ã¼ããã¤ãã®å­å¨æ",tagDeck:"ã©ãã¸ã§ãæã¡éã¹ãã³ã³ãã¯ããªãã¯ã¼",tagKiosk:"åºãç©ºéã§éç«ã¤å­å¨æ",tagPedi:"å°ããªç¬é¡ã®ããã«",
+model13:"13ã¤ã³ãç»é¢ Â· é«è§£ååº¦ã«ã¡ã©",model11:"11ã¤ã³ãç»é¢ Â· é«è§£ååº¦ã«ã¡ã©",modelCam:"é«è§£ååº¦ã«ã¡ã©",
+f_words:"æ£èãã¾èªèº«ã®è¨èãããããã©ã¼ã¢ãã¿ã¼ã®ç¬é¡ãå³æã«è¡¨ç¤º",f_3d:"ãã¶ã¤ã³ããæ­¯ã¯è¨æ¸¬ã§ãã3Dã¢ãã«ã¨ãã¦è£½ä½å¯è½",f_game:"å¯©ç¾æ­¯ç§ã«ãããçã®ã²ã¼ã ãã§ã³ã¸ã£ã¼",f_xray:"ã¬ã³ãã²ã³ãèª­ã¿åããQ&Aã§å£èè¨ºæ­ãæ¯æ´",f_voice:"é³å£°ã¬ã¤ãã«ããããã©ã¼ã¢ãã¿ã¼ã®ã¹ãã¤ã«ãã¶ã¤ã³",f_screen32:"32ã¤ã³ãã®å¤§ååºåãã£ã¹ãã¬ã¤",f_auto:"èªå¾çã«ç§»å",f_fetch:"ã¯ãªããã¯ããç©åãéã¶",f_accompany:"æ£èãã¾ã«ä»ãæ·»ã",f_serve:"æ³¨æãåãã¦éè³",f_portable:"æã¡éã³ãç°¡å",f_smallclinic:"å°è¦æ¨¡ã¯ãªããã¯ã«æé©",f_fairs:"å±ç¤ºä¼ãã¤ãã³ãã«æé©",f_largearea:"åºãç©ºéã«å¯¾å¿",f_light:"è¿½å ã®ç§æã¨ãªã¢",f_adprint:"ã¯ãªããã¯ç¬èªã®åºåããªã³ã",f_pedclinic:"å°åã¯ãªããã¯ã«æé©",f_kidsgames:"å­ã©ãåãã²ã¼ã ãè¿½å å¯è½",f_kidssim:"å­ã©ãã®æ²»çãã·ãã¥ã¬ã¼ã·ã§ã³",
+licTpl:"{n}å¹´éã®ã½ããã¦ã§ã¢ã©ã¤ã»ã³ã¹",
+ovKicker:"ã©ã¤ã³ã¢ãã",ovTitle:"ã²ã¨ã¤ã®ãã©ãããã©ã¼ã ãå¤å½©ãªããã¡",ovSub:"ã³ã³ãã¯ããªDeckããèªå¾åã®Humanoidã¾ã§ââã©ããªã¯ãªããã¯ã«ãSmilebotãã",ovColModel:"ã¢ãã«",ovColBest:"æé©ãªç¨é",ovColPrice:"ä¾¡æ ¼",bestPlus:"æ£èå¯¾è©±ã¨3Dãã¶ã¤ã³",bestRobot:"æ¥å¸¸ã®ã¹ãã¤ã«ãã¶ã¤ã³",bestMove:"ãµã¼ãã¹ã¨ç§»å",bestHuman:"ãã¥ã¼ããã¤ãåä»",bestDeck:"å°è¦æ¨¡ã¯ãªããã¯ã»ã¤ãã³ã",bestKiosk:"åºãç©ºéã»å±ç¤ºä¼",bestPedi:"å°åã¯ãªããã¯",
+ctaKicker:"ã¯ããã",ctaTitle:"æªæ¥ãããªãã®ã¯ãªããã¯ã¸",ctaSub:"ç§ãã¡ã®ãã¼ã ã«ãç¸è«ãã ãããæé©ãªSmilebotããææ¡ãã¾ãã",ctaButton:"WhatsAppã§ç¸è«",footerTagline:"ãã¸ã¿ã«æ­¯ç§ã®æªæ¥ã",footerRights:"All rights reserved.",footerPatent:"ç¹è¨±åå¾æ¸ã¿æè¡ã",footerContact:"ãæ³¨æã»ãåãåãã"},
+ko:{download:"PDF ë¤ì´ë¡ë",preparing:"PDF ì¤ë¹ ì¤â¦",order:"ì£¼ë¬¸ ë° ë¬¸ì",vat:"+ ë¶ê°ì¸",viewPatent:"í¹í ë³´ê¸°",model:"ëª¨ë¸",stationary:"ê³ ì í",mobile:"ì´ëí",
+coverTag:"ëì§í¸ ì¹ê³¼ì ë¯¸ë",coverPillars:"AI Â· ë¡ë³´í±ì¤ Â· ì¤ë§ì¼ ëìì¸ Â· íì ê²½í",coverStat1:"ì  ì¸ê³ 420ë ì´ì ì¤ì¹",coverStat2:"10,000ê±´ ì´ìì AI ì¤ë§ì¼ ëìì¸ ìì±",
+manTitle:"ì¹ê³¼ê° ë°ëê³  ììµëë¤.",manBefore:"ìì ",manB1:"ì¬ì§",manB2:"ëª©ì",manB3:"ê¸´ ì¤ëª",manToday:"ì¤ë",manT1:"AI ë¶ì",manT2:"ë¡ë´ ìë´",manT3:"ëì§í¸ íì ê²½í",manMeet:"Smilebotì ë§ëë³´ì¸ì.",manBody:"íìë ë§ë¡ ì¤ëªíê¸°ë§ í´ë ìì ì ë¯¸ìë¥¼ ëìì¸í©ëë¤. íì ì±ì¼ë¡ Smilebot í´ë¦¬ëì ì°¾ê³ , í´ë¦¬ëì ì ì ê°ë¥í 3D ëª¨ë¸ì ê¸°ê³µì¬ìê² ë°ë¡ ì ì¡í©ëë¤. ê°ë¨íê³ , ë¹ ë¥´ê³ , ëªíí©ëë¤.",
+tracKicker:"ì±ì¥",tracTitle:"ì«ìê° ë§í´ì¤ëë¤",trMembers:"íì",trSystems:"ì¤ì¹ë ìì¤í",trCases:"AI ë¶ì ì¬ë¡",trClinics:"íì± í´ë¦¬ë",trLangs:"ì§ì ì¸ì´",trCont:"ëë¥",
+tagPlus:"íìì ì¤ìê°ì¼ë¡ ìí¸ìì©íë ì¸ê³ ìµì´ì í¹í ê¸°ê¸°",tagRobot:"ëª¨ë  í´ë¦¬ëì ìí ì¤ë§ì¼ ëìì¸ ì´ìì¤í´í¸",tagMove:"í´ë¦¬ëì ëë¹ë ìì¨ ì£¼í ì´ìì¤í´í¸",tagHuman:"ë¹ì ì í´ë¦¬ëì ìí í´ë¨¸ë¸ì´ë",tagDeck:"ì´ëë  ê°ì ¸ê° ì ìë ì½¤í©í¸í íì",tagKiosk:"ëì ê³µê°ì ìí ëë³´ì´ë ì¡´ì¬ê°",tagPedi:"ìì ë¯¸ìë¥¼ ìí´ ë§ë¤ì´ì¡ìµëë¤",
+model13:"13ì¸ì¹ íë©´ Â· ê³ í´ìë ì¹´ë©ë¼",model11:"11ì¸ì¹ íë©´ Â· ê³ í´ìë ì¹´ë©ë¼",modelCam:"ê³ í´ìë ì¹´ë©ë¼",
+f_words:"íì ë³¸ì¸ì ë§ë¡ ë¹í¬&ì íí° ë¯¸ìë¥¼ ì¦ì ë³´ì¬ì¤ëë¤",f_3d:"ëìì¸í ì¹ìë ì¸¡ì  ê°ë¥íë©° 3D ëª¨ë¸ë¡ ì ìí  ì ììµëë¤",f_game:"ì¬ë¯¸ ì¹ê³¼ì ì§ì í ê²ì ì²´ì¸ì ",f_xray:"ìì¤ë ì´ë¥¼ íëíê³  ì§ììëµì¼ë¡ êµ¬ê° ì§ë¨ì ì§ìí©ëë¤",f_voice:"ìì±ì¼ë¡ ìë´íë ë¹í¬&ì íí° ì¤ë§ì¼ ëìì¸",f_screen32:"32ì¸ì¹ ëí ê´ê³  íë©´",f_auto:"ì¤ì¤ë¡ ì´ë",f_fetch:"í´ë¦¬ëìì ë¬¼íì ê°ì ¸ì´",f_accompany:"íìë¥¼ ëí",f_serve:"ì£¼ë¬¸ì ë°ê³  ìë¹",f_portable:"í´ëê° ê°í¸",f_smallclinic:"ìê·ëª¨ í´ë¦¬ëì ì í©",f_fairs:"ë°ëíÂ·íì¬ì ì í©",f_largearea:"ëì ê³µê°ì ì í©",f_light:"ì¶ê° ì¡°ëª ìì­",f_adprint:"í´ë¦¬ë ë§ì¶¤ ê´ê³  ì¸ì",f_pedclinic:"ìì í´ë¦¬ëì ì í©",f_kidsgames:"ì´ë¦°ì´ ê²ì ì¶ê° ê°ë¥",f_kidssim:"ì´ë¦°ì´ ì¹ë£ ìë®¬ë ì´ì",
+licTpl:"{n}ë ìíí¸ì¨ì´ ë¼ì´ì ì¤",
+ovKicker:"ì í ë¼ì¸ì",ovTitle:"íëì íë«í¼, ë¤ìí íí",ovSub:"ì½¤í©í¸í Deckë¶í° ìì¨í Humanoidê¹ì§ â ëª¨ë  í´ë¦¬ëì ìí Smilebot.",ovColModel:"ëª¨ë¸",ovColBest:"ì¶ì² ì©ë",ovColPrice:"ììê°",bestPlus:"íì ìí¸ìì© & 3D ëìì¸",bestRobot:"ì¼ìì ì¸ ì¤ë§ì¼ ëìì¸",bestMove:"ìë¹ì¤ & ì´ëì±",bestHuman:"í´ë¨¸ë¸ì´ë ìë´",bestDeck:"ìê·ëª¨ í´ë¦¬ë & íì¬",bestKiosk:"ëì ê³µê° & ë°ëí",bestPedi:"ìì í´ë¦¬ë",
+ctaKicker:"ììíê¸°",ctaTitle:"ë¯¸ëë¥¼ ë¹ì ì í´ë¦¬ëì¼ë¡",ctaSub:"ì í¬ íê³¼ ìë´íê³  ê°ì¥ ì ë§ë Smilebotì ì°¾ìë³´ì¸ì.",ctaButton:"WhatsAppì¼ë¡ ë¬¸ì",footerTagline:"ëì§í¸ ì¹ê³¼ì ë¯¸ë.",footerRights:"All rights reserved.",footerPatent:"í¹í ê¸°ì .",footerContact:"ì£¼ë¬¸ ë° ë¬¸ì"},
+hi:{download:"PDF à¤¡à¤¾à¤à¤¨à¤²à¥à¤¡ à¤à¤°à¥à¤",preparing:"PDF à¤¤à¥à¤¯à¤¾à¤° à¤¹à¥ à¤°à¤¹à¤¾ à¤¹à¥â¦",order:"à¤à¤°à¥à¤¡à¤° à¤à¤° à¤à¤¾à¤¨à¤à¤¾à¤°à¥",vat:"+ GST",viewPatent:"à¤ªà¥à¤à¥à¤à¤ à¤¦à¥à¤à¥à¤",model:"à¤®à¥à¤¡à¤²",stationary:"à¤¸à¥à¤¥à¤¿à¤°",mobile:"à¤à¤²à¤¾à¤¯à¤®à¤¾à¤¨",
+coverTag:"à¤¡à¤¿à¤à¤¿à¤à¤² à¤¦à¤à¤¤ à¤à¤¿à¤à¤¿à¤¤à¥à¤¸à¤¾ à¤à¤¾ à¤­à¤µà¤¿à¤·à¥à¤¯",coverPillars:"AI Â· à¤°à¥à¤¬à¥à¤à¤¿à¤à¥à¤¸ Â· à¤¸à¥à¤®à¤¾à¤à¤² à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨ Â· à¤°à¥à¤à¥ à¤à¤¨à¥à¤­à¤µ",coverStat1:"à¤¦à¥à¤¨à¤¿à¤¯à¤¾ à¤­à¤° à¤®à¥à¤ 420+ à¤¡à¤¿à¤µà¤¾à¤à¤¸ à¤à¤à¤¸à¥à¤à¥à¤²",coverStat2:"10,000+ AI à¤¸à¥à¤®à¤¾à¤à¤² à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨ à¤à¥à¤¸ à¤¤à¥à¤¯à¤¾à¤°",
+manTitle:"à¤¦à¤à¤¤ à¤à¤¿à¤à¤¿à¤¤à¥à¤¸à¤¾ à¤¬à¤¦à¤² à¤°à¤¹à¥ à¤¹à¥à¥¤",manBefore:"à¤ªà¤¹à¤²à¥",manB1:"à¤¤à¤¸à¥à¤µà¥à¤°à¥à¤",manB2:"à¤®à¥à¤-à¤à¤ª",manB3:"à¤²à¤à¤¬à¥ à¤µà¥à¤¯à¤¾à¤à¥à¤¯à¤¾à¤à¤",manToday:"à¤à¤",manT1:"AI à¤µà¤¿à¤¶à¥à¤²à¥à¤·à¤£",manT2:"à¤°à¥à¤¬à¥à¤à¤¿à¤ à¤ªà¤°à¤¾à¤®à¤°à¥à¤¶",manT3:"à¤¡à¤¿à¤à¤¿à¤à¤² à¤°à¥à¤à¥ à¤à¤¨à¥à¤­à¤µ",manMeet:"à¤®à¤¿à¤²à¤¿à¤ Smilebot à¤¸à¥à¥¤",manBody:"à¤®à¤°à¥à¤à¤¼ à¤¬à¤¸ à¤¬à¥à¤²à¤à¤° à¤à¤ªà¤¨à¥ à¤®à¥à¤¸à¥à¤à¤¾à¤¨ à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨ à¤à¤°à¤¤à¥ à¤¹à¥à¤à¥¤ à¤à¤ª à¤à¥ à¤à¤¼à¤°à¤¿à¤ à¤µà¥ Smilebot à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤¢à¥à¤à¤¢à¤¤à¥ à¤¹à¥à¤, à¤à¤° à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¤¤à¥à¤ªà¤¾à¤¦à¤¨-à¤¤à¥à¤¯à¤¾à¤° 3D à¤®à¥à¤¡à¤² à¤¸à¥à¤§à¥ à¤¤à¤à¤¨à¥à¤¶à¤¿à¤¯à¤¨ à¤à¥ à¤­à¥à¤à¤¤à¥ à¤¹à¥à¤à¥¤ à¤¸à¤°à¤², à¤¤à¥à¤à¤¼ à¤à¤° à¤¸à¥à¤ªà¤·à¥à¤à¥¤",
+tracKicker:"à¤ªà¥à¤°à¤à¤¤à¤¿",tracTitle:"à¤à¤à¤à¤¡à¤¼à¥ à¤à¥à¤¦ à¤¬à¥à¤²à¤¤à¥ à¤¹à¥à¤",trMembers:"à¤¸à¤¦à¤¸à¥à¤¯",trSystems:"à¤à¤à¤¸à¥à¤à¥à¤² à¤à¤¿à¤ à¤à¤ à¤¸à¤¿à¤¸à¥à¤à¤®",trCases:"AI-à¤µà¤¿à¤¶à¥à¤²à¥à¤·à¤¿à¤¤ à¤à¥à¤¸",trClinics:"à¤¸à¤à¥à¤°à¤¿à¤¯ à¤à¥à¤²à¥à¤¨à¤¿à¤",trLangs:"à¤¸à¤®à¤°à¥à¤¥à¤¿à¤¤ à¤­à¤¾à¤·à¤¾à¤à¤",trCont:"à¤®à¤¹à¤¾à¤¦à¥à¤µà¥à¤ª",
+tagPlus:"à¤®à¤°à¥à¤à¤¼ à¤¸à¥ à¤¸à¥à¤§à¥ à¤¸à¤à¤µà¤¾à¤¦ à¤à¤°à¤¨à¥ à¤µà¤¾à¤²à¤¾ à¤¦à¥à¤¨à¤¿à¤¯à¤¾ à¤à¤¾ à¤ªà¤¹à¤²à¤¾ à¤ªà¥à¤à¥à¤à¤à¥à¤¡ à¤¡à¤¿à¤µà¤¾à¤à¤¸",tagRobot:"à¤¹à¤° à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¥ à¤²à¤¿à¤ à¤¸à¥à¤®à¤¾à¤à¤² à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨ à¤¸à¤¹à¤¾à¤¯à¤",tagMove:"à¤à¤ªà¤à¥ à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤®à¥à¤ à¤à¥à¤®à¤¨à¥ à¤µà¤¾à¤²à¤¾ à¤¸à¥à¤µà¤¾à¤¯à¤¤à¥à¤¤ à¤¸à¤¹à¤¾à¤¯à¤",tagHuman:"à¤à¤ªà¤à¥ à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¥ à¤²à¤¿à¤ à¤à¤ à¤¹à¥à¤¯à¥à¤®à¤¨à¥à¤à¤¡ à¤à¤ªà¤¸à¥à¤¥à¤¿à¤¤à¤¿",tagDeck:"à¤¹à¤° à¤à¤à¤¹ à¤²à¥ à¤à¤¾à¤¨à¥ à¤¯à¥à¤à¥à¤¯ à¤à¥à¤®à¥à¤ªà¥à¤à¥à¤ à¤¤à¤¾à¤à¤¼à¤¤",tagKiosk:"à¤¬à¤¡à¤¼à¥ à¤à¤à¤¹à¥à¤ à¤à¥ à¤²à¤¿à¤ à¤à¤²à¥à¤²à¥à¤à¤¨à¥à¤¯ à¤à¤ªà¤¸à¥à¤¥à¤¿à¤¤à¤¿",tagPedi:"à¤¨à¤¨à¥à¤¹à¥ à¤®à¥à¤¸à¥à¤à¤¾à¤¨à¥à¤ à¤à¥ à¤²à¤¿à¤ à¤¬à¤¨à¤¾à¤¯à¤¾ à¤à¤¯à¤¾",
+model13:"13 à¤à¤à¤ à¤¸à¥à¤à¥à¤°à¥à¤¨ Â· à¤¹à¤¾à¤-à¤°à¤¿à¤à¤¼à¥à¤²à¥à¤¯à¥à¤¶à¤¨ à¤à¥à¤®à¤°à¤¾",model11:"11 à¤à¤à¤ à¤¸à¥à¤à¥à¤°à¥à¤¨ Â· à¤¹à¤¾à¤-à¤°à¤¿à¤à¤¼à¥à¤²à¥à¤¯à¥à¤¶à¤¨ à¤à¥à¤®à¤°à¤¾",modelCam:"à¤¹à¤¾à¤-à¤°à¤¿à¤à¤¼à¥à¤²à¥à¤¯à¥à¤¶à¤¨ à¤à¥à¤®à¤°à¤¾",
+f_words:"à¤®à¤°à¥à¤à¤¼ à¤à¥ à¤à¤ªà¤¨à¥ à¤¶à¤¬à¥à¤¦à¥à¤ à¤¸à¥ à¤¤à¥à¤°à¤à¤¤ à¤¬à¤¿à¤«à¤¼à¥à¤°-à¤à¤«à¤¼à¥à¤à¤° à¤®à¥à¤¸à¥à¤à¤¾à¤¨ à¤¦à¤¿à¤à¤¾à¤¤à¤¾ à¤¹à¥",f_3d:"à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨ à¤à¤¿à¤ à¤¦à¤¾à¤à¤¤ à¤®à¤¾à¤ªà¤¨à¥ à¤¯à¥à¤à¥à¤¯ à¤à¤° 3D à¤®à¥à¤¡à¤² à¤à¥ à¤°à¥à¤ª à¤®à¥à¤ à¤¨à¤¿à¤°à¥à¤®à¤¾à¤£ à¤¯à¥à¤à¥à¤¯",f_game:"à¤¸à¥à¤à¤¦à¤°à¥à¤¯ à¤¦à¤à¤¤ à¤à¤¿à¤à¤¿à¤¤à¥à¤¸à¤¾ à¤®à¥à¤ à¤à¤¸à¤²à¥ à¤à¥à¤®-à¤à¥à¤à¤à¤°",f_xray:"à¤à¤à¥à¤¸-à¤°à¥ à¤ªà¤¢à¤¼à¤¤à¤¾ à¤¹à¥ à¤à¤° à¤¸à¤µà¤¾à¤²-à¤à¤µà¤¾à¤¬ à¤¸à¥ à¤®à¥à¤à¤¿à¤ à¤¨à¤¿à¤¦à¤¾à¤¨ à¤®à¥à¤ à¤®à¤¦à¤¦ à¤à¤°à¤¤à¤¾ à¤¹à¥",f_voice:"à¤à¤µà¤¾à¤à¤¼ à¤¸à¥ à¤¨à¤¿à¤°à¥à¤¦à¥à¤¶à¤¿à¤¤ à¤¬à¤¿à¤«à¤¼à¥à¤°-à¤à¤«à¤¼à¥à¤à¤° à¤¸à¥à¤®à¤¾à¤à¤² à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨",f_screen32:"32 à¤à¤à¤ à¤µà¤¿à¤¶à¤¾à¤² à¤µà¤¿à¤à¥à¤à¤¾à¤ªà¤¨ à¤¸à¥à¤à¥à¤°à¥à¤¨",f_auto:"à¤à¥à¤¦-à¤¬-à¤à¥à¤¦ à¤à¤²à¤¤à¤¾ à¤¹à¥",f_fetch:"à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤¸à¥ à¤¸à¤¾à¤®à¤¾à¤¨ à¤²à¤¾à¤¤à¤¾ à¤¹à¥",f_accompany:"à¤®à¤°à¥à¤à¤¼à¥à¤ à¤à¥ à¤¸à¤¾à¤¥ à¤à¤²à¤¤à¤¾ à¤¹à¥",f_serve:"à¤à¤°à¥à¤¡à¤° à¤²à¥à¤¤à¤¾ à¤¹à¥ à¤à¤° à¤¸à¤°à¥à¤µ à¤à¤°à¤¤à¤¾ à¤¹à¥",f_portable:"à¤²à¥ à¤à¤¾à¤¨à¥ à¤®à¥à¤ à¤à¤¸à¤¾à¤¨",f_smallclinic:"à¤à¥à¤à¥ à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¥ à¤²à¤¿à¤ à¤à¤¦à¤°à¥à¤¶",f_fairs:"à¤®à¥à¤²à¥à¤ à¤à¤° à¤à¤¯à¥à¤à¤¨à¥à¤ à¤à¥ à¤²à¤¿à¤ à¤à¤ªà¤¯à¥à¤à¥à¤¤",f_largearea:"à¤¬à¤¡à¤¼à¥ à¤à¤à¤¹à¥à¤ à¤à¥ à¤²à¤¿à¤ à¤à¤ªà¤¯à¥à¤à¥à¤¤",f_light:"à¤à¤¤à¤¿à¤°à¤¿à¤à¥à¤¤ à¤ªà¥à¤°à¤à¤¾à¤¶ à¤à¥à¤·à¥à¤¤à¥à¤°",f_adprint:"à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¥ à¤à¤¨à¥à¤¸à¤¾à¤° à¤µà¤¿à¤à¥à¤à¤¾à¤ªà¤¨ à¤ªà¥à¤°à¤¿à¤à¤",f_pedclinic:"à¤¬à¤¾à¤² à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¥ à¤²à¤¿à¤ à¤à¤¦à¤°à¥à¤¶",f_kidsgames:"à¤¬à¤à¥à¤à¥à¤ à¤à¥ à¤à¥à¤² à¤à¥à¤¡à¤¼à¥ à¤à¤¾ à¤¸à¤à¤¤à¥ à¤¹à¥à¤",f_kidssim:"à¤¬à¤à¥à¤à¥à¤ à¤à¥ à¤à¤²à¤¾à¤ à¤à¤¾ à¤¸à¤¿à¤®à¥à¤²à¥à¤¶à¤¨",
+licTpl:"{n} à¤¸à¤¾à¤² à¤à¤¾ à¤¸à¥à¤«à¤¼à¥à¤à¤µà¥à¤¯à¤° à¤²à¤¾à¤à¤¸à¥à¤à¤¸",
+ovKicker:"à¤à¤¤à¥à¤ªà¤¾à¤¦ à¤¶à¥à¤°à¥à¤£à¥",ovTitle:"à¤à¤ à¤ªà¥à¤²à¥à¤à¤«à¤¼à¥à¤°à¥à¤®, à¤à¤ à¤°à¥à¤ª",ovSub:"à¤à¥à¤®à¥à¤ªà¥à¤à¥à¤ Deck à¤¸à¥ à¤²à¥à¤à¤° à¤¸à¥à¤µà¤¾à¤¯à¤¤à¥à¤¤ Humanoid à¤¤à¤ â à¤¹à¤° à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¥ à¤²à¤¿à¤ à¤à¤ Smilebotà¥¤",ovColModel:"à¤®à¥à¤¡à¤²",ovColBest:"à¤à¥ à¤²à¤¿à¤ à¤à¤ªà¤¯à¥à¤à¥à¤¤",ovColPrice:"à¤¸à¥ à¤¶à¥à¤°à¥",bestPlus:"à¤°à¥à¤à¥ à¤¸à¤à¤µà¤¾à¤¦ à¤à¤° 3D à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨",bestRobot:"à¤°à¥à¤à¤¼à¤¾à¤¨à¤¾ à¤¸à¥à¤®à¤¾à¤à¤² à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨",bestMove:"à¤¸à¥à¤µà¤¾ à¤à¤° à¤à¤¤à¤¿à¤¶à¥à¤²à¤¤à¤¾",bestHuman:"à¤¹à¥à¤¯à¥à¤®à¤¨à¥à¤à¤¡ à¤°à¤¿à¤¸à¥à¤ªà¥à¤¶à¤¨",bestDeck:"à¤à¥à¤à¥ à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤à¤° à¤à¤¯à¥à¤à¤¨",bestKiosk:"à¤¬à¤¡à¤¼à¥ à¤à¤à¤¹à¥à¤ à¤à¤° à¤®à¥à¤²à¥",bestPedi:"à¤¬à¤¾à¤² à¤à¥à¤²à¥à¤¨à¤¿à¤",
+ctaKicker:"à¤¶à¥à¤°à¥ à¤à¤°à¥à¤",ctaTitle:"à¤­à¤µà¤¿à¤·à¥à¤¯ à¤à¥ à¤à¤ªà¤¨à¥ à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤®à¥à¤ à¤²à¤¾à¤à¤",ctaSub:"à¤¹à¤®à¤¾à¤°à¥ à¤à¥à¤® à¤¸à¥ à¤¬à¤¾à¤¤ à¤à¤°à¥à¤ à¤à¤° à¤à¤ªà¤¨à¥ à¤²à¤¿à¤ à¤¸à¤¹à¥ Smilebot à¤à¥à¤¨à¥à¤à¥¤",ctaButton:"WhatsApp à¤ªà¤° à¤à¥à¤ à¤à¤°à¥à¤",footerTagline:"à¤¡à¤¿à¤à¤¿à¤à¤² à¤¦à¤à¤¤ à¤à¤¿à¤à¤¿à¤¤à¥à¤¸à¤¾ à¤à¤¾ à¤­à¤µà¤¿à¤·à¥à¤¯à¥¤",footerRights:"à¤¸à¤°à¥à¤µà¤¾à¤§à¤¿à¤à¤¾à¤° à¤¸à¥à¤°à¤à¥à¤·à¤¿à¤¤à¥¤",footerPatent:"à¤ªà¥à¤à¥à¤à¤à¥à¤¡ à¤¤à¤à¤¨à¥à¤à¥¤",footerContact:"à¤à¤°à¥à¤¡à¤° à¤à¤° à¤à¤¾à¤¨à¤à¤¾à¤°à¥"},
+fa:{download:"Ø¯Ø§ÙÙÙØ¯ PDF",preparing:"Ø¯Ø± Ø­Ø§Ù Ø¢ÙØ§Ø¯ÙâØ³Ø§Ø²Û PDFâ¦",order:"Ø³ÙØ§Ø±Ø´ Ù Ø§Ø·ÙØ§Ø¹Ø§Øª",vat:"+ ÙØ§ÙÛØ§Øª Ø¨Ø± Ø§Ø±Ø²Ø´ Ø§ÙØ²ÙØ¯Ù",viewPatent:"ÙØ´Ø§ÙØ¯Ù Ø«Ø¨Øª Ø§Ø®ØªØ±Ø§Ø¹",model:"ÙØ¯Ù",stationary:"Ø«Ø§Ø¨Øª",mobile:"ÙØªØ­Ø±Ú©",
+coverTag:"Ø¢ÛÙØ¯ÙâÛ Ø¯ÙØ¯Ø§ÙâÙ¾Ø²Ø´Ú©Û Ø¯ÛØ¬ÛØªØ§Ù",coverPillars:"ÙÙØ´ ÙØµÙÙØ¹Û Â· Ø±Ø¨Ø§ØªÛÚ© Â· Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯ Â· ØªØ¬Ø±Ø¨ÙâÛ Ø¨ÛÙØ§Ø±",coverStat1:"Ø¨ÛØ´ Ø§Ø² Û´Û²Û° Ø¯Ø³ØªÚ¯Ø§Ù ÙØµØ¨âØ´Ø¯Ù Ø¯Ø± Ø³Ø±Ø§Ø³Ø± Ø¬ÙØ§Ù",coverStat2:"Ø¨ÛØ´ Ø§Ø² Û±Û°Ù¬Û°Û°Û° ÙÙØ±Ø¯ Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯ Ø¨Ø§ ÙÙØ´ ÙØµÙÙØ¹Û",
+manTitle:"Ø¯ÙØ¯Ø§ÙâÙ¾Ø²Ø´Ú©Û Ø¯Ø± Ø­Ø§Ù ØªØºÛÛØ± Ø§Ø³Øª.",manBefore:"Ø¯ÛØ±ÙØ²",manB1:"Ø¹Ú©Ø³âÙØ§",manB2:"ÙØ§Ú©ØªâÙØ§",manB3:"ØªÙØ¶ÛØ­Ø§Øª Ø·ÙÙØ§ÙÛ",manToday:"Ø§ÙØ±ÙØ²",manT1:"ØªØ­ÙÛÙ Ø¨Ø§ ÙÙØ´ ÙØµÙÙØ¹Û",manT2:"ÙØ´Ø§ÙØ±ÙâÛ Ø±Ø¨Ø§ØªÛÚ©",manT3:"ØªØ¬Ø±Ø¨ÙâÛ Ø¯ÛØ¬ÛØªØ§Ù Ø¨ÛÙØ§Ø±",manMeet:"Ø¨Ø§ Smilebot Ø¢Ø´ÙØ§ Ø´ÙÛØ¯.",manBody:"Ø¨ÛÙØ§Ø±Ø§Ù ÙØ¨Ø®ÙØ¯Ø´Ø§Ù Ø±Ø§ ØªÙÙØ§ Ø¨Ø§ ØªÙØµÛÙ ØµÙØªÛ Ø·Ø±Ø§Ø­Û ÙÛâÚ©ÙÙØ¯. Ø§Ø² Ø·Ø±ÛÙ Ø§Ù¾ÙÛÚ©ÛØ´ÙØ Ú©ÙÛÙÛÚ©âÙØ§Û Smilebot Ø±Ø§ Ù¾ÛØ¯Ø§ ÙÛâÚ©ÙÙØ¯ Ù Ú©ÙÛÙÛÚ©âÙØ§ ÙØ¯ÙâÙØ§Û Ø³ÙâØ¨Ø¹Ø¯Û Ø¢ÙØ§Ø¯ÙâÛ ØªÙÙÛØ¯ Ø±Ø§ ÙØ³ØªÙÛÙØ§Ù Ø¨Ø±Ø§Û ØªÚ©ÙØ³ÛÙ ÙÛâÙØ±Ø³ØªÙØ¯. Ø³Ø§Ø¯ÙØ Ø³Ø±ÛØ¹ Ù Ø´ÙØ§Ù.",
+tracKicker:"Ø±Ø´Ø¯",tracTitle:"Ø§Ø¹Ø¯Ø§Ø¯ Ø®ÙØ¯Ø´Ø§Ù Ø³Ø®Ù ÙÛâÚ¯ÙÛÙØ¯",trMembers:"Ø¹Ø¶Ù",trSystems:"Ø³ÛØ³ØªÙ ÙØµØ¨âØ´Ø¯Ù",trCases:"ÙÙØ±Ø¯ ØªØ­ÙÛÙâØ´Ø¯Ù Ø¨Ø§ ÙÙØ´ ÙØµÙÙØ¹Û",trClinics:"Ú©ÙÛÙÛÚ© ÙØ¹Ø§Ù",trLangs:"Ø²Ø¨Ø§Ù Ù¾Ø´ØªÛØ¨Ø§ÙÛâØ´Ø¯Ù",trCont:"ÙØ§Ø±Ù",
+tagPlus:"ÙØ®Ø³ØªÛÙ Ø¯Ø³ØªÚ¯Ø§Ù Ø«Ø¨ØªâØ§Ø®ØªØ±Ø§Ø¹âØ´Ø¯ÙâÛ Ø¬ÙØ§Ù Ø¨Ø±Ø§Û ØªØ¹Ø§ÙÙ Ø²ÙØ¯Ù Ø¨Ø§ Ø¨ÛÙØ§Ø±",tagRobot:"Ø¯Ø³ØªÛØ§Ø± Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯ Ø¨Ø±Ø§Û ÙØ± Ú©ÙÛÙÛÚ©",tagMove:"Ø¯Ø³ØªÛØ§Ø±Û Ø®ÙØ¯Ú¯Ø±Ø¯Ø§Ù Ú©Ù Ø¯Ø± Ú©ÙÛÙÛÚ© Ø´ÙØ§ Ø­Ø±Ú©Øª ÙÛâÚ©ÙØ¯",tagHuman:"Ø­Ø¶ÙØ±Û Ø§ÙØ³Ø§ÙâÙÙØ§ Ø¨Ø±Ø§Û ÙØ·Ø¨ Ø´ÙØ§",tagDeck:"ÙØ¯Ø±ØªÛ ÙØ´Ø±Ø¯Ù Ú©Ù ÙÙÙâØ¬Ø§ Ø¨Ø§ Ø®ÙØ¯ ÙÛâØ¨Ø±ÛØ¯",tagKiosk:"Ø­Ø¶ÙØ±Û ÚØ´ÙÚ¯ÛØ± Ø¨Ø±Ø§Û ÙØ¶Ø§ÙØ§Û Ø¨Ø²Ø±Ú¯",tagPedi:"Ø³Ø§Ø®ØªÙâØ´Ø¯Ù Ø¨Ø±Ø§Û ÙØ¨Ø®ÙØ¯ÙØ§Û Ú©ÙÚÚ©",
+model13:"ÙÙØ§ÛØ´Ú¯Ø± Û±Û³ Ø§ÛÙÚÛ Â· Ø¯ÙØ±Ø¨ÛÙ Ø¨Ø§ ÙØ¶ÙØ­ Ø¨Ø§ÙØ§",model11:"ÙÙØ§ÛØ´Ú¯Ø± Û±Û± Ø§ÛÙÚÛ Â· Ø¯ÙØ±Ø¨ÛÙ Ø¨Ø§ ÙØ¶ÙØ­ Ø¨Ø§ÙØ§",modelCam:"Ø¯ÙØ±Ø¨ÛÙ Ø¨Ø§ ÙØ¶ÙØ­ Ø¨Ø§ÙØ§",
+f_words:"ÙØ¨Ø®ÙØ¯ ÙØ¨Ù Ù Ø¨Ø¹Ø¯ Ø±Ø§ Ø¨ÛâØ¯Ø±ÙÚ¯ Ø§Ø² ØªÙØµÛÙ Ø®ÙØ¯ Ø¨ÛÙØ§Ø± ÙØ´Ø§Ù ÙÛâØ¯ÙØ¯",f_3d:"Ø¯ÙØ¯Ø§ÙâÙØ§Û Ø·Ø±Ø§Ø­ÛâØ´Ø¯Ù ÙØ§Ø¨Ù Ø§ÙØ¯Ø§Ø²ÙâÚ¯ÛØ±Û Ù ØªÙÙÛØ¯ Ø¨ÙâØµÙØ±Øª ÙØ¯Ù Ø³ÙâØ¨Ø¹Ø¯Û ÙØ³ØªÙØ¯",f_game:"ÛÚ© ØªØ­ÙÙ ÙØ§ÙØ¹Û Ø¯Ø± Ø¯ÙØ¯Ø§ÙâÙ¾Ø²Ø´Ú©Û Ø²ÛØ¨Ø§ÛÛ",f_xray:"Ø±Ø§Ø¯ÛÙÚ¯Ø±Ø§ÙÛ Ø±Ø§ ÙÛâØ®ÙØ§ÙØ¯ Ù ØªØ´Ø®ÛØµ Ø¯ÙØ§ÙÛ Ø±Ø§ Ø¨Ø§ Ù¾Ø±Ø³Ø´âÙÙ¾Ø§Ø³Ø® Ù¾Ø´ØªÛØ¨Ø§ÙÛ ÙÛâÚ©ÙØ¯",f_voice:"Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯ ÙØ¨Ù Ù Ø¨Ø¹Ø¯ Ø¨Ø§ Ø±Ø§ÙÙÙØ§ÛÛ ØµÙØªÛ",f_screen32:"ÙÙØ§ÛØ´Ú¯Ø± ØªØ¨ÙÛØºØ§ØªÛ ØºÙÙâÙ¾ÛÚ©Ø± Û³Û² Ø§ÛÙÚÛ",f_auto:"Ø¨ÙâØµÙØ±Øª Ø®ÙØ¯Ú©Ø§Ø± Ø­Ø±Ú©Øª ÙÛâÚ©ÙØ¯",f_fetch:"Ø§Ø² Ú©ÙÛÙÛÚ© ÙØ³Ø§ÛÙ ÙÛâØ¢ÙØ±Ø¯",f_accompany:"Ø¨ÛÙØ§Ø±Ø§Ù Ø±Ø§ ÙÙØ±Ø§ÙÛ ÙÛâÚ©ÙØ¯",f_serve:"Ø³ÙØ§Ø±Ø´ ÙÛâÚ¯ÛØ±Ø¯ Ù Ø³Ø±Ù ÙÛâÚ©ÙØ¯",f_portable:"Ø­ÙÙ Ø¢Ø³Ø§Ù",f_smallclinic:"Ø§ÛØ¯ÙâØ¢Ù Ø¨Ø±Ø§Û Ú©ÙÛÙÛÚ©âÙØ§Û Ú©ÙÚÚ©",f_fairs:"ÙÙØ§Ø³Ø¨ ÙÙØ§ÛØ´Ú¯Ø§ÙâÙØ§ Ù Ø±ÙÛØ¯Ø§Ø¯ÙØ§",f_largearea:"ÙÙØ§Ø³Ø¨ ÙØ¶Ø§ÙØ§Û Ø¨Ø²Ø±Ú¯",f_light:"ÙÙØ§Ø­Û ÙÙØ±Ù¾Ø±Ø¯Ø§Ø²Û Ø§Ø¶Ø§ÙÛ",f_adprint:"ÚØ§Ù¾ ØªØ¨ÙÛØºØ§ØªÛ Ø§Ø®ØªØµØ§ØµÛ Ú©ÙÛÙÛÚ©",f_pedclinic:"Ø§ÛØ¯ÙâØ¢Ù Ø¨Ø±Ø§Û Ú©ÙÛÙÛÚ©âÙØ§Û Ú©ÙØ¯Ú©Ø§Ù",f_kidsgames:"Ø§ÙÚ©Ø§Ù Ø§ÙØ²ÙØ¯Ù Ø¨Ø§Ø²ÛâÙØ§Û Ú©ÙØ¯Ú©Ø§Ù",f_kidssim:"Ø´Ø¨ÛÙâØ³Ø§Ø²Û Ø¯Ø±ÙØ§Ù Ø¨Ø±Ø§Û Ú©ÙØ¯Ú©Ø§Ù",
+licTpl:"ÙØ¬ÙØ² ÙØ±ÙâØ§ÙØ²Ø§Ø±Û {n} Ø³Ø§ÙÙ",
+ovKicker:"ÙØ¬ÙÙØ¹Ù ÙØ­ØµÙÙØ§Øª",ovTitle:"ÛÚ© Ù¾ÙØªÙØ±ÙØ Ø´Ú©ÙâÙØ§Û Ú¯ÙÙØ§Ú¯ÙÙ",ovSub:"Ø§Ø² Deck ÙØ´Ø±Ø¯Ù ØªØ§ Humanoid Ø®ÙØ¯Ú¯Ø±Ø¯Ø§Ù â Ø¨Ø±Ø§Û ÙØ± Ú©ÙÛÙÛÚ© ÛÚ© Smilebot ÙØ³Øª.",ovColModel:"ÙØ¯Ù",ovColBest:"ÙÙØ§Ø³Ø¨ Ø¨Ø±Ø§Û",ovColPrice:"Ø§Ø²",bestPlus:"ØªØ¹Ø§ÙÙ Ø¨Ø§ Ø¨ÛÙØ§Ø± Ù Ø·Ø±Ø§Ø­Û Ø³ÙâØ¨Ø¹Ø¯Û",bestRobot:"Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯ Ø±ÙØ²ÙØ±Ù",bestMove:"Ø®Ø¯ÙØ§Øª Ù Ø¬Ø§Ø¨ÙâØ¬Ø§ÛÛ",bestHuman:"Ù¾Ø°ÛØ±Ø´ Ø§ÙØ³Ø§ÙâÙÙØ§",bestDeck:"Ú©ÙÛÙÛÚ©âÙØ§Û Ú©ÙÚÚ© Ù Ø±ÙÛØ¯Ø§Ø¯ÙØ§",bestKiosk:"ÙØ¶Ø§ÙØ§Û Ø¨Ø²Ø±Ú¯ Ù ÙÙØ§ÛØ´Ú¯Ø§ÙâÙØ§",bestPedi:"Ú©ÙÛÙÛÚ©âÙØ§Û Ú©ÙØ¯Ú©Ø§Ù",
+ctaKicker:"Ø´Ø±ÙØ¹ Ú©ÙÛØ¯",ctaTitle:"Ø¢ÛÙØ¯Ù Ø±Ø§ Ø¨Ù Ú©ÙÛÙÛÚ© Ø®ÙØ¯ Ø¨ÛØ§ÙØ±ÛØ¯",ctaSub:"Ø¨Ø§ ØªÛÙ ÙØ§ Ú¯ÙØªÚ¯Ù Ú©ÙÛØ¯ Ù ÙÙØ§Ø³Ø¨âØªØ±ÛÙ Smilebot Ø±Ø§ Ø¨ÛØ§Ø¨ÛØ¯.",ctaButton:"Ú¯ÙØªÚ¯Ù Ø¯Ø± ÙØ§ØªØ³Ø§Ù¾",footerTagline:"Ø¢ÛÙØ¯ÙâÛ Ø¯ÙØ¯Ø§ÙâÙ¾Ø²Ø´Ú©Û Ø¯ÛØ¬ÛØªØ§Ù.",footerRights:"ÙÙÙâÛ Ø­ÙÙÙ ÙØ­ÙÙØ¸ Ø§Ø³Øª.",footerPatent:"ÙÙØ§ÙØ±Û Ø«Ø¨ØªâØ§Ø®ØªØ±Ø§Ø¹âØ´Ø¯Ù.",footerContact:"Ø³ÙØ§Ø±Ø´ Ù Ø§Ø·ÙØ§Ø¹Ø§Øª"},
+nl:{download:"PDF downloaden",preparing:"PDF wordt voorbereidâ¦",order:"Bestellen & info",vat:"+ btw",viewPatent:"Bekijk octrooi",model:"Model",stationary:"Vast",mobile:"Mobiel",
+coverTag:"De toekomst van digitale tandheelkunde",coverPillars:"AI Â· Robotica Â· Smile-design Â· PatiÃ«ntbeleving",coverStat1:"420+ apparaten wereldwijd geÃ¯nstalleerd",coverStat2:"10.000+ AI-smile-designcases gegenereerd",
+manTitle:"Tandheelkunde verandert.",manBefore:"Vroeger",manB1:"Foto's",manB2:"Mock-ups",manB3:"Lange uitleg",manToday:"Vandaag",manT1:"AI-analyse",manT2:"Robotconsultatie",manT3:"Digitale patiÃ«ntbeleving",manMeet:"Maak kennis met Smilebot.",manBody:"PatiÃ«nten ontwerpen hun glimlach door die simpelweg hardop te beschrijven. Via de app vinden ze Smilebot-klinieken, en klinieken sturen productieklare 3D-modellen rechtstreeks naar de technicus. Eenvoudig, snel en helder.",
+tracKicker:"Groei",tracTitle:"De cijfers spreken voor zich",trMembers:"Leden",trSystems:"GeÃ¯nstalleerde systemen",trCases:"AI-geanalyseerde cases",trClinics:"Actieve klinieken",trLangs:"Ondersteunde talen",trCont:"Continenten",
+tagPlus:"Het eerste gepatenteerde apparaat ter wereld voor live patiÃ«ntinteractie",tagRobot:"De smile-design-assistent voor elke kliniek",tagMove:"Een autonome assistent die door je kliniek beweegt",tagHuman:"Een humanoÃ¯de aanwezigheid voor je praktijk",tagDeck:"Compacte kracht die je overal meeneemt",tagKiosk:"Een opvallende aanwezigheid voor grote ruimtes",tagPedi:"Gemaakt voor kleine glimlachjes",
+model13:"13-inch scherm Â· hogeresolutiecamera",model11:"11-inch scherm Â· hogeresolutiecamera",modelCam:"Hogeresolutiecamera",
+f_words:"Toont direct de voor- en na-glimlach uit de woorden van de patiÃ«nt",f_3d:"Ontworpen tanden zijn meetbaar en produceerbaar als 3D-modellen",f_game:"Een echte gamechanger in de esthetische tandheelkunde",f_xray:"Leest rÃ¶ntgenfoto's en ondersteunt orale diagnose via vraag en antwoord",f_voice:"Spraakgestuurd voor- en na-smile-design",f_screen32:"32-inch reusachtig reclamescherm",f_auto:"Beweegt zelfstandig",f_fetch:"Haalt materialen uit de kliniek",f_accompany:"Begeleidt patiÃ«nten",f_serve:"Neemt bestellingen op en serveert",f_portable:"Eenvoudig te vervoeren",f_smallclinic:"Ideaal voor kleine klinieken",f_fairs:"Perfect voor beurzen en evenementen",f_largearea:"Geschikt voor grote ruimtes",f_light:"Extra verlichtingszones",f_adprint:"Aangepaste reclameprint van de kliniek",f_pedclinic:"Ideaal voor kinderklinieken",f_kidsgames:"Kinderspellen kunnen worden toegevoegd",f_kidssim:"Simuleert behandelingen voor kinderen",
+licTpl:"Softwarelicentie van {n} jaar",
+ovKicker:"De reeks",ovTitle:"EÃ©n platform, vele vormen",ovSub:"Van de compacte Deck tot de autonome Humanoid â voor elke kliniek een Smilebot.",ovColModel:"Model",ovColBest:"Ideaal voor",ovColPrice:"Vanaf",bestPlus:"PatiÃ«ntinteractie & 3D-design",bestRobot:"Dagelijks smile-design",bestMove:"Service & mobiliteit",bestHuman:"HumanoÃ¯de receptie",bestDeck:"Kleine klinieken & evenementen",bestKiosk:"Grote ruimtes & beurzen",bestPedi:"Kinderklinieken",
+ctaKicker:"Aan de slag",ctaTitle:"Breng de toekomst naar je kliniek",ctaSub:"Praat met ons team en vind de Smilebot die het best bij je past.",ctaButton:"Chat via WhatsApp",footerTagline:"De toekomst van digitale tandheelkunde.",footerRights:"Alle rechten voorbehouden.",footerPatent:"Gepatenteerde technologie.",footerContact:"Bestellen & info"},
+bg:{download:"ÐÐ·ÑÐµÐ³Ð»Ð¸ PDF",preparing:"ÐÐ¾Ð´Ð³Ð¾ÑÐ²ÑÐ¼Ðµ Ð²Ð°ÑÐ¸Ñ PDFâ¦",order:"ÐÐ¾ÑÑÑÐºÐ° Ð¸ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ",vat:"+ ÐÐÐ¡",viewPatent:"ÐÐ¸Ð¶ Ð¿Ð°ÑÐµÐ½ÑÐ°",model:"ÐÐ¾Ð´ÐµÐ»",stationary:"Ð¡ÑÐ°ÑÐ¸Ð¾Ð½Ð°ÑÐµÐ½",mobile:"ÐÐ¾Ð±Ð¸Ð»ÐµÐ½",
+coverTag:"ÐÑÐ´ÐµÑÐµÑÐ¾ Ð½Ð° Ð´Ð¸Ð³Ð¸ÑÐ°Ð»Ð½Ð°ÑÐ° Ð´ÐµÐ½ÑÐ°Ð»Ð½Ð° Ð¼ÐµÐ´Ð¸ÑÐ¸Ð½Ð°",coverPillars:"ÐÐ Â· Ð Ð¾Ð±Ð¾ÑÐ¸ÐºÐ° Â· ÐÐ¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ°ÑÐ° Â· ÐÑÐµÐ¶Ð¸Ð²ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ°",coverStat1:"ÐÐ°Ð´ 420 Ð¸Ð½ÑÑÐ°Ð»Ð¸ÑÐ°Ð½Ð¸ ÑÑÑÑÐ¾Ð¹ÑÑÐ²Ð° Ð¿Ð¾ ÑÐ²ÐµÑÐ°",coverStat2:"ÐÐ°Ð´ 10 000 Ð³ÐµÐ½ÐµÑÐ¸ÑÐ°Ð½Ð¸ AI ÑÐ»ÑÑÐ°Ñ Ð·Ð° Ð´Ð¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ°",
+manTitle:"ÐÐµÐ½ÑÐ°Ð»Ð½Ð°ÑÐ° Ð¼ÐµÐ´Ð¸ÑÐ¸Ð½Ð° ÑÐµ Ð¿ÑÐ¾Ð¼ÐµÐ½Ñ.",manBefore:"ÐÑÐµÑÐ°",manB1:"Ð¡Ð½Ð¸Ð¼ÐºÐ¸",manB2:"ÐÐ°ÐºÐµÑÐ¸",manB3:"ÐÑÐ»Ð³Ð¸ Ð¾Ð±ÑÑÐ½ÐµÐ½Ð¸Ñ",manToday:"ÐÐ½ÐµÑ",manT1:"AI Ð°Ð½Ð°Ð»Ð¸Ð·",manT2:"Ð Ð¾Ð±Ð¾ÑÐ¸Ð·Ð¸ÑÐ°Ð½Ð° ÐºÐ¾Ð½ÑÑÐ»ÑÐ°ÑÐ¸Ñ",manT3:"ÐÐ¸Ð³Ð¸ÑÐ°Ð»Ð½Ð¾ Ð¿ÑÐµÐ¶Ð¸Ð²ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ°",manMeet:"ÐÐ°Ð¿Ð¾Ð·Ð½Ð°Ð¹ÑÐµ ÑÐµ ÑÑÑ Smilebot.",manBody:"ÐÐ°ÑÐ¸ÐµÐ½ÑÐ¸ÑÐµ Ð¿ÑÐ¾ÐµÐºÑÐ¸ÑÐ°Ñ ÑÑÐ¼Ð¸Ð²ÐºÐ°ÑÐ° ÑÐ¸ ÑÐ°Ð¼Ð¾ ÐºÐ°ÑÐ¾ Ñ Ð¾Ð¿Ð¸ÑÐ°Ñ Ð½Ð° Ð³Ð»Ð°Ñ. Ð§ÑÐµÐ· Ð¿ÑÐ¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑÐ¾ Ð½Ð°Ð¼Ð¸ÑÐ°Ñ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸ Smilebot, Ð° ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸ÑÐµ Ð¸Ð·Ð¿ÑÐ°ÑÐ°Ñ Ð³Ð¾ÑÐ¾Ð²Ð¸ Ð·Ð° Ð¿ÑÐ¾Ð¸Ð·Ð²Ð¾Ð´ÑÑÐ²Ð¾ 3D Ð¼Ð¾Ð´ÐµÐ»Ð¸ Ð´Ð¸ÑÐµÐºÑÐ½Ð¾ Ð½Ð° Ð·ÑÐ±Ð¾ÑÐµÑÐ½Ð¸ÐºÐ°. ÐÑÐ¾ÑÑÐ¾, Ð±ÑÑÐ·Ð¾ Ð¸ ÑÑÐ½Ð¾.",
+tracKicker:"Ð Ð°ÑÑÐµÐ¶",tracTitle:"Ð§Ð¸ÑÐ»Ð°ÑÐ° Ð³Ð¾Ð²Ð¾ÑÑÑ ÑÐ°Ð¼Ð¸ Ð·Ð° ÑÐµÐ±Ðµ ÑÐ¸",trMembers:"Ð§Ð»ÐµÐ½Ð¾Ð²Ðµ",trSystems:"ÐÐ½ÑÑÐ°Ð»Ð¸ÑÐ°Ð½Ð¸ ÑÐ¸ÑÑÐµÐ¼Ð¸",trCases:"Ð¡Ð»ÑÑÐ°Ð¸, Ð°Ð½Ð°Ð»Ð¸Ð·Ð¸ÑÐ°Ð½Ð¸ Ñ AI",trClinics:"ÐÐºÑÐ¸Ð²Ð½Ð¸ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸",trLangs:"ÐÐ¾Ð´Ð´ÑÑÐ¶Ð°Ð½Ð¸ ÐµÐ·Ð¸ÑÐ¸",trCont:"ÐÐ¾Ð½ÑÐ¸Ð½ÐµÐ½ÑÐ¸",
+tagPlus:"ÐÑÑÐ²Ð¾ÑÐ¾ Ð¿Ð°ÑÐµÐ½ÑÐ¾Ð²Ð°Ð½Ð¾ ÑÑÑÑÐ¾Ð¹ÑÑÐ²Ð¾ Ð² ÑÐ²ÐµÑÐ° Ð·Ð° Ð¿ÑÑÐºÐ¾ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑÐ²Ð¸Ðµ Ñ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ°",tagRobot:"ÐÑÐ¸ÑÑÐµÐ½ÑÑÑ Ð·Ð° Ð´Ð¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ° Ð·Ð° Ð²ÑÑÐºÐ° ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°",tagMove:"ÐÐ²ÑÐ¾Ð½Ð¾Ð¼ÐµÐ½ Ð°ÑÐ¸ÑÑÐµÐ½Ñ, ÐºÐ¾Ð¹ÑÐ¾ ÑÐµ Ð´Ð²Ð¸Ð¶Ð¸ Ð¸Ð· ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°ÑÐ° Ð²Ð¸",tagHuman:"Ð¥ÑÐ¼Ð°Ð½Ð¾Ð¸Ð´Ð½Ð¾ Ð¿ÑÐ¸ÑÑÑÑÐ²Ð¸Ðµ Ð·Ð° Ð²Ð°ÑÐ°ÑÐ° Ð¿ÑÐ°ÐºÑÐ¸ÐºÐ°",tagDeck:"ÐÐ¾Ð¼Ð¿Ð°ÐºÑÐ½Ð° Ð¼Ð¾Ñ, ÐºÐ¾ÑÑÐ¾ Ð½Ð¾ÑÐ¸ÑÐµ Ð½Ð°Ð²ÑÑÐºÑÐ´Ðµ",tagKiosk:"ÐÐ°Ð±ÐµÐ»ÐµÐ¶Ð¸Ð¼Ð¾ Ð¿ÑÐ¸ÑÑÑÑÐ²Ð¸Ðµ Ð·Ð° Ð³Ð¾Ð»ÐµÐ¼Ð¸ Ð¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÐ²Ð°",tagPedi:"Ð¡ÑÐ·Ð´Ð°Ð´ÐµÐ½ Ð·Ð° Ð¼Ð°Ð»ÐºÐ¸ÑÐµ ÑÑÐ¼Ð¸Ð²ÐºÐ¸",
+model13:"13-Ð¸Ð½ÑÐ¾Ð² ÐµÐºÑÐ°Ð½ Â· ÐºÐ°Ð¼ÐµÑÐ° Ñ Ð²Ð¸ÑÐ¾ÐºÐ° ÑÐµÐ·Ð¾Ð»ÑÑÐ¸Ñ",model11:"11-Ð¸Ð½ÑÐ¾Ð² ÐµÐºÑÐ°Ð½ Â· ÐºÐ°Ð¼ÐµÑÐ° Ñ Ð²Ð¸ÑÐ¾ÐºÐ° ÑÐµÐ·Ð¾Ð»ÑÑÐ¸Ñ",modelCam:"ÐÐ°Ð¼ÐµÑÐ° Ñ Ð²Ð¸ÑÐ¾ÐºÐ° ÑÐµÐ·Ð¾Ð»ÑÑÐ¸Ñ",
+f_words:"ÐÐ¾ÐºÐ°Ð·Ð²Ð° Ð¼Ð¸Ð³Ð½Ð¾Ð²ÐµÐ½Ð¾ ÑÑÐ¼Ð¸Ð²ÐºÐ° Ð¿ÑÐµÐ´Ð¸ Ð¸ ÑÐ»ÐµÐ´ Ð¿Ð¾ Ð´ÑÐ¼Ð¸ÑÐµ Ð½Ð° ÑÐ°Ð¼Ð¸Ñ Ð¿Ð°ÑÐ¸ÐµÐ½Ñ",f_3d:"ÐÑÐ¾ÐµÐºÑÐ¸ÑÐ°Ð½Ð¸ÑÐµ Ð·ÑÐ±Ð¸ ÑÐ° Ð¸Ð·Ð¼ÐµÑÐ¸Ð¼Ð¸ Ð¸ Ð¿ÑÐ¾Ð¸Ð·Ð²ÐµÐ´Ð¸Ð¼Ð¸ ÐºÐ°ÑÐ¾ 3D Ð¼Ð¾Ð´ÐµÐ»Ð¸",f_game:"ÐÑÑÐ¸Ð½ÑÐºÐ¸ Ð¾Ð±ÑÐ°Ñ Ð² ÐµÑÑÐµÑÐ¸ÑÐ½Ð°ÑÐ° Ð´ÐµÐ½ÑÐ°Ð»Ð½Ð° Ð¼ÐµÐ´Ð¸ÑÐ¸Ð½Ð°",f_xray:"Ð Ð°Ð·ÑÐ¸ÑÐ° ÑÐµÐ½ÑÐ³ÐµÐ½Ð¾Ð²Ð¸ ÑÐ½Ð¸Ð¼ÐºÐ¸ Ð¸ Ð¿Ð¾Ð´Ð¿Ð¾Ð¼Ð°Ð³Ð° Ð¾ÑÐ°Ð»Ð½Ð°ÑÐ° Ð´Ð¸Ð°Ð³Ð½Ð¾ÑÑÐ¸ÐºÐ° ÑÑÐµÐ· Ð²ÑÐ¿ÑÐ¾ÑÐ¸ Ð¸ Ð¾ÑÐ³Ð¾Ð²Ð¾ÑÐ¸",f_voice:"ÐÐ»Ð°ÑÐ¾Ð²Ð¾ Ð½Ð°Ð¿ÑÐ°Ð²Ð»ÑÐ²Ð°Ð½ Ð´Ð¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ° Ð¿ÑÐµÐ´Ð¸ Ð¸ ÑÐ»ÐµÐ´",f_screen32:"32-Ð¸Ð½ÑÐ¾Ð² Ð³Ð¸Ð³Ð°Ð½ÑÑÐºÐ¸ ÑÐµÐºÐ»Ð°Ð¼ÐµÐ½ ÐµÐºÑÐ°Ð½",f_auto:"ÐÐ²Ð¸Ð¶Ð¸ ÑÐµ ÑÐ°Ð¼Ð¾ÑÑÐ¾ÑÑÐµÐ»Ð½Ð¾",f_fetch:"ÐÐ¾Ð½Ð°ÑÑ ÐºÐ¾Ð½ÑÑÐ¼Ð°ÑÐ¸Ð²Ð¸ Ð¾Ñ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°ÑÐ°",f_accompany:"ÐÑÐ¸Ð´ÑÑÐ¶Ð°Ð²Ð° Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ¸ÑÐµ",f_serve:"ÐÑÐ¸ÐµÐ¼Ð° Ð¿Ð¾ÑÑÑÐºÐ¸ Ð¸ ÑÐµÑÐ²Ð¸ÑÐ°",f_portable:"ÐÐµÑÐµÐ½ Ð·Ð° Ð¿ÑÐµÐ½Ð°ÑÑÐ½Ðµ",f_smallclinic:"ÐÐ´ÐµÐ°Ð»ÐµÐ½ Ð·Ð° Ð¼Ð°Ð»ÐºÐ¸ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸",f_fairs:"ÐÐ¾Ð´ÑÐ¾Ð´ÑÑ Ð·Ð° Ð¸Ð·Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð¸ ÑÑÐ±Ð¸ÑÐ¸Ñ",f_largearea:"ÐÐ¾Ð´ÑÐ¾Ð´ÑÑ Ð·Ð° Ð³Ð¾Ð»ÐµÐ¼Ð¸ Ð¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÐ²Ð°",f_light:"ÐÐ¾Ð¿ÑÐ»Ð½Ð¸ÑÐµÐ»Ð½Ð¸ Ð¾ÑÐ²ÐµÑÐ¸ÑÐµÐ»Ð½Ð¸ Ð·Ð¾Ð½Ð¸",f_adprint:"ÐÐµÑÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸ÑÐ°Ð½ ÑÐµÐºÐ»Ð°Ð¼ÐµÐ½ Ð¿ÐµÑÐ°Ñ Ð·Ð° ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°ÑÐ°",f_pedclinic:"ÐÐ´ÐµÐ°Ð»ÐµÐ½ Ð·Ð° Ð´ÐµÑÑÐºÐ¸ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸",f_kidsgames:"ÐÐ¾Ð³Ð°Ñ Ð´Ð° ÑÐµ Ð´Ð¾Ð±Ð°Ð²ÑÑ Ð´ÐµÑÑÐºÐ¸ Ð¸Ð³ÑÐ¸",f_kidssim:"Ð¡Ð¸Ð¼ÑÐ»Ð¸ÑÐ° Ð»ÐµÑÐµÐ½Ð¸Ñ Ð·Ð° Ð´ÐµÑÐ°",
+licTpl:"{n}-Ð³Ð¾Ð´Ð¸ÑÐµÐ½ ÑÐ¾ÑÑÑÐµÑÐµÐ½ Ð»Ð¸ÑÐµÐ½Ð·",
+ovKicker:"ÐÐ°Ð¼Ð°ÑÐ°",ovTitle:"ÐÐ´Ð½Ð° Ð¿Ð»Ð°ÑÑÐ¾ÑÐ¼Ð°, Ð¼Ð½Ð¾Ð³Ð¾ ÑÐ¾ÑÐ¼Ð¸",ovSub:"ÐÑ ÐºÐ¾Ð¼Ð¿Ð°ÐºÑÐ½Ð¸Ñ Deck Ð´Ð¾ Ð°Ð²ÑÐ¾Ð½Ð¾Ð¼Ð½Ð¸Ñ Humanoid â Ð¸Ð¼Ð° Smilebot Ð·Ð° Ð²ÑÑÐºÐ° ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°.",ovColModel:"ÐÐ¾Ð´ÐµÐ»",ovColBest:"ÐÐ°Ð¹-Ð¿Ð¾Ð´ÑÐ¾Ð´ÑÑ Ð·Ð°",ovColPrice:"ÐÑ",bestPlus:"ÐÐ·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑÐ²Ð¸Ðµ Ñ Ð¿Ð°ÑÐ¸ÐµÐ½ÑÐ° Ð¸ 3D Ð´Ð¸Ð·Ð°Ð¹Ð½",bestRobot:"ÐÐ¶ÐµÐ´Ð½ÐµÐ²ÐµÐ½ Ð´Ð¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ°",bestMove:"ÐÐ±ÑÐ»ÑÐ¶Ð²Ð°Ð½Ðµ Ð¸ Ð¼Ð¾Ð±Ð¸Ð»Ð½Ð¾ÑÑ",bestHuman:"Ð¥ÑÐ¼Ð°Ð½Ð¾Ð¸Ð´Ð½Ð° ÑÐµÑÐµÐ¿ÑÐ¸Ñ",bestDeck:"ÐÐ°Ð»ÐºÐ¸ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸ Ð¸ ÑÑÐ±Ð¸ÑÐ¸Ñ",bestKiosk:"ÐÐ¾Ð»ÐµÐ¼Ð¸ Ð¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÐ²Ð° Ð¸ Ð¸Ð·Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ",bestPedi:"ÐÐµÑÑÐºÐ¸ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸",
+ctaKicker:"ÐÐ°Ð¿Ð¾ÑÐ½ÐµÑÐµ",ctaTitle:"ÐÐ½ÐµÑÐµÑÐµ Ð±ÑÐ´ÐµÑÐµÑÐ¾ Ð²ÑÐ² Ð²Ð°ÑÐ°ÑÐ° ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°",ctaSub:"ÐÐ¾Ð²Ð¾ÑÐµÑÐµ Ñ Ð½Ð°ÑÐ¸Ñ ÐµÐºÐ¸Ð¿ Ð¸ Ð¾ÑÐºÑÐ¸Ð¹ÑÐµ Ð½Ð°Ð¹-Ð¿Ð¾Ð´ÑÐ¾Ð´ÑÑÐ¸Ñ Ð·Ð° Ð²Ð°Ñ Smilebot.",ctaButton:"ÐÐ¸ÑÐµÑÐµ Ð² WhatsApp",footerTagline:"ÐÑÐ´ÐµÑÐµÑÐ¾ Ð½Ð° Ð´Ð¸Ð³Ð¸ÑÐ°Ð»Ð½Ð°ÑÐ° Ð´ÐµÐ½ÑÐ°Ð»Ð½Ð° Ð¼ÐµÐ´Ð¸ÑÐ¸Ð½Ð°.",footerRights:"ÐÑÐ¸ÑÐºÐ¸ Ð¿ÑÐ°Ð²Ð° Ð·Ð°Ð¿Ð°Ð·ÐµÐ½Ð¸.",footerPatent:"ÐÐ°ÑÐµÐ½ÑÐ¾Ð²Ð°Ð½Ð° ÑÐµÑÐ½Ð¾Ð»Ð¾Ð³Ð¸Ñ.",footerContact:"ÐÐ¾ÑÑÑÐºÐ° Ð¸ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ"}
+};
+</script>
+<script>
+var EXTRA={
+en:{subsKicker:"Software & app",subsTitle:"Smilebot software licensing",subsSub:"Flexible plans â from a single case to a fully autonomous clinic.",subPerCase:"one-time",subPerYear:"per year",
+subOne:"Single-case licence",subYear:"Smilebot licence",subAI:"Smilebot AI licence",subAuto:"Smilebot Autopilot licence",
+so1:"Beforeâafter presentation for one case",so2:"3D STL model data",so3:"Exocad matching training (video course)",
+sy1:"Beforeâafter smile design",sy2:"AI facial analysis & tooth-model selection",sy3:"Unlimited cases",sy4:"Unlimited access to the 3D model library",
+sa1:"AI voice analysis & smile design",sa2:"AI custom drawings & ultra-realistic results",sa3:"Automatic 3D model detection & STL download",sa4:"Treatment-specific results â e.g. veneer vs zirconia differences",
+sx1:"Automated DSD smile-design workflow",sx2:"Treatment detection & automatic drawings",sx3:"Simulations matched to the drawings",sx4:"Pick & download the 3D STL matched to the simulation",sx5:"Fast mockup with the 3D CAD module",sx6:"AI X-ray reading & diagnosis support",sx7:"Robot Dentist module access",sx8:"Robot Clinic licence in the Smilebot App",
+f_autopilot:"Fully autonomous, hands-free operation"},
+tr:{subsKicker:"YazÄ±lÄ±m & uygulama",subsTitle:"Smilebot yazÄ±lÄ±m lisanslarÄ±",subsSub:"Esnek planlar â tek vakadan tamamen otonom kliniÄe.",subPerCase:"tek seferlik",subPerYear:"yÄ±llÄ±k",
+subOne:"Tek Vaka LisansÄ±",subYear:"Smilebot LisansÄ±",subAI:"Smilebot AI LisansÄ±",subAuto:"Smilebot Autopilot LisansÄ±",
+so1:"Tek vaka iÃ§in Ã¶ncesiâsonrasÄ± sunum",so2:"3D STL model datasÄ±",so3:"Exocad eÅleÅtirme eÄitimi (video eÄitim)",
+sy1:"ÃncesiâsonrasÄ± gÃ¼lÃ¼Å tasarÄ±mÄ±",sy2:"AI ile yÃ¼z analizi ve diÅ modeli seÃ§me",sy3:"SÄ±nÄ±rsÄ±z vaka",sy4:"3D model kÃ¼tÃ¼phanesine sÄ±nÄ±rsÄ±z eriÅim",
+sa1:"AI ile sesli analiz ve gÃ¼lÃ¼Å tasarÄ±mÄ±",sa2:"AI ile custom Ã§izimler ve ultra gerÃ§ekÃ§i sonuÃ§",sa3:"Otomatik 3D model belirleme ve STL indirme",sa4:"DiÅ tedavilerine Ã¶zel sonuÃ§lar â lamina, zirkon gibi farklarÄ± gÃ¶sterme",
+sx1:"Otomatik gÃ¼lÃ¼Å tasarÄ±mÄ± DSD iÅ akÄ±ÅÄ±",sx2:"Tedavi belirleme ve otomatik Ã§izimler",sx3:"Ãizimlere uygun simÃ¼lasyonlar",sx4:"SimÃ¼lasyona uygun 3D model STL seÃ§me ve indirme",sx5:"3D CAD modÃ¼lÃ¼ ile hÄ±zlÄ± mockup uygulama",sx6:"AI ile rÃ¶ntgen okuma ve diagnoz desteÄi",sx7:"Robot DiÅhekimi modÃ¼lÃ¼ kullanÄ±mÄ±",sx8:"Smilebot App Ã¼zerinde Robot Klinik lisansÄ±",
+f_autopilot:"Tamamen otonom, eller serbest Ã§alÄ±Åma"},
+ar:{subsKicker:"Ø§ÙØ¨Ø±ÙØ§ÙØ¬ ÙØ§ÙØªØ·Ø¨ÙÙ",subsTitle:"ØªØ±Ø§Ø®ÙØµ Ø¨Ø±ÙØ§ÙØ¬ Smilebot",subsSub:"Ø®Ø·Ø· ÙØ±ÙØ© â ÙÙ Ø­Ø§ÙØ© ÙØ§Ø­Ø¯Ø© Ø¥ÙÙ Ø¹ÙØ§Ø¯Ø© Ø°Ø§ØªÙØ© Ø§ÙÙÙØ§Ø¯Ø© Ø¨Ø§ÙÙØ§ÙÙ.",subPerCase:"Ø¯ÙØ¹Ø© ÙØ§Ø­Ø¯Ø©",subPerYear:"Ø³ÙÙÙÙØ§",
+subOne:"ØªØ±Ø®ÙØµ Ø­Ø§ÙØ© ÙØ§Ø­Ø¯Ø©",subYear:"ØªØ±Ø®ÙØµ Smilebot",subAI:"ØªØ±Ø®ÙØµ Smilebot AI",subAuto:"ØªØ±Ø®ÙØµ Smilebot Autopilot",
+so1:"Ø¹Ø±Ø¶ ÙØ¨Ù ÙØ¨Ø¹Ø¯ ÙØ­Ø§ÙØ© ÙØ§Ø­Ø¯Ø©",so2:"Ø¨ÙØ§ÙØ§Øª ÙÙÙØ°Ø¬ STL Ø«ÙØ§Ø«Ù Ø§ÙØ£Ø¨Ø¹Ø§Ø¯",so3:"ØªØ¯Ø±ÙØ¨ Ø§ÙÙØ·Ø§Ø¨ÙØ© Ø¹ÙÙ Exocad (Ø¯ÙØ±Ø© ÙÙØ¯ÙÙ)",
+sy1:"ØªØµÙÙÙ Ø§Ø¨ØªØ³Ø§ÙØ© ÙØ¨Ù ÙØ¨Ø¹Ø¯",sy2:"ØªØ­ÙÙÙ Ø§ÙÙØ¬Ù ÙØ§Ø®ØªÙØ§Ø± ÙÙÙØ°Ø¬ Ø§ÙØ£Ø³ÙØ§Ù Ø¨Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù",sy3:"Ø­Ø§ÙØ§Øª ØºÙØ± ÙØ­Ø¯ÙØ¯Ø©",sy4:"ÙØµÙÙ ØºÙØ± ÙØ­Ø¯ÙØ¯ Ø¥ÙÙ ÙÙØªØ¨Ø© Ø§ÙÙÙØ§Ø°Ø¬ Ø«ÙØ§Ø«ÙØ© Ø§ÙØ£Ø¨Ø¹Ø§Ø¯",
+sa1:"ØªØ­ÙÙÙ ØµÙØªÙ ÙØªØµÙÙÙ Ø§Ø¨ØªØ³Ø§ÙØ© Ø¨Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù",sa2:"Ø±Ø³ÙÙØ§Øª ÙØ®ØµØµØ© ÙÙØªØ§Ø¦Ø¬ ÙØ§Ø¦ÙØ© Ø§ÙÙØ§ÙØ¹ÙØ© Ø¨Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù",sa3:"ØªØ­Ø¯ÙØ¯ ØªÙÙØ§Ø¦Ù ÙÙÙÙÙØ°Ø¬ Ø«ÙØ§Ø«Ù Ø§ÙØ£Ø¨Ø¹Ø§Ø¯ ÙØªÙØ²ÙÙ STL",sa4:"ÙØªØ§Ø¦Ø¬ Ø®Ø§ØµØ© Ø¨ÙÙ Ø¹ÙØ§Ø¬ â ÙØ«Ù Ø§ÙÙØ±ÙÙ Ø¨ÙÙ Ø§ÙÙÙÙÙØ± ÙØ§ÙØ²ÙØ±ÙÙÙ",
+sx1:"Ø³ÙØ± Ø¹ÙÙ DSD ÙØªØµÙÙÙ Ø§ÙØ§Ø¨ØªØ³Ø§ÙØ© ØªÙÙØ§Ø¦ÙÙØ§",sx2:"ØªØ­Ø¯ÙØ¯ Ø§ÙØ¹ÙØ§Ø¬ ÙØ±Ø³ÙÙØ§Øª ØªÙÙØ§Ø¦ÙØ©",sx3:"ÙØ­Ø§ÙØ§Ø© ÙØ·Ø§Ø¨ÙØ© ÙÙØ±Ø³ÙÙØ§Øª",sx4:"Ø§Ø®ØªÙØ§Ø± ÙØªÙØ²ÙÙ ÙÙÙØ°Ø¬ STL Ø«ÙØ§Ø«Ù Ø§ÙØ£Ø¨Ø¹Ø§Ø¯ ÙØ·Ø§Ø¨Ù ÙÙÙØ­Ø§ÙØ§Ø©",sx5:"ØªØ·Ø¨ÙÙ mockup Ø³Ø±ÙØ¹ Ø¹Ø¨Ø± ÙØ­Ø¯Ø© 3D CAD",sx6:"ÙØ±Ø§Ø¡Ø© Ø§ÙØ£Ø´Ø¹Ø© ÙØ¯Ø¹Ù Ø§ÙØªØ´Ø®ÙØµ Ø¨Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù",sx7:"Ø§ÙÙØµÙÙ Ø¥ÙÙ ÙØ­Ø¯Ø© Ø·Ø¨ÙØ¨ Ø§ÙØ£Ø³ÙØ§Ù Ø§ÙØ±ÙØ¨ÙØª",sx8:"ØªØ±Ø®ÙØµ Ø§ÙØ¹ÙØ§Ø¯Ø© Ø§ÙØ±ÙØ¨ÙØªÙØ© ÙÙ ØªØ·Ø¨ÙÙ Smilebot",
+f_autopilot:"ØªØ´ØºÙÙ Ø°Ø§ØªÙ Ø¨Ø§ÙÙØ§ÙÙ ÙØ¯ÙÙ Ø§Ø³ØªØ®Ø¯Ø§Ù Ø§ÙÙØ¯ÙÙ"},
+ru:{subsKicker:"ÐÐ Ð¸ Ð¿ÑÐ¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ",subsTitle:"ÐÐ¸ÑÐµÐ½Ð·Ð¸Ð¸ Ð½Ð° ÐÐ Smilebot",subsSub:"ÐÐ¸Ð±ÐºÐ¸Ðµ Ð¿Ð»Ð°Ð½Ñ â Ð¾Ñ Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÑÐ»ÑÑÐ°Ñ Ð´Ð¾ Ð¿Ð¾Ð»Ð½Ð¾ÑÑÑÑ Ð°Ð²ÑÐ¾Ð½Ð¾Ð¼Ð½Ð¾Ð¹ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ¸.",subPerCase:"ÑÐ°Ð·Ð¾Ð²Ð¾",subPerYear:"Ð² Ð³Ð¾Ð´",
+subOne:"ÐÐ¸ÑÐµÐ½Ð·Ð¸Ñ Ð½Ð° Ð¾Ð´Ð¸Ð½ ÑÐ»ÑÑÐ°Ð¹",subYear:"ÐÐ¸ÑÐµÐ½Ð·Ð¸Ñ Smilebot",subAI:"ÐÐ¸ÑÐµÐ½Ð·Ð¸Ñ Smilebot AI",subAuto:"ÐÐ¸ÑÐµÐ½Ð·Ð¸Ñ Smilebot Autopilot",
+so1:"ÐÑÐµÐ·ÐµÐ½ÑÐ°ÑÐ¸Ñ Â«Ð´Ð¾ Ð¸ Ð¿Ð¾ÑÐ»ÐµÂ» Ð´Ð»Ñ Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÑÐ»ÑÑÐ°Ñ",so2:"ÐÐ°Ð½Ð½ÑÐµ 3D-Ð¼Ð¾Ð´ÐµÐ»Ð¸ STL",so3:"ÐÐ±ÑÑÐµÐ½Ð¸Ðµ ÑÐ¾Ð¿Ð¾ÑÑÐ°Ð²Ð»ÐµÐ½Ð¸Ñ Ð² Exocad (Ð²Ð¸Ð´ÐµÐ¾ÐºÑÑÑ)",
+sy1:"ÐÐ¸Ð·Ð°Ð¹Ð½ ÑÐ»ÑÐ±ÐºÐ¸ Â«Ð´Ð¾ Ð¸ Ð¿Ð¾ÑÐ»ÐµÂ»",sy2:"AI-Ð°Ð½Ð°Ð»Ð¸Ð· Ð»Ð¸ÑÐ° Ð¸ Ð²ÑÐ±Ð¾Ñ Ð¼Ð¾Ð´ÐµÐ»Ð¸ Ð·ÑÐ±Ð¾Ð²",sy3:"ÐÐµÐ¾Ð³ÑÐ°Ð½Ð¸ÑÐµÐ½Ð½Ð¾Ðµ ÑÐ¸ÑÐ»Ð¾ ÑÐ»ÑÑÐ°ÐµÐ²",sy4:"ÐÐµÐ·Ð»Ð¸Ð¼Ð¸ÑÐ½ÑÐ¹ Ð´Ð¾ÑÑÑÐ¿ Ðº Ð±Ð¸Ð±Ð»Ð¸Ð¾ÑÐµÐºÐµ 3D-Ð¼Ð¾Ð´ÐµÐ»ÐµÐ¹",
+sa1:"ÐÐ¾Ð»Ð¾ÑÐ¾Ð²Ð¾Ð¹ AI-Ð°Ð½Ð°Ð»Ð¸Ð· Ð¸ Ð´Ð¸Ð·Ð°Ð¹Ð½ ÑÐ»ÑÐ±ÐºÐ¸",sa2:"ÐÐ½Ð´Ð¸Ð²Ð¸Ð´ÑÐ°Ð»ÑÐ½ÑÐµ AI-ÑÑÐºÐ¸Ð·Ñ Ð¸ ÑÐ»ÑÑÑÐ°ÑÐµÐ°Ð»Ð¸ÑÑÐ¸ÑÐ½ÑÐ¹ ÑÐµÐ·ÑÐ»ÑÑÐ°Ñ",sa3:"ÐÐ²ÑÐ¾Ð¾Ð¿ÑÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ 3D-Ð¼Ð¾Ð´ÐµÐ»Ð¸ Ð¸ Ð·Ð°Ð³ÑÑÐ·ÐºÐ° STL",sa4:"Ð ÐµÐ·ÑÐ»ÑÑÐ°ÑÑ Ð¿Ð¾Ð´ ÐºÐ¾Ð½ÐºÑÐµÑÐ½Ð¾Ðµ Ð»ÐµÑÐµÐ½Ð¸Ðµ â Ð½Ð°Ð¿Ñ. ÑÐ°Ð·Ð½Ð¸ÑÐ° Ð²Ð¸Ð½Ð¸Ñ/ÑÐ¸ÑÐºÐ¾Ð½Ð¸Ð¹",
+sx1:"ÐÐ²ÑÐ¾Ð¼Ð°ÑÐ¸ÑÐµÑÐºÐ¸Ð¹ DSD-Ð¿ÑÐ¾ÑÐµÑÑ Ð´Ð¸Ð·Ð°Ð¹Ð½Ð° ÑÐ»ÑÐ±ÐºÐ¸",sx2:"ÐÐ¿ÑÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð»ÐµÑÐµÐ½Ð¸Ñ Ð¸ Ð°Ð²ÑÐ¾Ð¼Ð°ÑÐ¸ÑÐµÑÐºÐ¸Ðµ ÑÑÐºÐ¸Ð·Ñ",sx3:"Ð¡Ð¸Ð¼ÑÐ»ÑÑÐ¸Ð¸ Ð¿Ð¾ ÑÑÐºÐ¸Ð·Ð°Ð¼",sx4:"ÐÑÐ±Ð¾Ñ Ð¸ Ð·Ð°Ð³ÑÑÐ·ÐºÐ° STL 3D-Ð¼Ð¾Ð´ÐµÐ»Ð¸ Ð¿Ð¾Ð´ ÑÐ¸Ð¼ÑÐ»ÑÑÐ¸Ñ",sx5:"ÐÑÑÑÑÑÐ¹ mockup ÑÐµÑÐµÐ· Ð¼Ð¾Ð´ÑÐ»Ñ 3D CAD",sx6:"AI-ÑÑÐµÐ½Ð¸Ðµ ÑÐµÐ½ÑÐ³ÐµÐ½Ð° Ð¸ Ð¿Ð¾Ð´Ð´ÐµÑÐ¶ÐºÐ° Ð´Ð¸Ð°Ð³Ð½Ð¾ÑÑÐ¸ÐºÐ¸",sx7:"ÐÐ¾ÑÑÑÐ¿ Ðº Ð¼Ð¾Ð´ÑÐ»Ñ Â«Ð Ð¾Ð±Ð¾Ñ-ÑÑÐ¾Ð¼Ð°ÑÐ¾Ð»Ð¾Ð³Â»",sx8:"ÐÐ¸ÑÐµÐ½Ð·Ð¸Ñ Â«Ð Ð¾Ð±Ð¾Ñ-ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°Â» Ð² Ð¿ÑÐ¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¸ Smilebot",
+f_autopilot:"ÐÐ¾Ð»Ð½Ð¾ÑÑÑÑ Ð°Ð²ÑÐ¾Ð½Ð¾Ð¼Ð½Ð°Ñ ÑÐ°Ð±Ð¾ÑÐ° Ð±ÐµÐ· ÑÑÐº"},
+bg:{subsKicker:"Ð¡Ð¾ÑÑÑÐµÑ Ð¸ Ð¿ÑÐ¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ",subsTitle:"ÐÐ¸ÑÐµÐ½Ð·Ð¸ Ð·Ð° ÑÐ¾ÑÑÑÐµÑÐ° Smilebot",subsSub:"ÐÑÐ²ÐºÐ°Ð²Ð¸ Ð¿Ð»Ð°Ð½Ð¾Ð²Ðµ â Ð¾Ñ ÐµÐ´Ð¸Ð½Ð¸ÑÐµÐ½ ÑÐ»ÑÑÐ°Ð¹ Ð´Ð¾ Ð½Ð°Ð¿ÑÐ»Ð½Ð¾ Ð°Ð²ÑÐ¾Ð½Ð¾Ð¼Ð½Ð° ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°.",subPerCase:"ÐµÐ´Ð½Ð¾ÐºÑÐ°ÑÐ½Ð¾",subPerYear:"Ð½Ð° Ð³Ð¾Ð´Ð¸Ð½Ð°",
+subOne:"ÐÐ¸ÑÐµÐ½Ð· Ð·Ð° ÐµÐ´Ð¸Ð½Ð¸ÑÐµÐ½ ÑÐ»ÑÑÐ°Ð¹",subYear:"ÐÐ¸ÑÐµÐ½Ð· Smilebot",subAI:"ÐÐ¸ÑÐµÐ½Ð· Smilebot AI",subAuto:"ÐÐ¸ÑÐµÐ½Ð· Smilebot Autopilot",
+so1:"ÐÑÐµÐ·ÐµÐ½ÑÐ°ÑÐ¸Ñ Ð¿ÑÐµÐ´Ð¸âÑÐ»ÐµÐ´ Ð·Ð° ÐµÐ´Ð¸Ð½Ð¸ÑÐµÐ½ ÑÐ»ÑÑÐ°Ð¹",so2:"ÐÐ°Ð½Ð½Ð¸ Ð·Ð° 3D STL Ð¼Ð¾Ð´ÐµÐ»",so3:"ÐÐ±ÑÑÐµÐ½Ð¸Ðµ Ð·Ð° ÑÑÐ¿Ð¾ÑÑÐ°Ð²ÑÐ½Ðµ Ð² Exocad (Ð²Ð¸Ð´ÐµÐ¾ÐºÑÑÑ)",
+sy1:"ÐÐ¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ° Ð¿ÑÐµÐ´Ð¸âÑÐ»ÐµÐ´",sy2:"AI Ð°Ð½Ð°Ð»Ð¸Ð· Ð½Ð° Ð»Ð¸ÑÐµÑÐ¾ Ð¸ Ð¸Ð·Ð±Ð¾Ñ Ð½Ð° Ð¼Ð¾Ð´ÐµÐ» Ð½Ð° Ð·ÑÐ±Ð¸ÑÐµ",sy3:"ÐÐµÐ¾Ð³ÑÐ°Ð½Ð¸ÑÐµÐ½ Ð±ÑÐ¾Ð¹ ÑÐ»ÑÑÐ°Ð¸",sy4:"ÐÐµÐ¾Ð³ÑÐ°Ð½Ð¸ÑÐµÐ½ Ð´Ð¾ÑÑÑÐ¿ Ð´Ð¾ Ð±Ð¸Ð±Ð»Ð¸Ð¾ÑÐµÐºÐ°ÑÐ° Ñ 3D Ð¼Ð¾Ð´ÐµÐ»Ð¸",
+sa1:"ÐÐ»Ð°ÑÐ¾Ð² AI Ð°Ð½Ð°Ð»Ð¸Ð· Ð¸ Ð´Ð¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ°",sa2:"ÐÐµÑÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸ÑÐ°Ð½Ð¸ AI ÑÐ¸ÑÑÐ½ÐºÐ¸ Ð¸ ÑÐ»ÑÑÐ°ÑÐµÐ°Ð»Ð¸ÑÑÐ¸ÑÐµÐ½ ÑÐµÐ·ÑÐ»ÑÐ°Ñ",sa3:"ÐÐ²ÑÐ¾Ð¼Ð°ÑÐ¸ÑÐ½Ð¾ Ð¾Ð¿ÑÐµÐ´ÐµÐ»ÑÐ½Ðµ Ð½Ð° 3D Ð¼Ð¾Ð´ÐµÐ» Ð¸ Ð¸Ð·ÑÐµÐ³Ð»ÑÐ½Ðµ Ð½Ð° STL",sa4:"Ð ÐµÐ·ÑÐ»ÑÐ°ÑÐ¸ ÑÐ¿Ð¾ÑÐµÐ´ Ð»ÐµÑÐµÐ½Ð¸ÐµÑÐ¾ â Ð½Ð°Ð¿Ñ. ÑÐ°Ð·Ð»Ð¸ÐºÐ¸ ÑÐ°ÑÐµÑ/ÑÐ¸ÑÐºÐ¾Ð½Ð¸Ð¹",
+sx1:"ÐÐ²ÑÐ¾Ð¼Ð°ÑÐ¸Ð·Ð¸ÑÐ°Ð½ DSD ÑÐ°Ð±Ð¾ÑÐµÐ½ Ð¿ÑÐ¾ÑÐµÑ Ð·Ð° Ð´Ð¸Ð·Ð°Ð¹Ð½ Ð½Ð° ÑÑÐ¼Ð¸Ð²ÐºÐ°",sx2:"ÐÐ¿ÑÐµÐ´ÐµÐ»ÑÐ½Ðµ Ð½Ð° Ð»ÐµÑÐµÐ½Ð¸Ðµ Ð¸ Ð°Ð²ÑÐ¾Ð¼Ð°ÑÐ¸ÑÐ½Ð¸ ÑÐ¸ÑÑÐ½ÐºÐ¸",sx3:"Ð¡Ð¸Ð¼ÑÐ»Ð°ÑÐ¸Ð¸ ÑÐ¿Ð¾ÑÐµÐ´ ÑÐ¸ÑÑÐ½ÐºÐ¸ÑÐµ",sx4:"ÐÐ·Ð±Ð¾Ñ Ð¸ Ð¸Ð·ÑÐµÐ³Ð»ÑÐ½Ðµ Ð½Ð° 3D STL ÑÐ¿Ð¾ÑÐµÐ´ ÑÐ¸Ð¼ÑÐ»Ð°ÑÐ¸ÑÑÐ°",sx5:"ÐÑÑÐ· mockup ÑÑÐµÐ· Ð¼Ð¾Ð´ÑÐ»Ð° 3D CAD",sx6:"AI ÑÐ°Ð·ÑÐ¸ÑÐ°Ð½Ðµ Ð½Ð° ÑÐµÐ½ÑÐ³ÐµÐ½ Ð¸ Ð¿Ð¾Ð´ÐºÑÐµÐ¿Ð° Ð½Ð° Ð´Ð¸Ð°Ð³Ð½Ð¾Ð·Ð°ÑÐ°",sx7:"ÐÐ¾ÑÑÑÐ¿ Ð´Ð¾ Ð¼Ð¾Ð´ÑÐ»Ð° âÐ Ð¾Ð±Ð¾Ñ Ð·ÑÐ±Ð¾Ð»ÐµÐºÐ°Ñâ",sx8:"ÐÐ¸ÑÐµÐ½Ð· âÐ Ð¾Ð±Ð¾Ñ ÐºÐ»Ð¸Ð½Ð¸ÐºÐ°â Ð² Ð¿ÑÐ¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑÐ¾ Smilebot",
+f_autopilot:"ÐÐ°Ð¿ÑÐ»Ð½Ð¾ Ð°Ð²ÑÐ¾Ð½Ð¾Ð¼Ð½Ð° ÑÐ°Ð±Ð¾ÑÐ° Ð±ÐµÐ· ÑÑÑÐµ"},
+es:{subsKicker:"Software y app",subsTitle:"Licencias de software Smilebot",subsSub:"Planes flexibles â de un solo caso a una clÃ­nica totalmente autÃ³noma.",subPerCase:"pago Ãºnico",subPerYear:"al aÃ±o",
+subOne:"Licencia por caso",subYear:"Licencia Smilebot",subAI:"Licencia Smilebot AI",subAuto:"Licencia Smilebot Autopilot",
+so1:"PresentaciÃ³n antesâdespuÃ©s de un caso",so2:"Datos de modelo 3D STL",so3:"FormaciÃ³n de emparejamiento en Exocad (vÃ­deo)",
+sy1:"DiseÃ±o de sonrisa antesâdespuÃ©s",sy2:"AnÃ¡lisis facial con IA y selecciÃ³n de modelo dental",sy3:"Casos ilimitados",sy4:"Acceso ilimitado a la biblioteca de modelos 3D",
+sa1:"AnÃ¡lisis por voz y diseÃ±o de sonrisa con IA",sa2:"Dibujos personalizados con IA y resultado ultrarrealista",sa3:"DetecciÃ³n automÃ¡tica del modelo 3D y descarga STL",sa4:"Resultados segÃºn el tratamiento â p. ej. diferencias carilla/circonio",
+sx1:"Flujo DSD automÃ¡tico de diseÃ±o de sonrisa",sx2:"DetecciÃ³n del tratamiento y dibujos automÃ¡ticos",sx3:"Simulaciones acordes a los dibujos",sx4:"Elegir y descargar el STL 3D acorde a la simulaciÃ³n",sx5:"Mockup rÃ¡pido con el mÃ³dulo 3D CAD",sx6:"Lectura de radiografÃ­as con IA y apoyo al diagnÃ³stico",sx7:"Acceso al mÃ³dulo Robot Dentista",sx8:"Licencia de ClÃ­nica Robot en la app Smilebot",
+f_autopilot:"Funcionamiento totalmente autÃ³nomo, manos libres"},
+fr:{subsKicker:"Logiciel & application",subsTitle:"Licences du logiciel Smilebot",subsSub:"Des formules flexibles â d'un seul cas Ã  une clinique entiÃ¨rement autonome.",subPerCase:"paiement unique",subPerYear:"par an",
+subOne:"Licence par cas",subYear:"Licence Smilebot",subAI:"Licence Smilebot AI",subAuto:"Licence Smilebot Autopilot",
+so1:"PrÃ©sentation avantâaprÃ¨s pour un cas",so2:"DonnÃ©es de modÃ¨le 3D STL",so3:"Formation d'appariement Exocad (cours vidÃ©o)",
+sy1:"Design du sourire avantâaprÃ¨s",sy2:"Analyse faciale par IA et choix du modÃ¨le dentaire",sy3:"Cas illimitÃ©s",sy4:"AccÃ¨s illimitÃ© Ã  la bibliothÃ¨que de modÃ¨les 3D",
+sa1:"Analyse vocale et design du sourire par IA",sa2:"Dessins personnalisÃ©s par IA et rendu ultra-rÃ©aliste",sa3:"DÃ©tection automatique du modÃ¨le 3D et tÃ©lÃ©chargement STL",sa4:"RÃ©sultats selon le traitement â ex. diffÃ©rences facette/zircone",
+sx1:"Flux DSD automatisÃ© de design du sourire",sx2:"DÃ©tection du traitement et dessins automatiques",sx3:"Simulations conformes aux dessins",sx4:"Choisir et tÃ©lÃ©charger le STL 3D conforme Ã  la simulation",sx5:"Mockup rapide avec le module 3D CAD",sx6:"Lecture de radios par IA et aide au diagnostic",sx7:"AccÃ¨s au module Robot Dentiste",sx8:"Licence Clinique Robot dans l'app Smilebot",
+f_autopilot:"Fonctionnement entiÃ¨rement autonome, mains libres"},
+de:{subsKicker:"Software & App",subsTitle:"Smilebot-Software-Lizenzen",subsSub:"Flexible PlÃ¤ne â vom Einzelfall bis zur vollautonomen Praxis.",subPerCase:"einmalig",subPerYear:"pro Jahr",
+subOne:"Einzelfall-Lizenz",subYear:"Smilebot-Lizenz",subAI:"Smilebot-AI-Lizenz",subAuto:"Smilebot-Autopilot-Lizenz",
+so1:"Vorher-Nachher-PrÃ¤sentation fÃ¼r einen Fall",so2:"3D-STL-Modelldaten",so3:"Exocad-Matching-Schulung (Videokurs)",
+sy1:"Vorher-Nachher-Smile-Design",sy2:"KI-Gesichtsanalyse & Zahnmodell-Auswahl",sy3:"Unbegrenzte FÃ¤lle",sy4:"Unbegrenzter Zugriff auf die 3D-Modellbibliothek",
+sa1:"KI-Sprachanalyse & Smile-Design",sa2:"Individuelle KI-Zeichnungen & ultrarealistische Ergebnisse",sa3:"Automatische 3D-Modellerkennung & STL-Download",sa4:"Behandlungsspezifische Ergebnisse â z. B. Veneer vs. Zirkon",
+sx1:"Automatisierter DSD-Smile-Design-Workflow",sx2:"Behandlungserkennung & automatische Zeichnungen",sx3:"Zu den Zeichnungen passende Simulationen",sx4:"Passende 3D-STL zur Simulation wÃ¤hlen & herunterladen",sx5:"Schnelles Mockup mit dem 3D-CAD-Modul",sx6:"KI-RÃ¶ntgenauswertung & DiagnoseunterstÃ¼tzung",sx7:"Zugang zum Roboter-Zahnarzt-Modul",sx8:"Roboter-Klinik-Lizenz in der Smilebot-App",
+f_autopilot:"VollstÃ¤ndig autonomer, freihÃ¤ndiger Betrieb"},
+it:{subsKicker:"Software e app",subsTitle:"Licenze software Smilebot",subsSub:"Piani flessibili â dal singolo caso alla clinica completamente autonoma.",subPerCase:"una tantum",subPerYear:"all'anno",
+subOne:"Licenza per singolo caso",subYear:"Licenza Smilebot",subAI:"Licenza Smilebot AI",subAuto:"Licenza Smilebot Autopilot",
+so1:"Presentazione primaâdopo per un caso",so2:"Dati del modello 3D STL",so3:"Formazione di abbinamento Exocad (corso video)",
+sy1:"Design del sorriso primaâdopo",sy2:"Analisi facciale con IA e scelta del modello dentale",sy3:"Casi illimitati",sy4:"Accesso illimitato alla libreria di modelli 3D",
+sa1:"Analisi vocale e design del sorriso con IA",sa2:"Disegni personalizzati con IA e risultato ultra-realistico",sa3:"Rilevamento automatico del modello 3D e download STL",sa4:"Risultati specifici per trattamento â es. differenze faccetta/zirconia",
+sx1:"Flusso DSD automatico per il design del sorriso",sx2:"Rilevamento del trattamento e disegni automatici",sx3:"Simulazioni coerenti con i disegni",sx4:"Scelta e download dello STL 3D coerente con la simulazione",sx5:"Mockup rapido con il modulo 3D CAD",sx6:"Lettura radiografica con IA e supporto diagnostico",sx7:"Accesso al modulo Robot Dentista",sx8:"Licenza Clinica Robot nell'app Smilebot",
+f_autopilot:"Funzionamento completamente autonomo, a mani libere"},
+pt:{subsKicker:"Software e app",subsTitle:"LicenÃ§as do software Smilebot",subsSub:"Planos flexÃ­veis â de um Ãºnico caso a uma clÃ­nica totalmente autÃ´noma.",subPerCase:"pagamento Ãºnico",subPerYear:"por ano",
+subOne:"LicenÃ§a por caso",subYear:"LicenÃ§a Smilebot",subAI:"LicenÃ§a Smilebot AI",subAuto:"LicenÃ§a Smilebot Autopilot",
+so1:"ApresentaÃ§Ã£o antesâdepois para um caso",so2:"Dados do modelo 3D STL",so3:"Treinamento de correspondÃªncia Exocad (curso em vÃ­deo)",
+sy1:"Design de sorriso antesâdepois",sy2:"AnÃ¡lise facial com IA e seleÃ§Ã£o do modelo dentÃ¡rio",sy3:"Casos ilimitados",sy4:"Acesso ilimitado Ã  biblioteca de modelos 3D",
+sa1:"AnÃ¡lise por voz e design de sorriso com IA",sa2:"Desenhos personalizados com IA e resultado ultrarrealista",sa3:"DetecÃ§Ã£o automÃ¡tica do modelo 3D e download de STL",sa4:"Resultados especÃ­ficos por tratamento â ex. diferenÃ§as faceta/zircÃ´nia",
+sx1:"Fluxo DSD automÃ¡tico de design de sorriso",sx2:"DetecÃ§Ã£o do tratamento e desenhos automÃ¡ticos",sx3:"SimulaÃ§Ãµes de acordo com os desenhos",sx4:"Escolher e baixar o STL 3D de acordo com a simulaÃ§Ã£o",sx5:"Mockup rÃ¡pido com o mÃ³dulo 3D CAD",sx6:"Leitura de raio-X com IA e apoio ao diagnÃ³stico",sx7:"Acesso ao mÃ³dulo RobÃ´ Dentista",sx8:"LicenÃ§a de ClÃ­nica RobÃ´ no app Smilebot",
+f_autopilot:"OperaÃ§Ã£o totalmente autÃ´noma, mÃ£os livres"},
+zh:{subsKicker:"è½¯ä»¶ä¸åºç¨",subsTitle:"Smilebot è½¯ä»¶ææ",subsSub:"çµæ´»æ¹æ¡ââä»åä¸ªçä¾å°å®å¨èªä¸»çè¯æã",subPerCase:"ä¸æ¬¡æ§",subPerYear:"æ¯å¹´",
+subOne:"åä¾ææ",subYear:"Smilebot ææ",subAI:"Smilebot AI ææ",subAuto:"Smilebot Autopilot ææ",
+so1:"åä¸ªçä¾çååå¯¹æ¯æ¼ç¤º",so2:"3D STL æ¨¡åæ°æ®",so3:"Exocad å¹éå¹è®­ï¼è§é¢è¯¾ç¨ï¼",
+sy1:"ååå¾®ç¬è®¾è®¡",sy2:"AI é¢é¨åæä¸çé½¿æ¨¡åéæ©",sy3:"æ éçä¾",sy4:"æ éè®¿é® 3D æ¨¡ååº",
+sa1:"AI è¯­é³åæä¸å¾®ç¬è®¾è®¡",sa2:"AI å®å¶ç»å¾ä¸è¶é¼çææ",sa3:"èªå¨è¯å« 3D æ¨¡åå¹¶ä¸è½½ STL",sa4:"éå¯¹æ²»ççä¸å±ææââå¦è´´é¢ä¸æ°§åéçå·®å¼",
+sx1:"èªå¨å¾®ç¬è®¾è®¡ DSD å·¥ä½æµ",sx2:"æ²»çè¯å«ä¸èªå¨ç»å¾",sx3:"ä¸ç»å¾å¹éçæ¨¡æ",sx4:"éæ©å¹¶ä¸è½½ä¸æ¨¡æå¹éç 3D STL",sx5:"éè¿ 3D CAD æ¨¡åå¿«é mockup",sx6:"AI è¯»çä¸è¯æ­æ¯æ",sx7:"æºå¨äººçå»æ¨¡åä½¿ç¨æ",sx8:"Smilebot App ä¸­çæºå¨äººè¯æææ",
+f_autopilot:"å®å¨èªä¸»ãè§£æ¾åæçè¿è¡"},
+ja:{subsKicker:"ã½ããã¦ã§ã¢ï¼ã¢ããª",subsTitle:"Smilebot ã½ããã¦ã§ã¢ã©ã¤ã»ã³ã¹",subsSub:"æè»ãªãã©ã³ â åä¸çä¾ããå®å¨èªå¾ã¯ãªããã¯ã¾ã§ã",subPerCase:"è²·ãåã",subPerYear:"å¹´é",
+subOne:"çä¾åä½ã©ã¤ã»ã³ã¹",subYear:"Smilebot ã©ã¤ã»ã³ã¹",subAI:"Smilebot AI ã©ã¤ã»ã³ã¹",subAuto:"Smilebot Autopilot ã©ã¤ã»ã³ã¹",
+so1:"1çä¾ã®ããã©ã¼ã¢ãã¿ã¼æç¤º",so2:"3D STL ã¢ãã«ãã¼ã¿",so3:"Exocad ãããã³ã°è¬ç¿ï¼åç»è¬åº§ï¼",
+sy1:"ããã©ã¼ã¢ãã¿ã¼ã®ã¹ãã¤ã«ãã¶ã¤ã³",sy2:"AI é¡è²åæã¨æ­¯çã¢ãã«é¸æ",sy3:"ç¡å¶éã®çä¾",sy4:"3D ã¢ãã«ã©ã¤ãã©ãªã¸ã®ç¡å¶éã¢ã¯ã»ã¹",
+sa1:"AI é³å£°åæã¨ã¹ãã¤ã«ãã¶ã¤ã³",sa2:"AI ã«ã¹ã¿ã æç»ã¨è¶ãªã¢ã«ãªçµæ",sa3:"3D ã¢ãã«ã®èªåå¤å®ã¨ STL ãã¦ã³ã­ã¼ã",sa4:"æ²»çå¥ã®çµæ â ã©ããã¼ãã¨ã¸ã«ã³ãã¢ã®éããªã©",
+sx1:"èªåã¹ãã¤ã«ãã¶ã¤ã³ DSD ã¯ã¼ã¯ãã­ã¼",sx2:"æ²»çå¤å®ã¨èªåæç»",sx3:"æç»ã«åãããã·ãã¥ã¬ã¼ã·ã§ã³",sx4:"ã·ãã¥ã¬ã¼ã·ã§ã³ã«åã 3D STL ã®é¸æã»ãã¦ã³ã­ã¼ã",sx5:"3D CAD ã¢ã¸ã¥ã¼ã«ã§ç´ æ©ãã¢ãã¯ã¢ãã",sx6:"AI ã¬ã³ãã²ã³èª­å½±ã¨è¨ºæ­æ¯æ´",sx7:"ã­ãããæ­¯ç§å»ã¢ã¸ã¥ã¼ã«ã®å©ç¨",sx8:"Smilebot App ã®ã­ãããã¯ãªããã¯ã©ã¤ã»ã³ã¹",
+f_autopilot:"å®å¨èªå¾ã»ãã³ãºããªã¼åä½"},
+ko:{subsKicker:"ìíí¸ì¨ì´ & ì±",subsTitle:"Smilebot ìíí¸ì¨ì´ ë¼ì´ì ì¤",subsSub:"ì ì°í íë â ë¨ì¼ ì¼ì´ì¤ë¶í° ìì  ìì¨ í´ë¦¬ëê¹ì§.",subPerCase:"1íì±",subPerYear:"ì°ê°",
+subOne:"ë¨ì¼ ì¼ì´ì¤ ë¼ì´ì ì¤",subYear:"Smilebot ë¼ì´ì ì¤",subAI:"Smilebot AI ë¼ì´ì ì¤",subAuto:"Smilebot Autopilot ë¼ì´ì ì¤",
+so1:"ë¨ì¼ ì¼ì´ì¤ ì í íë ì  íì´ì",so2:"3D STL ëª¨ë¸ ë°ì´í°",so3:"Exocad ë§¤ì¹­ êµì¡ (ìì ê°ì)",
+sy1:"ì í ì¤ë§ì¼ ëìì¸",sy2:"AI ì¼êµ´ ë¶ì ë° ì¹ì ëª¨ë¸ ì í",sy3:"ë¬´ì í ì¼ì´ì¤",sy4:"3D ëª¨ë¸ ë¼ì´ë¸ë¬ë¦¬ ë¬´ì í ì´ì©",
+sa1:"AI ìì± ë¶ì ë° ì¤ë§ì¼ ëìì¸",sa2:"AI ë§ì¶¤ ëë¡ì ë° ì´ì¬ì¤ì  ê²°ê³¼",sa3:"3D ëª¨ë¸ ìë íë³ ë° STL ë¤ì´ë¡ë",sa4:"ì¹ë£ë³ ë§ì¶¤ ê²°ê³¼ â ë¼ë¯¸ë¤ì´í¸Â·ì§ë¥´ì½ëì ì°¨ì´ íì ë±",
+sx1:"ìë ì¤ë§ì¼ ëìì¸ DSD ìí¬íë¡",sx2:"ì¹ë£ íë³ ë° ìë ëë¡ì",sx3:"ëë¡ìì ë§ì¶ ìë®¬ë ì´ì",sx4:"ìë®¬ë ì´ìì ë§ë 3D STL ì íÂ·ë¤ì´ë¡ë",sx5:"3D CAD ëª¨ëë¡ ë¹ ë¥¸ ëª©ì",sx6:"AI ìì¤ë ì´ íë ë° ì§ë¨ ì§ì",sx7:"ë¡ë´ ì¹ê³¼ìì¬ ëª¨ë ì¬ì©",sx8:"Smilebot ì±ì ë¡ë´ í´ë¦¬ë ë¼ì´ì ì¤",
+f_autopilot:"ìì  ìì¨ Â· í¸ì¦íë¦¬ ìë"},
+hi:{subsKicker:"à¤¸à¥à¤«à¤¼à¥à¤à¤µà¥à¤¯à¤° à¤à¤° à¤à¤ª",subsTitle:"Smilebot à¤¸à¥à¤«à¤¼à¥à¤à¤µà¥à¤¯à¤° à¤²à¤¾à¤à¤¸à¥à¤à¤¸",subsSub:"à¤²à¤à¥à¤²à¥ à¤ªà¥à¤²à¤¾à¤¨ â à¤à¤ à¤à¥à¤¸ à¤¸à¥ à¤²à¥à¤à¤° à¤ªà¥à¤°à¥ à¤¤à¤°à¤¹ à¤¸à¥à¤µà¤¾à¤¯à¤¤à¥à¤¤ à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤¤à¤à¥¤",subPerCase:"à¤à¤à¤®à¥à¤¶à¥à¤¤",subPerYear:"à¤ªà¥à¤°à¤¤à¤¿ à¤µà¤°à¥à¤·",
+subOne:"à¤¸à¤¿à¤à¤à¤²-à¤à¥à¤¸ à¤²à¤¾à¤à¤¸à¥à¤à¤¸",subYear:"Smilebot à¤²à¤¾à¤à¤¸à¥à¤à¤¸",subAI:"Smilebot AI à¤²à¤¾à¤à¤¸à¥à¤à¤¸",subAuto:"Smilebot Autopilot à¤²à¤¾à¤à¤¸à¥à¤à¤¸",
+so1:"à¤à¤ à¤à¥à¤¸ à¤à¥ à¤²à¤¿à¤ à¤ªà¤¹à¤²à¥âà¤¬à¤¾à¤¦ à¤ªà¥à¤°à¤¸à¥à¤¤à¥à¤¤à¤¿",so2:"3D STL à¤®à¥à¤¡à¤² à¤¡à¥à¤à¤¾",so3:"Exocad à¤®à¥à¤à¤¿à¤à¤ à¤ªà¥à¤°à¤¶à¤¿à¤à¥à¤·à¤£ (à¤µà¥à¤¡à¤¿à¤¯à¥ à¤à¥à¤°à¥à¤¸)",
+sy1:"à¤ªà¤¹à¤²à¥âà¤¬à¤¾à¤¦ à¤¸à¥à¤®à¤¾à¤à¤² à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨",sy2:"AI à¤¸à¥ à¤à¥à¤¹à¤°à¥ à¤à¤¾ à¤µà¤¿à¤¶à¥à¤²à¥à¤·à¤£ à¤à¤° à¤¦à¤¾à¤à¤¤ à¤®à¥à¤¡à¤² à¤à¤¯à¤¨",sy3:"à¤à¤¸à¥à¤®à¤¿à¤¤ à¤à¥à¤¸",sy4:"3D à¤®à¥à¤¡à¤² à¤²à¤¾à¤à¤¬à¥à¤°à¥à¤°à¥ à¤¤à¤ à¤à¤¸à¥à¤®à¤¿à¤¤ à¤ªà¤¹à¥à¤à¤",
+sa1:"AI à¤¸à¥ à¤µà¥à¤à¤¸ à¤µà¤¿à¤¶à¥à¤²à¥à¤·à¤£ à¤à¤° à¤¸à¥à¤®à¤¾à¤à¤² à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨",sa2:"AI à¤¸à¥ à¤à¤¸à¥à¤à¤® à¤¡à¥à¤°à¥à¤à¤à¤ à¤à¤° à¤à¤²à¥à¤à¥à¤°à¤¾-à¤°à¤¿à¤¯à¤²à¤¿à¤¸à¥à¤à¤¿à¤ à¤ªà¤°à¤¿à¤£à¤¾à¤®",sa3:"à¤¸à¥à¤µà¤¤à¤ 3D à¤®à¥à¤¡à¤² à¤ªà¤¹à¤à¤¾à¤¨ à¤à¤° STL à¤¡à¤¾à¤à¤¨à¤²à¥à¤¡",sa4:"à¤à¤ªà¤à¤¾à¤°-à¤µà¤¿à¤¶à¤¿à¤·à¥à¤ à¤ªà¤°à¤¿à¤£à¤¾à¤® â à¤à¥à¤¸à¥ à¤²à¥à¤®à¤¿à¤¨à¤¾ à¤¬à¤¨à¤¾à¤® à¤à¤¼à¤¿à¤°à¤à¥à¤¨ à¤à¥ à¤à¤à¤¤à¤°",
+sx1:"à¤¸à¥à¤µà¤à¤¾à¤²à¤¿à¤¤ DSD à¤¸à¥à¤®à¤¾à¤à¤²-à¤¡à¤¿à¤à¤¼à¤¾à¤à¤¨ à¤µà¤°à¥à¤à¤«à¤¼à¥à¤²à¥",sx2:"à¤à¤ªà¤à¤¾à¤° à¤ªà¤¹à¤à¤¾à¤¨ à¤à¤° à¤¸à¥à¤µà¤à¤¾à¤²à¤¿à¤¤ à¤¡à¥à¤°à¥à¤à¤à¤",sx3:"à¤¡à¥à¤°à¥à¤à¤à¤ à¤à¥ à¤à¤¨à¥à¤°à¥à¤ª à¤¸à¤¿à¤®à¥à¤²à¥à¤¶à¤¨",sx4:"à¤¸à¤¿à¤®à¥à¤²à¥à¤¶à¤¨ à¤à¥ à¤à¤¨à¥à¤°à¥à¤ª 3D STL à¤à¥à¤¨à¤¨à¤¾ à¤à¤° à¤¡à¤¾à¤à¤¨à¤²à¥à¤¡",sx5:"3D CAD à¤®à¥à¤¡à¥à¤¯à¥à¤² à¤¸à¥ à¤¤à¥à¤à¤¼ mockup",sx6:"AI à¤¸à¥ à¤à¤à¥à¤¸-à¤°à¥ à¤ªà¤ à¤¨ à¤à¤° à¤¨à¤¿à¤¦à¤¾à¤¨ à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾",sx7:"à¤°à¥à¤¬à¥à¤ à¤¡à¥à¤à¤à¤¿à¤¸à¥à¤ à¤®à¥à¤¡à¥à¤¯à¥à¤² à¤à¤¾ à¤à¤ªà¤¯à¥à¤",sx8:"Smilebot à¤à¤ª à¤®à¥à¤ à¤°à¥à¤¬à¥à¤ à¤à¥à¤²à¥à¤¨à¤¿à¤ à¤²à¤¾à¤à¤¸à¥à¤à¤¸",
+f_autopilot:"à¤ªà¥à¤°à¥ à¤¤à¤°à¤¹ à¤¸à¥à¤µà¤¾à¤¯à¤¤à¥à¤¤, à¤¹à¤¾à¤¥-à¤®à¥à¤à¥à¤¤ à¤¸à¤à¤à¤¾à¤²à¤¨"},
+fa:{subsKicker:"ÙØ±ÙâØ§ÙØ²Ø§Ø± Ù Ø§Ù¾ÙÛÚ©ÛØ´Ù",subsTitle:"ÙØ¬ÙØ²ÙØ§Û ÙØ±ÙâØ§ÙØ²Ø§Ø± Smilebot",subsSub:"Ø·Ø±Ø­âÙØ§Û ÙÙØ¹Ø·Ù â Ø§Ø² ÛÚ© Ù¾Ø±ÙÙØ¯Ù ØªØ§ Ú©ÙÛÙÛÚ© Ú©Ø§ÙÙØ§Ù Ø®ÙØ¯Ú©Ø§Ø±.",subPerCase:"ÛÚ©âØ¨Ø§Ø±",subPerYear:"Ø³Ø§ÙØ§ÙÙ",
+subOne:"ÙØ¬ÙØ² ØªÚ©âÙ¾Ø±ÙÙØ¯Ù",subYear:"ÙØ¬ÙØ² Smilebot",subAI:"ÙØ¬ÙØ² Smilebot AI",subAuto:"ÙØ¬ÙØ² Smilebot Autopilot",
+so1:"Ø§Ø±Ø§Ø¦ÙâÛ ÙØ¨Ù Ù Ø¨Ø¹Ø¯ Ø¨Ø±Ø§Û ÛÚ© Ù¾Ø±ÙÙØ¯Ù",so2:"Ø¯Ø§Ø¯ÙâÛ ÙØ¯Ù Ø³ÙâØ¨Ø¹Ø¯Û STL",so3:"Ø¢ÙÙØ²Ø´ ØªØ·Ø¨ÛÙ Exocad (Ø¯ÙØ±ÙâÛ ÙÛØ¯ÛÙÛÛ)",
+sy1:"Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯ ÙØ¨Ù Ù Ø¨Ø¹Ø¯",sy2:"ØªØ­ÙÛÙ ÚÙØ±Ù Ø¨Ø§ ÙÙØ´ ÙØµÙÙØ¹Û Ù Ø§ÙØªØ®Ø§Ø¨ ÙØ¯Ù Ø¯ÙØ¯Ø§Ù",sy3:"Ù¾Ø±ÙÙØ¯ÙâÙØ§Û ÙØ§ÙØ­Ø¯ÙØ¯",sy4:"Ø¯Ø³ØªØ±Ø³Û ÙØ§ÙØ­Ø¯ÙØ¯ Ø¨Ù Ú©ØªØ§Ø¨Ø®Ø§ÙÙâÛ ÙØ¯ÙâÙØ§Û Ø³ÙâØ¨Ø¹Ø¯Û",
+sa1:"ØªØ­ÙÛÙ ØµÙØªÛ Ù Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯ Ø¨Ø§ ÙÙØ´ ÙØµÙÙØ¹Û",sa2:"Ø·Ø±Ø­âÙØ§Û Ø³ÙØ§Ø±Ø´Û Ø¨Ø§ ÙÙØ´ ÙØµÙÙØ¹Û Ù ÙØªÛØ¬ÙâÛ ÙÙÙâÙØ§ÙØ¹Û",sa3:"ØªØ´Ø®ÛØµ Ø®ÙØ¯Ú©Ø§Ø± ÙØ¯Ù Ø³ÙâØ¨Ø¹Ø¯Û Ù Ø¯Ø§ÙÙÙØ¯ STL",sa4:"ÙØªØ§ÛØ¬ ÙÛÚÙâÛ ÙØ± Ø¯Ø±ÙØ§Ù â ÙØ§ÙÙØ¯ ØªÙØ§ÙØª ÙÙÛÙÛØª Ù Ø²ÛØ±Ú©ÙÙÛØ§",
+sx1:"Ú¯Ø±Ø¯Ø´âÚ©Ø§Ø± Ø®ÙØ¯Ú©Ø§Ø± DSD Ø¨Ø±Ø§Û Ø·Ø±Ø§Ø­Û ÙØ¨Ø®ÙØ¯",sx2:"ØªØ´Ø®ÛØµ Ø¯Ø±ÙØ§Ù Ù Ø·Ø±Ø­âÙØ§Û Ø®ÙØ¯Ú©Ø§Ø±",sx3:"Ø´Ø¨ÛÙâØ³Ø§Ø²ÛâÙØ§Û ÙÙØ·Ø¨Ù Ø¨Ø§ Ø·Ø±Ø­âÙØ§",sx4:"Ø§ÙØªØ®Ø§Ø¨ Ù Ø¯Ø§ÙÙÙØ¯ STL Ø³ÙâØ¨Ø¹Ø¯Û ÙÙØ·Ø¨Ù Ø¨Ø§ Ø´Ø¨ÛÙâØ³Ø§Ø²Û",sx5:"ÙØ§Ú©âØ¢Ù¾ Ø³Ø±ÛØ¹ Ø¨Ø§ ÙØ§ÚÙÙ 3D CAD",sx6:"Ø®ÙØ§ÙØ¯Ù Ø±Ø§Ø¯ÛÙÚ¯Ø±Ø§ÙÛ Ù Ù¾Ø´ØªÛØ¨Ø§ÙÛ ØªØ´Ø®ÛØµ Ø¨Ø§ ÙÙØ´ ÙØµÙÙØ¹Û",sx7:"Ø§Ø³ØªÙØ§Ø¯Ù Ø§Ø² ÙØ§ÚÙÙ Ø¯ÙØ¯Ø§ÙâÙ¾Ø²Ø´Ú© Ø±Ø¨Ø§ØªÛÚ©",sx8:"ÙØ¬ÙØ² Ú©ÙÛÙÛÚ© Ø±Ø¨Ø§ØªÛÚ© Ø¯Ø± Ø§Ù¾ÙÛÚ©ÛØ´Ù Smilebot",
+f_autopilot:"Ø¹ÙÙÚ©Ø±Ø¯ Ú©Ø§ÙÙØ§Ù Ø®ÙØ¯Ú©Ø§Ø± Ù Ø¨Ø¯ÙÙ ÙÛØ§Ø² Ø¨Ù Ø¯Ø³Øª"},
+nl:{subsKicker:"Software & app",subsTitle:"Smilebot-softwarelicenties",subsSub:"Flexibele plannen â van Ã©Ã©n casus tot een volledig autonome kliniek.",subPerCase:"eenmalig",subPerYear:"per jaar",
+subOne:"Licentie per casus",subYear:"Smilebot-licentie",subAI:"Smilebot AI-licentie",subAuto:"Smilebot Autopilot-licentie",
+so1:"Voorâna-presentatie voor Ã©Ã©n casus",so2:"3D STL-modeldata",so3:"Exocad-matchingtraining (videocursus)",
+sy1:"Voorâna-smile-design",sy2:"AI-gezichtsanalyse & tandmodelkeuze",sy3:"Onbeperkt aantal casussen",sy4:"Onbeperkte toegang tot de 3D-modelbibliotheek",
+sa1:"AI-spraakanalyse & smile-design",sa2:"Aangepaste AI-tekeningen & ultrarealistisch resultaat",sa3:"Automatische 3D-modeldetectie & STL-download",sa4:"Behandelingsspecifieke resultaten â bijv. verschil facing/zirkonium",
+sx1:"Geautomatiseerde DSD-smile-design-workflow",sx2:"Behandelingsdetectie & automatische tekeningen",sx3:"Simulaties afgestemd op de tekeningen",sx4:"Passende 3D STL bij de simulatie kiezen & downloaden",sx5:"Snelle mockup met de 3D-CAD-module",sx6:"AI-rÃ¶ntgenbeoordeling & diagnose-ondersteuning",sx7:"Toegang tot de Robot-tandarts-module",sx8:"Robot-kliniek-licentie in de Smilebot-app",
+f_autopilot:"Volledig autonome, handsfree werking"}
+};
+Object.keys(EXTRA).forEach(function(c){if(T[c]){for(var k in EXTRA[c]){T[c][k]=EXTRA[c][k];}}});
+</script>
+<script>
+let cur="en";
+let sections=[];
+function t(k){return (T[cur]&&T[cur][k]!=null)?T[cur][k]:(T.en[k]!=null?T.en[k]:k);}
+function locOf(){return LOCALE[cur]||"en";}
+function fmt(n){try{return Number(n).toLocaleString(locOf());}catch(e){return ""+n;}}
+function price(n){return fmt(n)+" \u20AC";}
+function lic(n){return t("licTpl").replace("{n}",fmt(n));}
+
+const SVG_CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+const SVG_ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
+const SVG_SPARK='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.6L19.5 9l-4.7 3.4 1.8 5.6L12 14.6 7.4 18l1.8-5.6L4.5 9l5.7-1.4z"/></svg>';
+const SVG_MODEL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>';
+const SVG_WA='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 2a8 8 0 11-4.1 14.9l-.3-.2-2.8.8.8-2.7-.2-.3A8 8 0 0112 4zm-2.5 4c-.2 0-.5.1-.7.4-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.2 2.4 1 2.9.8 3.4.7.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3-.3-.2-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.6.9-.8 1.1-.1.1-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5 0-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5z"/></svg>';
+const SVG_DOC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>';
+const SVG_CHEVDOWN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg>';
+const SVG_BOLT='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H13z"/></svg>';
+
+function eyebrow(num,word){return '<span class="eyebrow reveal"><span class="num">'+num+'</span><span class="bar"></span>'+(word?word:'')+'</span>';}
+
+function coverHTML(){
+ return '<section class="page image cover" data-type="dark" style="background-image:url(\''+IMG+'cover.jpg\')"><div class="wrap">'
+  +'<img class="mark reveal" src="'+LOGO_W+'" alt="SMILEBOT">'
+  +'<h1 class="reveal">'+t("coverTag")+'</h1>'
+  +'<div class="pillars reveal">'+t("coverPillars")+'</div>'
+  +'<div class="stats reveal"><span class="stat"><span class="dot"></span>'+t("coverStat1")+'</span>'
+  +'<span class="stat"><span class="dot"></span>'+t("coverStat2")+'</span></div>'
+  +'</div></section>';
+}
+function manifestoHTML(num){
+ var before='<li><span class="mut"></span>'+t("manB1")+'</li><li><span class="mut"></span>'+t("manB2")+'</li><li><span class="mut"></span>'+t("manB3")+'</li>';
+ var today='<li>'+SVG_CHECK+t("manT1")+'</li><li>'+SVG_CHECK+t("manT2")+'</li><li>'+SVG_CHECK+t("manT3")+'</li>';
+ return '<section class="page image manifesto" data-type="dark" style="background-image:url(\''+IMG+'app.jpg\')"><div class="wrap">'
+  +eyebrow(num,"")
+  +'<h2 class="reveal">'+t("manTitle")+'</h2>'
+  +'<div class="shift reveal"><div class="col"><div class="lbl">'+t("manBefore")+'</div><ul>'+before+'</ul></div>'
+  +'<div class="arrow">'+SVG_ARROW+'</div>'
+  +'<div class="col now"><div class="lbl">'+t("manToday")+'</div><ul>'+today+'</ul></div></div>'
+  +'<div class="meet reveal"><h3><span class="spark">'+SVG_SPARK+'</span>'+t("manMeet")+'</h3><p>'+t("manBody")+'</p></div>'
+  +'</div></section>';
+}
+function tractionHTML(num){
+ var cards=TRAC.map(function(x){return '<div class="tcard reveal"><div class="n" data-count="'+x.n+'">'+fmt(x.n)+'+</div><div class="l">'+t(x.l)+'</div></div>';}).join('');
+ return '<section class="page image traction" data-type="dark" style="background-image:url(\''+IMG+'beforeafter.jpg\')"><div class="wrap">'
+  +eyebrow(num,t("tracKicker"))
+  +'<h2 class="reveal">'+t("tracTitle")+'</h2>'
+  +'<div class="tgrid">'+cards+'</div></div></section>';
+}
+function showcaseHTML(p,num){
+ var badge=p.badge?'<span class="badge">'+p.badge+'</span>':'';
+ var pr;
+ if(p.dual){
+  pr='<div class="sc-dual reveal"><div class="col2"><span class="k">'+t("stationary")+'</span><span class="p">'+price(p.dual[0])+'</span></div>'
+   +'<div class="col2"><span class="k">'+t("mobile")+'</span><span class="p">'+price(p.dual[1])+'</span></div></div>';
+ }else{
+  pr='<div class="sc-price reveal"><span class="p">'+price(p.price)+'</span><span class="vat">'+t("vat")+'</span></div>';
+ }
+ return '<section class="page image showcase" data-type="dark" style="background-image:url(\''+IMG+p.bg+'\')"><div class="wrap"><div class="sc-inner">'
+  +eyebrow(num,"")
+  +'<h2 class="sc-name reveal">'+p.name+badge+'</h2>'
+  +pr
+  +'<div class="sc-hint reveal">'+SVG_CHEVDOWN+'</div>'
+  +'</div></div></section>';
+}
+function detailHTML(p,num){
+ var badge=p.badge?'<span class="badge">'+p.badge+'</span>':'';
+ var model=p.model?'<div class="model reveal">'+SVG_MODEL+'<span>'+t(p.model)+'</span></div>':'';
+ var feats=p.features.map(function(k){return '<li><span class="ic">'+SVG_CHECK+'</span><span>'+t(k)+'</span></li>';}).join('');
+ if(p.lic)feats+='<li><span class="ic">'+SVG_CHECK+'</span><span>'+lic(p.lic)+'</span></li>';
+ var auto=p.autopilot?'<li class="gold"><span class="ic">'+SVG_BOLT+'</span><span><b>AUTOPILOT</b> â '+t("f_autopilot")+'</span></li>':'';
+ var priceBlock;
+ if(p.dual){
+  priceBlock='<div class="dual reveal"><div class="pp"><span class="k">'+t("stationary")+'</span><span class="price">'+price(p.dual[0])+'</span><span class="vat">'+t("vat")+'</span></div>'
+   +'<div class="pp"><span class="k">'+t("mobile")+'</span><span class="price">'+price(p.dual[1])+'</span><span class="vat">'+t("vat")+'</span></div></div>';
+ }else{
+  priceBlock='<div class="price-row reveal"><span class="price">'+price(p.price)+'</span><span class="vat">'+t("vat")+'</span></div>';
+ }
+ var patentBtn=p.patent?'<a class="btn btn-ghost" href="'+PATENT_URL+'" target="_blank" rel="noopener">'+SVG_DOC+'<span>'+t("viewPatent")+'</span></a>':'';
+ return '<section class="page image detail" data-type="dark" style="background-image:url(\''+IMG+p.bg+'\')"><div class="wrap"><div class="panel reveal">'
+  +'<span class="eyebrow"><span class="num">'+num+'</span><span class="bar"></span>'+p.name+badge+'</span>'
+  +'<div class="ptag" style="margin-top:14px">'+t(p.tag)+'</div>'
+  +model
+  +'<ul class="feat">'+auto+feats+'</ul>'
+  +priceBlock
+  +'<div class="actions"><a class="btn btn-primary" href="'+ORDER_URL+'" target="_blank" rel="noopener">'+SVG_WA+'<span>'+t("order")+'</span></a>'+patentBtn+'</div>'
+  +'</div></div></section>';
+}
+function overviewHTML(num){
+ var rows=OV.map(function(r){return '<tr><td class="mname">'+r.name+'</td><td class="mbest">'+t(r.best)+'</td><td class="mprice">'+price(r.price)+'</td></tr>';}).join('');
+ return '<section class="page light overview" data-type="light"><div class="wrap">'
+  +eyebrow(num,t("ovKicker"))
+  +'<h2 class="reveal">'+t("ovTitle")+'</h2><p class="sub reveal">'+t("ovSub")+'</p>'
+  +'<div class="reveal"><table class="table"><thead><tr><th>'+t("ovColModel")+'</th><th>'+t("ovColBest")+'</th><th class="colprice">'+t("ovColPrice")+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+  +'</div></section>';
+}
+function subsHTML(num){
+ var cards=SUBS.map(function(s){
+  var g=s.gold;
+  var bl=s.feats.map(function(k){return '<li><span class="ck">'+SVG_CHECK+'</span><span>'+t(k)+'</span></li>';}).join('');
+  return '<div class="plan'+(g?' gold':'')+' reveal">'
+   +(g?'<span class="badge-gold">Autopilot</span>':'')
+   +'<div class="pl-name">'+t(s.name)+'</div>'
+   +'<div class="pl-price">'+price(s.price)+'<span class="pl-vat">'+t("vat")+'</span></div>'
+   +'<div class="pl-per">'+t(s.per)+'</div>'
+   +'<ul class="pl-feats">'+bl+'</ul></div>';
+ }).join('');
+ return '<section class="page light subs" data-type="light"><div class="wrap">'
+  +eyebrow(num,t("subsKicker"))
+  +'<h2 class="reveal">'+t("subsTitle")+'</h2><p class="sub reveal">'+t("subsSub")+'</p>'
+  +'<div class="plan-grid">'+cards+'</div></div></section>';
+}
+function ctaHTML(num){
+ return '<section class="page light cta" data-type="light"><div class="wrap">'
+  +eyebrow(num,t("ctaKicker"))
+  +'<h2 class="reveal">'+t("ctaTitle")+'</h2><p class="sub reveal">'+t("ctaSub")+'</p>'
+  +'<a class="btn btn-primary reveal" href="'+ORDER_URL+'" target="_blank" rel="noopener">'+SVG_WA+'<span>'+t("ctaButton")+'</span></a>'
+  +'<div class="foot reveal"><img src="'+LOGO_B+'" alt="Smilebot"><div class="ft">'+t("footerTagline")+'</div>'
+  +'<div class="meta"><span>'+t("footerContact")+': '+ORDER_TEL+'</span><span>Â·</span><span>'+t("footerPatent")+'</span></div>'
+  +'<div class="meta"><span>Â© '+new Date().getFullYear()+' SMILEBOTÂ® Â· '+t("footerRights")+'</span></div></div>'
+  +'</div></section>';
+}
+function buildScreens(){
+ var out=[];
+ PAGES.forEach(function(p){
+  if(p.type==="product"){
+   var a={},b={},k;for(k in p){a[k]=p[k];b[k]=p[k];}
+   a.kind="showcase";b.kind="detail";out.push(a);out.push(b);
+  }else{out.push(p);}
+ });
+ return out;
+}
+function pageHTML(p,i){
+ var num=String(i+1).padStart(2,"0");
+ if(p.type==="cover")return coverHTML();
+ if(p.type==="manifesto")return manifestoHTML(num);
+ if(p.type==="traction")return tractionHTML(num);
+ if(p.type==="product")return p.kind==="detail"?detailHTML(p,num):showcaseHTML(p,num);
+ if(p.type==="overview")return overviewHTML(num);
+ if(p.type==="subs")return subsHTML(num);
+ if(p.type==="cta")return ctaHTML(num);
+ return "";
+}
+
+function render(){
+ var main=document.getElementById("catalog");
+ var screens=buildScreens();
+ main.innerHTML=screens.map(function(p,i){return pageHTML(p,i);}).join("");
+ buildDots(screens.length);
+ initReveal();
+ countUp();
+ observeSections();
+}
+function buildDots(n){
+ var d=document.getElementById("dots"),h="";
+ for(var i=0;i<n;i++){h+='<button data-i="'+i+'" aria-label="Page '+(i+1)+'"></button>';}
+ d.innerHTML=h;
+ d.querySelectorAll("button").forEach(function(b){b.onclick=function(){scrollToIndex(+b.dataset.i,false);};});
+}
+function initReveal(){
+ var root=document.getElementById("catalog");
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{root:root,threshold:.12});
+ root.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+}
+function countUp(){
+ var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+ var root=document.getElementById("catalog");
+ root.querySelectorAll(".n[data-count]").forEach(function(el){
+  var target=+el.dataset.count;
+  if(reduce){el.textContent=fmt(target)+"+";return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animateNum(el,target);io.unobserve(el);}});},{root:root,threshold:.5});
+  io.observe(el);
+ });
+}
+function animateNum(el,target){
+ var dur=750,t0=performance.now();
+ function step(now){var k=Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-k,3);el.textContent=fmt(Math.round(target*e))+"+";if(k<1)requestAnimationFrame(step);}
+ requestAnimationFrame(step);
+}
+function observeSections(){
+ var root=document.getElementById("catalog");
+ sections=Array.prototype.slice.call(document.querySelectorAll("#catalog .page"));
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setActive(sections.indexOf(e.target));}});},{root:root,threshold:.55});
+ sections.forEach(function(s){io.observe(s);});
+}
+function setActive(i){
+ if(i<0)return;
+ var light=sections[i].dataset.type==="light";
+ document.getElementById("topbar").classList.toggle("on-light",light);
+ document.getElementById("dots").classList.toggle("on-light",light);
+ document.querySelectorAll("#dots button").forEach(function(b,bi){b.classList.toggle("active",bi===i);});
+}
+function currentIndex(){
+ var c=document.getElementById("catalog");if(!sections.length)return 0;
+ var y=c.scrollTop+c.clientHeight*0.5,best=0,bd=1e9;
+ sections.forEach(function(s,i){var d=Math.abs(s.offsetTop+s.offsetHeight/2-y);if(d<bd){bd=d;best=i;}});
+ return best;
+}
+function scrollToIndex(i,instant){
+ var c=document.getElementById("catalog"),s=sections[i];if(!s)return;
+ c.scrollTo({top:s.offsetTop,behavior:instant?"auto":"smooth"});
+}
+
+function buildLangMenu(){
+ var m=document.getElementById("langMenu");
+ m.innerHTML=LANGS.map(function(l){return '<button class="lang-item '+(l.code===cur?"active":"")+'" data-code="'+l.code+'" role="menuitem"><span class="flag">'+l.flag+'</span><span>'+l.name+'</span>'+(PINNED[l.code]?'<span class="pin">'+l.code+'</span>':'')+'</button>';}).join("");
+ m.querySelectorAll(".lang-item").forEach(function(b){b.onclick=function(){setLang(b.dataset.code);};});
+}
+function syncControls(){
+ var L=LANGS.find(function(l){return l.code===cur;});
+ document.getElementById("langFlag").textContent=L.flag;
+ document.getElementById("langCode").textContent=cur.toUpperCase();
+ document.getElementById("pdfBtn").setAttribute("aria-label",t("download"));
+ document.getElementById("toastText").textContent=t("preparing");
+ document.documentElement.lang=cur;
+ document.documentElement.dir=L.rtl?"rtl":"ltr";
+}
+function setLang(code){
+ if(!LANGS.find(function(l){return l.code===code;}))return;
+ var idx=currentIndex();
+ cur=code;
+ syncControls();buildLangMenu();render();
+ requestAnimationFrame(function(){scrollToIndex(idx,true);});
+ closeLangMenu();
+}
+function closeLangMenu(){var m=document.getElementById("langMenu");m.classList.remove("open");document.getElementById("langBtn").setAttribute("aria-expanded","false");}
+
+function showToast(on){document.getElementById("toast").classList.toggle("show",!!on);}
+function ensureFonts(){try{if(document.fonts&&document.fonts.ready)return document.fonts.ready;}catch(e){}return Promise.resolve();}
+function getJsPDF(){
+ if(window.jspdf&&window.jspdf.jsPDF)return window.jspdf.jsPDF;
+ if(window.jsPDF&&window.jsPDF.jsPDF)return window.jsPDF.jsPDF;
+ if(typeof window.jsPDF==="function")return window.jsPDF;
+ return null;
+}
+function loadScript(src){return new Promise(function(res,rej){var s=document.createElement("script");s.src=src;s.async=true;s.onload=function(){res(true);};s.onerror=function(){rej(new Error("load fail"));};document.head.appendChild(s);});}
+async function loadFrom(urls,test){
+ if(test())return true;
+ for(var i=0;i<urls.length;i++){
+  try{await loadScript(urls[i]);if(test())return true;}catch(e){}
+ }
+ return test();
+}
+async function ensureLibs(){
+ await loadFrom([
+  "html2canvas.min.js",
+  "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
+  "https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+ ],function(){return typeof window.html2canvas!=="undefined";});
+ await loadFrom([
+  "jspdf.umd.min.js",
+  "https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js",
+  "https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+ ],function(){return !!getJsPDF();});
+}
+function preloadImages(root){
+ var urls={};
+ root.querySelectorAll(".pdfpage").forEach(function(el){var m=el.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);if(m&&m[1])urls[m[1]]=1;});
+ root.querySelectorAll("img").forEach(function(i){if(i.src)urls[i.src]=1;});
+ return Promise.all(Object.keys(urls).map(function(u){return new Promise(function(res){var im=new Image();im.crossOrigin="anonymous";im.onload=res;im.onerror=res;im.src=u;});}));
+}
+function pdfBody(p,W){
+ var small=W<1100;
+ if(p.type==="cover"){
+  return '<div style="text-align:center;width:100%">'
+   +'<img src="'+LOGO_W+'" crossorigin="anonymous" style="height:'+(small?60:84)+'px;margin-bottom:28px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))">'
+   +'<h1 style="font-size:'+(small?44:64)+'px;line-height:1.05;letter-spacing:.02em;text-shadow:0 6px 26px rgba(0,0,0,.5)">'+t("coverTag")+'</h1>'
+   +'<div style="margin-top:18px;font-size:'+(small?18:22)+'px;font-weight:600;color:#cfe1ff">'+t("coverPillars")+'</div>'
+   +'<div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center">'
+   +'<span style="padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-size:'+(small?15:18)+'px;font-weight:600">'+t("coverStat1")+'</span>'
+   +'<span style="padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-size:'+(small?15:18)+'px;font-weight:600">'+t("coverStat2")+'</span></div></div>';
+ }
+ if(p.type==="manifesto"){
+  return '<div class="lt">'+t("manMeet")+'</div>'
+   +'<h2 style="font-size:'+(small?38:54)+'px;line-height:1.05;max-width:18ch">'+t("manTitle")+'</h2>'
+   +'<div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:24px">'
+   +'<div style="flex:1;min-width:220px;background:rgba(8,24,48,.5);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:20px"><div style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#9fc2f5;margin-bottom:12px">'+t("manBefore")+'</div><div style="font-size:21px;line-height:1.9;color:#dde9ff">'+t("manB1")+'<br>'+t("manB2")+'<br>'+t("manB3")+'</div></div>'
+   +'<div style="flex:1;min-width:220px;background:rgba(29,107,225,.28);border:1px solid rgba(61,139,255,.45);border-radius:16px;padding:20px"><div style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#bfe4ff;margin-bottom:12px">'+t("manToday")+'</div><div style="font-size:21px;line-height:1.9;color:#eaf3ff">'+t("manT1")+'<br>'+t("manT2")+'<br>'+t("manT3")+'</div></div></div>'
+   +'<p style="margin-top:22px;font-size:'+(small?18:21)+'px;line-height:1.55;color:#e7f0ff;max-width:62ch">'+t("manBody")+'</p>';
+ }
+ if(p.type==="traction"){
+  var grid=TRAC.map(function(x){return '<div style="background:rgba(8,24,48,.5);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px"><div style="font-family:var(--font-display);font-weight:800;font-size:'+(small?40:54)+'px;line-height:1">'+fmt(x.n)+'+</div><div style="margin-top:10px;font-size:16px;font-weight:600;color:#bfd9ff">'+t(x.l)+'</div></div>';}).join('');
+  return '<div class="lt">'+t("tracKicker")+'</div><h2 style="font-size:'+(small?38:52)+'px;margin-bottom:26px;max-width:16ch">'+t("tracTitle")+'</h2><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">'+grid+'</div>';
+ }
+ if(p.type==="product"){
+  var badge=p.badge?'<span style="font-size:.5em;background:linear-gradient(135deg,#1D6BE1,#3D8BFF);padding:4px 10px;border-radius:8px;margin-inline-start:8px">'+p.badge+'</span>':'';
+  if(p.kind==="showcase"){
+   var prc;
+   if(p.dual){prc='<div style="display:flex;gap:48px;margin-top:18px;flex-wrap:wrap"><div><div style="font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#bfd9ff">'+t("stationary")+'</div><div class="pprice" style="font-size:'+(small?40:56)+'px">'+price(p.dual[0])+'</div></div><div><div style="font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#bfd9ff">'+t("mobile")+'</div><div class="pprice" style="font-size:'+(small?40:56)+'px">'+price(p.dual[1])+'</div></div></div>';}
+   else{prc='<div class="pprice" style="font-size:'+(small?56:84)+'px;margin-top:14px">'+price(p.price)+' <span style="font-size:'+(small?20:24)+'px;color:#bfd9ff;font-weight:600">'+t("vat")+'</span></div>';}
+   return '<div class="lt">SMILEBOT</div><h1 style="font-size:'+(small?58:88)+'px;line-height:1;letter-spacing:.01em">'+p.name+badge+'</h1>'+prc;
+  }
+  var model=p.model?'<div style="display:inline-block;margin-top:16px;font-size:17px;font-weight:600;color:#bfd9ff;background:rgba(61,139,255,.15);border:1px solid rgba(61,139,255,.35);padding:9px 15px;border-radius:10px">'+t(p.model)+'</div>':'';
+  var autoPdf=p.autopilot?'<div style="margin-top:18px;display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;letter-spacing:.05em;font-size:22px"><svg viewBox="0 0 24 24" width="22" height="22" fill="#F7C948" style="flex:none"><path d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H13z"/></svg><span style="color:#F7C948">AUTOPILOT</span> <span style="font-weight:600;font-size:17px;color:#ffe9bf">â '+t("f_autopilot")+'</span></div>':'';
+  var fs=p.features.map(function(k){return '<div>'+t(k)+'</div>';}).join('');
+  if(p.lic)fs+='<div>'+lic(p.lic)+'</div>';
+  var pr;
+  if(p.dual){pr='<div style="display:flex;gap:40px;margin-top:24px;flex-wrap:wrap"><div><div style="font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#bfd9ff">'+t("stationary")+'</div><div class="pprice" style="font-size:'+(small?34:44)+'px">'+price(p.dual[0])+' <span style="font-size:18px;color:#bfd9ff;font-weight:600">'+t("vat")+'</span></div></div><div><div style="font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#bfd9ff">'+t("mobile")+'</div><div class="pprice" style="font-size:'+(small?34:44)+'px">'+price(p.dual[1])+' <span style="font-size:18px;color:#bfd9ff;font-weight:600">'+t("vat")+'</span></div></div></div>';}
+  else{pr='<div class="pprice" style="font-size:'+(small?40:54)+'px;margin-top:24px">'+price(p.price)+' <span style="font-size:20px;color:#bfd9ff;font-weight:600">'+t("vat")+'</span></div>';}
+  return '<div class="lt">SMILEBOT</div><h1 style="font-size:'+(small?38:50)+'px;letter-spacing:.02em">'+p.name+badge+'</h1>'
+   +'<div style="margin-top:12px;font-size:'+(small?19:22)+'px;color:#dfeaff;max-width:42ch">'+t(p.tag)+'</div>'+model+autoPdf
+   +'<div class="pl">'+fs+'</div>'+pr
+   +'<div style="margin-top:24px;font-size:17px;color:#cfe1ff">'+t("order")+' Â· '+ORDER_TEL+'</div>';
+ }
+ if(p.type==="subs"){
+  var cols=W>=1200?4:2;
+  var pcards=SUBS.map(function(s){var g=s.gold;
+   var bl=s.feats.map(function(k){return '<div style="display:flex;gap:8px;align-items:flex-start;margin-top:9px;font-size:13px;line-height:1.35;color:'+(g?'#5a4520':'#33506f')+'"><span style="color:'+(g?'#B26A00':'#1D6BE1')+';font-weight:800;flex:none">&#10003;</span><span>'+t(k)+'</span></div>';}).join('');
+   return '<div style="border:1px solid '+(g?'rgba(245,166,35,.55)':'rgba(8,32,59,.12)')+';border-radius:16px;padding:18px;background:'+(g?'linear-gradient(155deg,#fff6e0,#ffe6b0)':'rgba(255,255,255,.8)')+'">'
+    +(g?'<div style="display:inline-block;font-size:10px;font-weight:800;letter-spacing:.12em;color:#5a3b00;background:linear-gradient(90deg,#FFE39A,#F5A623);padding:3px 9px;border-radius:999px;margin-bottom:8px">AUTOPILOT</div>':'')
+    +'<div style="font-family:var(--font-display);font-weight:700;font-size:16px;color:#0C2D52;min-height:40px">'+t(s.name)+'</div>'
+    +'<div style="font-family:var(--font-display);font-weight:800;font-size:30px;color:'+(g?'#B26A00':'#1D6BE1')+';margin-top:4px">'+price(s.price)+' <span style="font-size:13px;color:#5a7290;font-weight:600">'+t("vat")+'</span></div>'
+    +'<div style="font-size:12px;color:#5a7290;margin-top:2px">'+t(s.per)+'</div>'
+    +'<div style="margin-top:12px">'+bl+'</div></div>';
+  }).join('');
+  return '<div class="lt" style="color:#1D6BE1">'+t("subsKicker")+'</div><h2 style="font-size:'+(small?32:44)+'px;color:#0C2D52">'+t("subsTitle")+'</h2><p style="margin-top:10px;font-size:'+(small?16:19)+'px;color:#3a557a;max-width:66ch">'+t("subsSub")+'</p><div style="margin-top:16px;display:grid;grid-template-columns:repeat('+cols+',1fr);gap:13px">'+pcards+'</div>';
+ }
+ if(p.type==="overview"){
+  var rows=OV.map(function(r,idx){return '<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px;'+(idx?'border-top:1px solid rgba(8,32,59,.1)':'')+'"><div style="font-family:var(--font-display);font-weight:700;font-size:19px;color:#0C2D52;min-width:32%">'+r.name+'</div><div style="flex:1;color:#46618a;font-size:17px">'+t(r.best)+'</div><div style="font-family:var(--font-display);font-weight:700;font-size:19px;color:#1D6BE1;white-space:nowrap">'+price(r.price)+'</div></div>';}).join('');
+  return '<div class="lt" style="color:#1D6BE1">'+t("ovKicker")+'</div><h2 style="font-size:'+(small?38:52)+'px;color:#0C2D52">'+t("ovTitle")+'</h2><p style="margin-top:12px;font-size:'+(small?18:21)+'px;color:#3a557a;max-width:62ch">'+t("ovSub")+'</p><div style="margin-top:26px;border:1px solid rgba(8,32,59,.12);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.7)">'+rows+'</div>';
+ }
+ if(p.type==="cta"){
+  return '<div style="text-align:center;width:100%"><div class="lt" style="color:#1D6BE1">'+t("ctaKicker")+'</div>'
+   +'<h2 style="font-size:'+(small?40:56)+'px;color:#0C2D52;max-width:18ch;margin:0 auto">'+t("ctaTitle")+'</h2>'
+   +'<p style="margin:18px auto 0;font-size:'+(small?18:22)+'px;color:#3a557a;max-width:52ch">'+t("ctaSub")+'</p>'
+   +'<div style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06351b;font-weight:700;font-size:20px;padding:16px 30px;border-radius:14px">'+t("ctaButton")+' Â· '+ORDER_TEL+'</div>'
+   +'<div style="margin-top:36px;color:#5a7290;font-size:16px">'+t("footerTagline")+'</div>'
+   +'<div style="margin-top:8px;color:#7d93b0;font-size:14px">Â© '+new Date().getFullYear()+' SMILEBOTÂ® Â· '+t("footerRights")+' Â· '+t("footerPatent")+'</div></div>';
+ }
+ return "";
+}
+async function buildPDF(){
+ var isPortrait=window.matchMedia("(max-width:768px)").matches;
+ var orient=isPortrait?"portrait":"landscape";
+ var W=isPortrait?992:1400,H=isPortrait?1402:1050;
+ showToast(true);
+ try{
+  await ensureFonts();
+  await ensureLibs();
+  var L=LANGS.find(function(l){return l.code===cur;});
+  var rtl=L.rtl;
+  var stage=document.getElementById("pdfStage");
+  stage.dir=rtl?"rtl":"ltr";
+  var screens=buildScreens();
+  var total=screens.length;
+  stage.innerHTML=screens.map(function(p,i){
+   var light=(p.type==="overview"||p.type==="cta"||p.type==="subs");
+   var center=(p.type==="cover"||p.type==="cta");
+   var bg=p.bg?IMG+p.bg:"";
+   var ov;
+   if(p.type==="product"&&p.kind==="showcase")ov="background:linear-gradient(180deg,rgba(5,16,33,.28),rgba(5,16,33,.05) 38%,rgba(5,16,33,.82))";
+   else if(p.type==="product"&&p.kind==="detail")ov="background:linear-gradient(180deg,rgba(5,16,33,.9),rgba(5,16,33,.82) 42%,rgba(6,20,42,.92))";
+   else if(light)ov="background:linear-gradient(160deg,#eef4fd,#cddef3)";
+   else ov="";
+   return '<div class="pdfpage" '+(rtl?'dir="rtl"':'')+' style="width:'+W+'px;height:'+H+'px;background-image:url(\''+bg+'\')">'
+    +'<div class="ov" style="'+ov+'"></div>'
+    +'<div class="pin" style="'+(center?'justify-content:center':'')+'">'
+    +'<div class="ph"><img src="'+(light?LOGO_B:LOGO_W)+'" crossorigin="anonymous"><span class="pno" style="'+(light?'color:#26405f':'')+'">'+String(i+1).padStart(2,"0")+' / '+String(total).padStart(2,"0")+'</span></div>'
+    +'<div class="pbody" style="'+(center?'margin-top:0;':'')+(light?'color:#0C2D52':'')+'">'+pdfBody(p,W)+'</div>'
+    +'</div></div>';
+  }).join("");
+  await preloadImages(stage);
+  await new Promise(function(r){setTimeout(r,80);});
+  var JsPDF=getJsPDF();
+  if(typeof window.html2canvas==="undefined"||!JsPDF)throw new Error("PDF library could not be loaded (it may be blocked by the site's network/security policy).");
+  var pdf=new JsPDF({orientation:orient,unit:"px",format:[W,H],compress:true});
+  var pages=stage.querySelectorAll(".pdfpage");
+  for(var i=0;i<pages.length;i++){
+   var canvas=await html2canvas(pages[i],{scale:2,useCORS:true,backgroundColor:"#0a1f3a",logging:false,width:W,height:H,windowWidth:W,windowHeight:H});
+   var img=canvas.toDataURL("image/jpeg",0.9);
+   if(i>0)pdf.addPage([W,H],orient);
+   pdf.addImage(img,"JPEG",0,0,W,H);
+  }
+  pdf.save("SMILEBOT-Catalog-"+cur.toUpperCase()+".pdf");
+  stage.innerHTML="";
+ }catch(err){
+  console.error(err);
+  alert("PDF: "+(err&&err.message?err.message:err)+"\n\nNote: images export correctly once the page is hosted at smile.tr (same origin).");
+ }finally{showToast(false);}
+}
+
+function init(){
+ var nav=(navigator.language||"en").slice(0,2).toLowerCase();
+ cur=LANGS.find(function(l){return l.code===nav;})?nav:"en";
+ syncControls();buildLangMenu();render();
+ var cat=document.getElementById("catalog");
+ cat.addEventListener("scroll",function(){
+  var max=cat.scrollHeight-cat.clientHeight;
+  document.getElementById("progress").style.width=(max>0?cat.scrollTop/max*100:0)+"%";
+  document.getElementById("topbar").classList.toggle("scrolled",cat.scrollTop>10);
+ },{passive:true});
+ var langBtn=document.getElementById("langBtn"),langMenu=document.getElementById("langMenu");
+ langBtn.addEventListener("click",function(e){e.stopPropagation();var open=langMenu.classList.toggle("open");langBtn.setAttribute("aria-expanded",open?"true":"false");});
+ document.addEventListener("click",function(e){if(!langMenu.contains(e.target)&&e.target!==langBtn&&!langBtn.contains(e.target))closeLangMenu();});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLangMenu();});
+ document.getElementById("pdfBtn").addEventListener("click",buildPDF);
+}
+init();
+</script>
+</body>
+</html>
