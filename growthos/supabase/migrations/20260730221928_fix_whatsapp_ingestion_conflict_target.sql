@@ -1,24 +1,3 @@
-create table public.whatsapp_channels (
-  id uuid primary key default gen_random_uuid(),
-  organization_id uuid not null references public.organizations(id) on delete cascade,
-  phone_number_id text not null,
-  display_phone_number text,
-  is_active boolean not null default true,
-  created_at timestamptz not null default now(),
-  unique (phone_number_id),
-  unique (organization_id, phone_number_id)
-);
-
-alter table public.whatsapp_channels enable row level security;
-
-create policy "members manage own whatsapp channels" on public.whatsapp_channels
-for all using (organization_id = public.current_organization_id())
-with check (organization_id = public.current_organization_id());
-
-create unique index conversations_one_open_per_lead_idx
-on public.conversations (organization_id, lead_id)
-where is_open = true;
-
 create or replace function public.ingest_whatsapp_text_message(
   p_phone_number_id text,
   p_external_message_id text,
