@@ -4,6 +4,7 @@ import {
   parseIncomingTextMessage,
   verifyWebhookChallenge,
 } from "@/lib/whatsapp/parser";
+import { verifyMetaSignature } from "@/lib/whatsapp/signature";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -23,10 +24,21 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const rawBody = await request.text();
+  const isAuthentic = verifyMetaSignature(
+    rawBody,
+    request.headers.get("x-hub-signature-256"),
+    process.env.META_APP_SECRET ?? "",
+  );
+
+  if (!isAuthentic) {
+    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  }
+
   let payload: unknown;
 
   try {
-    payload = await request.json();
+    payload = JSON.parse(rawBody);
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
