@@ -1,0 +1,3 @@
+import { describe, expect, it } from "vitest";
+import { createDemoDashboard, receiveDemoLead, completeDemoAction } from "./demo-dashboard";
+describe("demo dashboard automation", () => { it("creates an incoming WhatsApp lead and increases the inbox count", () => { const state = receiveDemoLead(createDemoDashboard()); expect(state.inboxCount).toBe(4); expect(state.activities[0]).toMatchObject({ kind: "message", title: "Yeni WhatsApp mesajı" }); expect(state.pipeline[0].count).toBe(9); }); it("marks an automation action complete", () => { expect(completeDemoAction(createDemoDashboard(), "follow-up").actions[0].completed).toBe(true); }); });

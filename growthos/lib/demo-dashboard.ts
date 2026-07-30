@@ -1,0 +1,5 @@
+export type DemoAction = { id: string; completed: boolean };
+export type DemoDashboard = { inboxCount: number; pipeline: { count: number }[]; activities: { kind: string; title: string }[]; actions: DemoAction[] };
+export function createDemoDashboard(): DemoDashboard { return { inboxCount: 3, pipeline: [{ count: 8 }], activities: [], actions: [{ id: "follow-up", completed: false }] }; }
+export function receiveDemoLead(state: DemoDashboard): DemoDashboard { return { ...state, inboxCount: state.inboxCount + 1, pipeline: [{ count: state.pipeline[0].count + 1 }], activities: [{ kind: "message", title: "Yeni WhatsApp mesajı" }, ...state.activities] }; }
+export function completeDemoAction(state: DemoDashboard, id: string): DemoDashboard { return { ...state, actions: state.actions.map((action) => action.id === id ? { ...action, completed: true } : action) }; }

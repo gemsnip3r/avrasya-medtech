@@ -1,49 +1,10 @@
-const metrics = [
-  { label: "Bugünkü lead", value: "0", detail: "Hedef: 5 nitelikli" },
-  { label: "Nitelikli lead", value: "0", detail: "Lead Brain bekliyor" },
-  { label: "Demo", value: "0", detail: "Henüz planlanmadı" },
-  { label: "Satış", value: "₺0", detail: "Atıf verisi bekleniyor" },
-];
+"use client";
+
+import { useState } from "react";
+import { completeDemoAction, createDemoDashboard, receiveDemoLead } from "@/lib/demo-dashboard";
 
 export default function HomePage() {
-  return (
-    <main className="shell">
-      <header className="topbar">
-        <div>
-          <span className="eyebrow">AVRASYA MEDTECH · MVP</span>
-          <h1>GrowthOS Komuta Merkezi</h1>
-          <p>Instagram, WhatsApp, CRM ve AI satış zekâsı tek ekranda.</p>
-        </div>
-        <span className="status">Kurulum devam ediyor</span>
-      </header>
-
-      <section className="metrics" aria-label="Temel metrikler">
-        {metrics.map((metric) => (
-          <article className="card" key={metric.label}>
-            <span>{metric.label}</span>
-            <strong>{metric.value}</strong>
-            <small>{metric.detail}</small>
-          </article>
-        ))}
-      </section>
-
-      <section className="panel">
-        <div>
-          <span className="eyebrow">İLK CANLI AKIŞ</span>
-          <h2>Instagram → WhatsApp → Lead Brain → Satış</h2>
-          <p>
-            Bir müşteri WhatsApp üzerinden yazdığında konuşma kaydedilecek,
-            ihtiyaç bilgileri toplanacak, lead puanlanacak ve satış ekibine
-            uygulanabilir bir özet hazırlanacak.
-          </p>
-        </div>
-        <ol>
-          <li>WhatsApp webhook bağlantısı</li>
-          <li>Lead ve konuşma kaydı</li>
-          <li>Deterministik nitelendirme</li>
-          <li>AI destekli satış özeti</li>
-        </ol>
-      </section>
-    </main>
-  );
+  const [dashboard, setDashboard] = useState(createDemoDashboard);
+  const action = dashboard.actions[0];
+  return <main className="shell"><header className="topbar"><div><span className="eyebrow">AVRASYA MEDTECH · GROWTHOS</span><h1>Growth command center</h1><p>WhatsApp, CRM ve satış takibini tek operasyon görünümünde yönetin.</p></div><span className="status">? Sistem hazır</span></header><section className="command-grid"><section className="hero-card"><span className="eyebrow">CANLI İNBOX</span><strong>{dashboard.inboxCount}</strong><p>Yanıt bekleyen konuşma</p><button onClick={() => setDashboard(receiveDemoLead)}>Yeni WhatsApp mesajını simüle et</button></section><section className="panel"><span className="eyebrow">PIPELINE</span><h2>{dashboard.pipeline[0].count} yeni lead</h2><p>Bugünkü hedef: 5 nitelikli görüşme</p><div className="progress"><i /></div></section></section><section className="dashboard-grid"><section className="panel"><span className="eyebrow">BUGÜNKÜ HAREKETLER</span><h2>Otomasyon zaman akışı</h2>{dashboard.activities.length ? dashboard.activities.map((item, index) => <div className="activity" key={index}><b>WhatsApp</b><span>{item.title}</span><small>Şimdi</small></div>) : <p>Yeni mesaj geldiğinde lead otomatik olarak burada görünecek.</p>}</section><section className="panel"><span className="eyebrow">ÖNERİLEN AKSİYON</span><h2>Fiyat bilgisi isteyen lead</h2><p>Demo mesajı için kişiselleştirilmiş takip görevi oluşturuldu.</p><button className="secondary" disabled={action.completed} onClick={() => setDashboard((state) => completeDemoAction(state, "follow-up"))}>{action.completed ? "Follow-up tamamlandı" : "Follow-up tamamla"}</button></section></section></main>;
 }
