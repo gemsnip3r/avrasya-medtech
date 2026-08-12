@@ -49,3 +49,22 @@ test('mobile uses the lightweight fallback and remains keyboard-safe', async ({ 
   expect(overflow).toBeLessThanOrEqual(0);
   await page.screenshot({ path: 'artifacts/2026-08-12-ply-smile/mobile-scan.png', fullPage: true });
 });
+
+test('implant planning advances through all four supplied stage images', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  const missingImplantAssets = [];
+  page.on('response', (response) => {
+    if (/\/assets\/implant-[1-4]\.jpg$/.test(response.url()) && response.status() >= 400) {
+      missingImplantAssets.push(response.url());
+    }
+  });
+  await page.goto('/');
+  await page.locator('[data-dc-tpl="58"]').nth(4).click();
+  const stageImage = page.locator('[data-dc-tpl="293"]');
+  await expect(stageImage).toHaveAttribute('src', 'assets/implant-1.jpg');
+  for (let stage = 2; stage <= 4; stage += 1) {
+    await page.locator('[data-dc-tpl="307"]').nth(stage - 1).click();
+    await expect(stageImage).toHaveAttribute('src', `assets/implant-${stage}.jpg`);
+  }
+  expect(missingImplantAssets).toEqual([]);
+});
