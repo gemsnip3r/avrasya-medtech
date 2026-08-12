@@ -6,6 +6,8 @@ import vm from 'node:vm';
 
 const root = process.cwd();
 
+const read = (relativePath) => readFile(path.join(root, relativePath), 'utf8');
+
 async function loadAssets() {
   const source = await readFile(path.join(root, 'showroom/clinical-assets.js'), 'utf8');
   const sandbox = { window: {} };
@@ -46,4 +48,20 @@ test('ships the supplied binary PLY and matched smile images', async () => {
   await assertPly('assets/digital-clinic/scan-lower.ply', 122815, 241225);
   await assertReferenceImage('assets/digital-clinic/example-before.jpg');
   await assertReferenceImage('assets/digital-clinic/example-after.jpg');
+});
+
+test('loads full PLY paths only inside the scan intent flow', async () => {
+  const index = await read('index.html');
+  const patch = await read('showroom/source-patch.js');
+  assert.match(index, /showroom\/clinical-assets\.js/);
+  assert.doesNotMatch(index, /preload[^>]+scan-(upper|lower)\.ply/i);
+  assert.match(patch, /chooseScanMode/);
+  assert.match(patch, /fullScan\.upper/);
+  assert.match(patch, /fullScan\.lower/);
+});
+
+test('keeps the packed surface loader as a catch fallback', async () => {
+  const patch = await read('showroom/source-patch.js');
+  assert.match(patch, /catch[\s\S]+loadPacked/);
+  assert.match(patch, /scanFallback/);
 });
