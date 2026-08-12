@@ -5,6 +5,22 @@
     "const [gU, gL] = await Promise.all([loadPacked('upper'), loadPacked('lower')]);\n      [gU, gL].forEach(g => { g.computeVertexNormals(); });",
     "const loadFull = (url) => new Promise((res, rej) => loader.load(url, res, undefined, rej));\n      const clinicalAssets = window.AvrasyaClinicalAssets;\n      const caps = {\n        webgl: !!window.WebGLRenderingContext,\n        saveData: !!navigator.connection?.saveData,\n        deviceMemory: navigator.deviceMemory || 0,\n        mobile: matchMedia('(max-width: 720px)').matches\n      };\n      const scanMode = clinicalAssets.chooseScanMode(caps);\n      let gU, gL, scanFallback = false;\n      try {\n        if (scanMode !== 'full') throw new Error('scanFallback: capability');\n        [gU, gL] = await Promise.all([loadFull(clinicalAssets.fullScan.upper), loadFull(clinicalAssets.fullScan.lower)]);\n      } catch (error) {\n        scanFallback = true;\n        [gU, gL] = await Promise.all([loadPacked('upper'), loadPacked('lower')]);\n        console.info('scanFallback', error && error.message ? error.message : error);\n      }\n      [gU, gL].forEach(g => { g.computeVertexNormals(); });\n      this._scanFallback = scanFallback;",
     "full clinical PLY with packed fallback"
+  ], [
+    "const photoSrc = s.photoMode === 'custom' && s.customUrl ? s.customUrl : 'assets/teeth-comparison.jpg';\n    const exampleAfter = 'assets/smilebot-screen.jpg';",
+    "const smileExample = window.AvrasyaClinicalAssets.smileExample;\n    const photoSrc = s.photoMode === 'custom' && s.customUrl ? s.customUrl : smileExample.before;\n    const exampleAfter = smileExample.after;",
+    "matched smile example assets"
+  ], [
+    "afterReady: !!s.afterUrl,\n      afterUrl: s.afterUrl,\n      boxMode: !s.landmarks && !s.afterUrl,",
+    "afterReady: isExample ? true : !!s.afterUrl,\n      afterUrl: isExample ? exampleAfter : s.afterUrl,\n      boxMode: s.photoMode === 'custom' && !s.landmarks && !s.afterUrl,",
+    "matched smile example output"
+  ], [
+    "renderGuidedDesign() {\n    const img = this.smileImgRef.current, stage = this.stageRef.current;\n    if (!img || !stage || !img.naturalWidth) return;\n    const s = this.state, shade = this.SHADES[s.shade];",
+    "renderGuidedDesign() {\n    const s = this.state;\n    if (s.photoMode !== 'custom') return;\n    const img = this.smileImgRef.current, stage = this.stageRef.current;\n    if (!img || !stage || !img.naturalWidth) return;\n    const shade = this.SHADES[s.shade];",
+    "guided design custom photos only"
+  ], [
+    "this.setState({ customUrl: url, photoMode: 'custom', landmarks: null, scanDots: 0, aiError: null, afterUrl: null }, () => {\n      setTimeout(() => { this._designKey = null; this.maybeRenderDesign(); }, 120);\n    });",
+    "if (this.state.customUrl && this.state.customUrl.startsWith('blob:')) URL.revokeObjectURL(this.state.customUrl);\n    this.setState({ customUrl: url, photoMode: 'custom', landmarks: null, scanDots: 0, aiError: null, afterUrl: null }, () => {\n      setTimeout(() => { this._designKey = null; this.maybeRenderDesign(); }, 120);\n    });",
+    "revoke replaced local smile upload"
   ]];
 
   const overlayReplacements = [

@@ -65,3 +65,22 @@ test('keeps the packed surface loader as a catch fallback', async () => {
   assert.match(patch, /catch[\s\S]+loadPacked/);
   assert.match(patch, /scanFallback/);
 });
+
+test('restores the matched example before and after pair', async () => {
+  const patch = await read('showroom/source-patch.js');
+  assert.match(patch, /smileExample\.before/);
+  assert.match(patch, /smileExample\.after/);
+  assert.match(patch, /afterReady:\s*isExample\s*\?\s*true/);
+});
+
+test('does not generate rectangular teeth for example mode', async () => {
+  const patch = await read('showroom/source-patch.js');
+  assert.match(patch, /if \(s\.photoMode !== 'custom'\) return;/);
+});
+
+test('retains local upload cleanup and custom guided fallback', async () => {
+  const patch = await read('showroom/source-patch.js');
+  assert.match(patch, /URL\.revokeObjectURL/);
+  assert.match(patch, /renderGuidedDesign/);
+  assert.match(patch, /photoMode === 'custom'/);
+});
