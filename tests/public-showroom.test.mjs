@@ -84,3 +84,11 @@ test('retains local upload cleanup and custom guided fallback', async () => {
   assert.match(patch, /renderGuidedDesign/);
   assert.match(patch, /photoMode === 'custom'/);
 });
+
+test('exposes every required repository proof command', async () => {
+  const pkg = JSON.parse(await read('package.json'));
+  for (const name of ['typecheck', 'lint', 'test', 'test:e2e', 'build']) {
+    assert.equal(typeof pkg.scripts[name], 'string', `${name} script exists`);
+    assert.ok(pkg.scripts[name].length > 0, `${name} script is executable`);
+  }
+});
