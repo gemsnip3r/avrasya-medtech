@@ -92,3 +92,10 @@ test('exposes every required repository proof command', async () => {
     assert.ok(pkg.scripts[name].length > 0, `${name} script is executable`);
   }
 });
+
+test('builds static deployment output where Vercel expects it', async () => {
+  const config = JSON.parse(await read('vercel.json'));
+  const pkg = JSON.parse(await read('package.json'));
+  assert.equal(config.outputDirectory, 'public');
+  assert.match(pkg.scripts.build, /build-static\.mjs/);
+});
