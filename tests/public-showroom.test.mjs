@@ -99,3 +99,9 @@ test('builds static deployment output where Vercel expects it', async () => {
   assert.equal(config.outputDirectory, 'public');
   assert.match(pkg.scripts.build, /build-static\.mjs/);
 });
+
+test('ships every implant planning stage referenced by the showroom', async () => {
+  for (let stage = 1; stage <= 4; stage += 1) {
+    await assertReferenceImage(`assets/implant-${stage}.jpg`);
+  }
+});
